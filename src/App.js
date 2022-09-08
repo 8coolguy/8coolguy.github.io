@@ -1,23 +1,56 @@
-import logo from './logo.svg';
 import './App.css';
+import Stack from 'react-bootstrap/Stack';
+import SidebarMenu from 'react-bootstrap-sidebar-menu';
 
 function App() {
   return (
+
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <SidebarMenu>
+        <SidebarMenu.Header>
+          <SidebarMenu.Brand>
+            {"another icon"}
+          </SidebarMenu.Brand>
+          <SidebarMenu.Toggle />
+        </SidebarMenu.Header>
+        <SidebarMenu.Body>
+          <SidebarMenu.Nav>
+            <SidebarMenu.Nav.Link>
+              <SidebarMenu.Nav.Icon>
+                {"Hello"}
+              </SidebarMenu.Nav.Icon>
+              <SidebarMenu.Nav.Title>
+                {"Help 2"}
+              </SidebarMenu.Nav.Title>
+            </SidebarMenu.Nav.Link>
+          </SidebarMenu.Nav>
+          <SidebarMenu.Sub>
+            <SidebarMenu.Sub.Toggle>
+              <SidebarMenu.Nav.Icon />
+              <SidebarMenu.Nav.Title>
+                {"Help"}
+              </SidebarMenu.Nav.Title>
+            </SidebarMenu.Sub.Toggle>
+            <SidebarMenu.Sub.Collapse>
+              <SidebarMenu.Nav>
+                <SidebarMenu.Nav.Link>
+                  <SidebarMenu.Nav.Icon>
+                    {"Projects"}
+                  </SidebarMenu.Nav.Icon>
+                  <SidebarMenu.Nav.Title>
+                    {"About"}
+                  </SidebarMenu.Nav.Title>
+                </SidebarMenu.Nav.Link>
+              </SidebarMenu.Nav>
+            </SidebarMenu.Sub.Collapse>
+          </SidebarMenu.Sub>
+        </SidebarMenu.Body>
+      </SidebarMenu>
+      <Stack gap={3}>
+        <div className="bg-light border">First item</div>
+        <div className="bg-light border">Second item</div>
+        <div className="bg-light border">Third item</div>
+      </Stack>
     </div>
   );
 }
