@@ -5,7 +5,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
-
+import image from "./PXL_20220508_032554805.jpeg"
 
 
 
@@ -28,7 +28,7 @@ function App() {
             </Nav>
         </Container>
       </Navbar>
-      <Row id="intro" >
+      <Row style={{backgroundImage:`url(${image})`}}  id="intro" >
         <Container className="section">
           <p>hii. My name is</p>
           <h1> Arnav Choudhury</h1>
@@ -99,38 +99,48 @@ function App() {
         <Container className="section">
           <h1>Projects</h1>
           <div className="card-mb-6">
-                    <div className="row g-0">
-                        <div className="col-md-4">
-                            <a href="https://blograph.herokuapp.com/home">
-                            <img className="media-object" src="https://imgur.com/VFgIFUX.png" width="100%" height="100%"></img>
-                            </a>
-                        </div>
-                        <div className="col-md-8">
-                            <h4 className="card-title">BlogGraph</h4>
-                            <h6>Completed:July 1, 2022</h6>
-                            <p className="card-text">Built a full stack React application that visualizes blogs as graphs where related blogs are connected by nodes. MongoDB for the database, Express for the server, and AWS for the file system and the authentication system.</p>  
-                        
-                        
-                        </div>
-                    </div>
-                </div>
+            <div className="row g-0">
+              <div className="col-md-4">
+                  <a href="https://carbon-footprint-web.herokuapp.com/login">
+                  <img className="media-object" src="https://i.imgur.com/czxFKmU.jpg" width="100%" height="100%"></img>
+                  </a>
+              </div>
+              <div className="col-md-8">
+                  <h4 className="card-title">Carbon Footprint Tracker</h4>
+                  <h6>Completed:September 10, 2022</h6>
+                  <p className="card-text">Website that helps you track and visualize your carbon footprint by tracking six categories. Database and Authentication uses Firebase and Client side uses React with custom server made with Express</p>  
+              </div>
+            </div>
+            <div className="row g-0">
+              <div className="col-md-4">
+                  <a href="https://blograph.herokuapp.com/home">
+                  <img className="media-object" src="https://imgur.com/VFgIFUX.png" width="100%" height="100%"></img>
+                  </a>
+              </div>
+              <div className="col-md-8">
+                  <h4 className="card-title">BlogGraph</h4>
+                  <h6>Completed:July 1, 2022</h6>
+                  <p className="card-text">Built a full stack React application that visualizes blogs as graphs where related blogs are connected by nodes. MongoDB for the database, Express for the server, and AWS for the file system and the authentication system.</p>  
+              
+              
+              </div>
+              </div>
+            </div>
                 
-                <div className="card-mb-6">
-                    <div className="row g-0">
-                        <div className="col-md-4">
-                            <a href="https://github.com/8coolguy/cali-fire-analysis">
-                            <img className="media-object" src="https://i.imgur.com/4DwHWaA.png" width="100%" height="100%"></img>
-                            </a>
-                        </div>
-                        <div className="col-md-8">
-                            <h4 className="card-title">California Predictive Fire Model</h4>
-                            <h6>Completed:Dec. 21, 2021</h6>
-                            <p className="card-text">With CAL Fire data of the past 10 years of wildfires, weather data, and local county data, I am trying to build a predictive fire model that tries to predict the size of a wild fire based on given variables. Work on this project is in progress.</p>  
-                        
-                        
-                        </div>
+            <div className="card-mb-6">
+                <div className="row g-0">
+                    <div className="col-md-4">
+                        <a href="https://github.com/8coolguy/cali-fire-analysis">
+                        <img className="media-object" src="https://i.imgur.com/4DwHWaA.png" width="100%" height="100%"></img>
+                        </a>
+                    </div>
+                    <div className="col-md-8">
+                        <h4 className="card-title">California Predictive Fire Model</h4>
+                        <h6>Completed:Dec. 21, 2021</h6>
+                        <p className="card-text">With CAL Fire data of the past 10 years of wildfires, weather data, and local county data, I am trying to build a predictive fire model that tries to predict the size of a wild fire based on given variables. Work on this project is in progress.</p>  
                     </div>
                 </div>
+            </div>
                 
                 <div className="card-mb-6">
                     <div className="row g-0">
