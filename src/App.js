@@ -107,7 +107,7 @@ function App() {
               </div>
               <div className="col-md-8">
                   <h4 className="card-title">Chill Spaces</h4>
-                  <h6>Completed:November 28, 2022</h6>
+                  <h6>Completed:November 13, 2022</h6>
                   <p className="card-text">Website that helps you find the quietest and least congested places in a city. Built with React and Flask. Won second place at Inrix Hackathon.</p>  
               </div>
             </div>
