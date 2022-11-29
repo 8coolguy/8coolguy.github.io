@@ -101,6 +101,18 @@ function App() {
           <div className="card-mb-6">
             <div className="row g-0">
               <div className="col-md-4">
+                  <a href="https://devpost.com/software/chillspaces">
+                  <img className="media-object" src="https://i.imgur.com/wjhMVRO.png" width="100%" height="100%"></img>
+                  </a>
+              </div>
+              <div className="col-md-8">
+                  <h4 className="card-title">Chill Spaces</h4>
+                  <h6>Completed:November 28, 2022</h6>
+                  <p className="card-text">Website that helps you find the quietest and least congested places in a city. Built with React and Flask. Won second place at Inrix Hackathon.</p>  
+              </div>
+            </div>
+            <div className="row g-0">
+              <div className="col-md-4">
                   <a href="https://carbon-footprint-web.herokuapp.com/login">
                   <img className="media-object" src="https://i.imgur.com/czxFKmU.jpg" width="100%" height="100%"></img>
                   </a>
@@ -120,9 +132,7 @@ function App() {
               <div className="col-md-8">
                   <h4 className="card-title">BlogGraph</h4>
                   <h6>Completed:July 1, 2022</h6>
-                  <p className="card-text">Built a full stack React application that visualizes blogs as graphs where related blogs are connected by nodes. MongoDB for the database, Express for the server, and AWS for the file system and the authentication system.</p>  
-              
-              
+                  <p className="card-text">Built a full stack React application that visualizes blogs as graphs where related blogs are connected by nodes. MongoDB for the database, Express for the server, and AWS for the file system and the authentication system.</p> 
               </div>
               </div>
             </div>
