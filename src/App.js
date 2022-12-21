@@ -113,7 +113,7 @@ function App() {
             </div>
             <div className="row g-0">
               <div className="col-md-4">
-                  <a href="https://carbon-footprint-web.herokuapp.com/login">
+                  <a href="https://goldfish-app-py52r.ondigitalocean.app/">
                   <img className="media-object" src="https://i.imgur.com/czxFKmU.jpg" width="100%" height="100%"></img>
                   </a>
               </div>
@@ -125,7 +125,7 @@ function App() {
             </div>
             <div className="row g-0">
               <div className="col-md-4">
-                  <a href="https://blograph.herokuapp.com/home">
+                  <a href="https://github.com/8coolguy/BlogGraph">
                   <img className="media-object" src="https://imgur.com/VFgIFUX.png" width="100%" height="100%"></img>
                   </a>
               </div>
