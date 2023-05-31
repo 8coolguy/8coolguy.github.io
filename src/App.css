@@ -91,3 +91,17 @@ li{
   z-index: 10;
   color: var(--light-slate);
 }
+#resume {
+  padding: 0;
+  overflow:hidden;
+  overflow-x:hidden;
+  overflow-y:hidden;
+  height:100%;
+  width:100%;
+  position:absolute;
+  top:0%;
+  left:0px;
+  right:0px;
+  bottom:0px
+
+}
