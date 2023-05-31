@@ -1,14 +1,19 @@
 {
   "files": {
-    "main.css": "/static/css/main.3f5c44aa.css",
-    "main.js": "/static/js/main.9f81f7d8.js",
+    "main.css": "/static/css/main.ad9bad30.css",
+    "main.js": "/static/js/main.8410020d.js",
     "static/media/PXL_20220508_032554805.jpeg": "/static/media/PXL_20220508_032554805.df9fcae1926a49852d9a.jpeg",
+    "static/media/resume.pdf": "/static/media/resume.05acd41b1a193cb5c192.pdf",
+    "static/media/github.svg": "/static/media/github.ebd452bf402237ef25876cdcac686676.svg",
+    "static/media/instagram.svg": "/static/media/instagram.116ad97e1f8e0638fcb7d5aed6800697.svg",
+    "static/media/linkedin.svg": "/static/media/linkedin.93683c2cc3d5ca884dcf6c3525104a48.svg",
     "index.html": "/index.html",
-    "main.3f5c44aa.css.map": "/static/css/main.3f5c44aa.css.map",
-    "main.9f81f7d8.js.map": "/static/js/main.9f81f7d8.js.map"
+    "static/media/strava.svg": "/static/media/strava.436644e5131e0edb91f0d83d6a19b6d8.svg",
+    "main.ad9bad30.css.map": "/static/css/main.ad9bad30.css.map",
+    "main.8410020d.js.map": "/static/js/main.8410020d.js.map"
   },
   "entrypoints": [
-    "static/css/main.3f5c44aa.css",
-    "static/js/main.9f81f7d8.js"
+    "static/css/main.ad9bad30.css",
+    "static/js/main.8410020d.js"
   ]
 }
