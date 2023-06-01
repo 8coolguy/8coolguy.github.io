@@ -44,7 +44,7 @@ function Home() {
                 alt="Instagram"
               />
             </Navbar.Brand>
-            <Navbar.Brand href="https://www.linkedin.com/in/arnavchoudhuryscu">
+            <Navbar.Brand href="https://www.linkedin.com/in/arnav-choudhury-scu/">
               <img
                 src = {linkedin} 
                 width="30"
