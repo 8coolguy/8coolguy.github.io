@@ -22,7 +22,7 @@ export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<NA/>} />
         <Route path="/resume" element={<Resume />} />
       </Routes>
     </BrowserRouter>
