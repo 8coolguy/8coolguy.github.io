@@ -28,6 +28,10 @@ export default function App() {
     </BrowserRouter>
   );
 }
+function NA(){
+  return(
+    <div>Work in Progress</div>);
+}
 
 function Home() {
   return(
