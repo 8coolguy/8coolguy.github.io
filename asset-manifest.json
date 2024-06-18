@@ -1,22 +1,20 @@
 {
   "files": {
-    "main.css": "/static/css/main.31f098c4.css",
-    "main.js": "/static/js/main.eb000336.js",
-    "static/media/headshot.png": "/static/media/headshot.2bfb4719b8ad8937318b.png",
+    "main.css": "/static/css/main.c29d2103.css",
+    "main.js": "/static/js/main.f7e18839.js",
     "static/media/backshot.jpg": "/static/media/backshot.f693f8d1e2c10436ec1f.jpg",
-    "static/media/action.jpeg": "/static/media/action.ce071103764457ac0dfd.jpeg",
-    "static/media/resume.pdf": "/static/media/resume.05acd41b1a193cb5c192.pdf",
-    "static/media/notfound.png": "/static/media/notfound.8c64b52c4b8460786061.png",
+    "static/media/headshot.png": "/static/media/headshot.1c808a2c1f196b676ff7.png",
+    "static/media/resume.pdf": "/static/media/resume.c4aec5e5accdd10415c9.pdf",
     "static/media/github.svg": "/static/media/github.ebd452bf402237ef25876cdcac686676.svg",
     "static/media/instagram.svg": "/static/media/instagram.116ad97e1f8e0638fcb7d5aed6800697.svg",
     "index.html": "/index.html",
     "static/media/linkedin.svg": "/static/media/linkedin.93683c2cc3d5ca884dcf6c3525104a48.svg",
     "static/media/strava.svg": "/static/media/strava.436644e5131e0edb91f0d83d6a19b6d8.svg",
-    "main.31f098c4.css.map": "/static/css/main.31f098c4.css.map",
-    "main.eb000336.js.map": "/static/js/main.eb000336.js.map"
+    "main.c29d2103.css.map": "/static/css/main.c29d2103.css.map",
+    "main.f7e18839.js.map": "/static/js/main.f7e18839.js.map"
   },
   "entrypoints": [
-    "static/css/main.31f098c4.css",
-    "static/js/main.eb000336.js"
+    "static/css/main.c29d2103.css",
+    "static/js/main.f7e18839.js"
   ]
 }
