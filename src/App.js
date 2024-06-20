@@ -33,95 +33,82 @@ function Home() {
   console.log(experiences);
   console.log(projects);
   return(
-    <div className="App">
-      <Navbar className="navbar">
-        <Container fluid>
-            <Nav className="justify-content" style={{ width: "100%" }}>
-            <Navbar.Brand href="https://www.instagram.com/notarnav123">
-              <img
-                src = {instagram} 
-                width="30"
-                height="30"
-                className="d-inline-block align-top"
-                alt="Instagram"
-              />
-            </Navbar.Brand>
-            <Navbar.Brand href="https://www.linkedin.com/in/arnav-choudhury-scu/">
-              <img
-                src = {linkedin} 
-                width="30"
-                height="30"
-                className="d-inline-block align-top"
-                alt="Linkedin"
-              />
-            </Navbar.Brand>
-            <Navbar.Brand href="https://github.com/8coolguy">
-              <img
-                src = {github} 
-                width="30"
-                height="30"
-                className="d-inline-block align-top"
-                alt="Github"
-              />
-            </Navbar.Brand>
-            <Navbar.Brand href="https://www.strava.com/athletes/33234384">
-              <img
-                src = {strava} 
-                width="30"
-                height="30"
-                className="d-inline-block align-top"
-                alt="Strava"
-              />
-            </Navbar.Brand>
-            
-            
-            
-            </Nav>
-        </Container>
-        <Container fluid>
-            <Nav className="justify-content-end" style={{ width: "100%" }}>
-              <Nav.Link href="#intro">About</Nav.Link>
-              <Nav.Link href='#experience' disabled>Experience</Nav.Link>
-              <Nav.Link href="#projects">Projects</Nav.Link>
-              <Nav.Link href="#other" disabled>Other</Nav.Link>
-              
-              <Nav.Link href="/resume">Resume</Nav.Link>
-            </Nav>
-        </Container>
-      </Navbar>
-      
-      
-      
-      <Row style={{backgroundImage:`url(${image})`}}  id="intro" >
+    <div className="App">      
+      <Row  id="intro" >
         <Row className="justify-content-md-center" md="auto">
-          
           <Col md = {6}>
-            <Container className="left-container">
+            <header className="left-container">
               <Row>
                 <Col className="m-auto">
                   <img className="headshot" src={headshot}></img>
-                
-                  
-                  <Card>
-                      <Card.Body>
-                    <p>hii. My name is
-                    <h1 > Arnav Choudhury</h1>
-                    I am currently an undergrad Computer Science and Engineering student at Santa Clara University and I spend time building personal projects to improve my skills Right now I am focusing on Backend Development and Fullstack development, but I also have interests in Game Development and Machine Learning. Contact me at achoudhury2@scu.edu
-                    </p>
-                    </Card.Body>
-                  </Card>
-                  
+                  <h1> Arnav </h1>
                 </Col>
               </Row>
-            </Container>
+              <Row>
+                <Container fluid>
+                  <Nav className="justify-content-end" style={{ width: "100%" }}>
+                  <Nav.Link href="#intro">About</Nav.Link>
+                  <Nav.Link href='#experience' disabled>Experience</Nav.Link>
+                  <Nav.Link href="#projects">Projects</Nav.Link>
+                  <Nav.Link href="#other" disabled>Other</Nav.Link>
+                  <Nav.Link href="/resume">Resume</Nav.Link>
+                </Nav>
+                </Container>
+              </Row>
+              <Row fluid class="containerfluid flex items-center">
+                  <Col href="https://www.instagram.com/notarnav123">
+                    <img
+                      src = {instagram} 
+                      width="30"
+                      height="30"
+                      className="d-inline-block align-top"
+                      alt="Instagram"
+                    />
+                  </Col>
+                  <Col href="https://www.linkedin.com/in/arnav-choudhury-scu/">
+                    <img
+                      src = {linkedin} 
+                      width="30"
+                      height="30"
+                      className="d-inline-block align-top"
+                      alt="Linkedin"
+                    />
+                  </Col>
+                  <Col href="https://github.com/8coolguy">
+                    <img
+                      src = {github} 
+                      width="30"
+                      height="30"
+                      className="d-inline-block align-top"
+                      alt="Github"
+                    />
+                  </Col>
+                  <Col href="https://www.strava.com/athletes/33234384">
+                    <img
+                      src = {strava} 
+                      width="30"
+                      height="30"
+                      className="d-inline-block align-top"
+                      alt="Strava"
+                    />
+                  </Col>
+              </Row>   
+            </header>
           </Col>
           
           
           <Col md ={6}>
             <Container className="right-container">
+              <Card>
+                <Card.Body>
+                  <p>
+                  I am currently an  Computer Science and Engineering Grad. and I spend time building personal projects to improve my skills Right now I am focusing on Backend Development and Fullstack development, but I also have interests in Game Development and Machine Learning. Contact me at achoudhury2@scu.edu
+                  </p>
+                </Card.Body>
+              </Card>
               <div id="projects">
                 {/* <h1>Projects</h1> */}
-                {projects.slice(0,10).map(project => 
+                {projects.slice(0,6).map(project => 
                   <Card mb ={3} className="project">
                     <Row g={0} className = "flex" noGutters>
                     <Col md = {4} >
@@ -145,12 +132,9 @@ function Home() {
           </Col>
         </Row>
       </Row>
-      
-  
     </div>
   );
 }
-
 function Resume(){
   return(
     <div id="resume">

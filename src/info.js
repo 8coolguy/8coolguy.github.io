@@ -1,5 +1,38 @@
 export let projects = [
     {
+        name: "Dots and Boxes",
+        image: "https://i.imgur.com/k8KUuiy.png",
+        description:"Play the Dots and Boxes games with your friends online.",
+        date : "June 2024",
+        links: {
+            Github: "https://github.com/8coolguy/dotsAndBoxes",
+            Devpost: "",
+            Live:"https://dotsandboxes-ru0u37z6.b4a.run/",
+        }
+    },
+    {
+        name: "Virtual Cycling Rooms",
+        image: "https://i.imgur.com/TYkSmjg.png",
+        description:"Create virtual cycling room where players can compete against other rider virtually. Connects to bluetooth senors to show speed,cadence,distance and heart rate.",
+        date : "May 2024",
+        links: {
+            Github: "https://github.com/8coolguy/leaderboard_app",
+            Devpost: "",
+            Live:"https://leaderboardapp1-r7310cyz.b4a.run/",
+        }
+    },
+    {
+        name: "Progress Planted",
+        image: "https://i.imgur.com/CqNO8kk.png",
+        description:"Website that helps you plan projects with a graph nodes and edges.",
+        date : "February 2023",
+        links: {
+            Github: "https://github.com/shur1m/ProgressPlanted",
+            Devpost: "https://devpost.com/software/progressplanted",
+            Live:"https://shur1m.github.io/ProgressPlanted/",
+        }
+    },
+    {
         name: "Chill Spaces",
         image: "https://i.imgur.com/wjhMVRO.png",
         description:"Website that helps you find the quietest parts of a city. Built with React, Firebase, and Flask.",
@@ -80,12 +113,12 @@ export let projects = [
 
 export let experiences = [
     {
-        title: "Lead Cool Guy",
+        title: "Odoo Full Stack Intern",
         date:{
             start: "June 2020",
             end: "March 2024"
         },
-        description:"fwefwefjwjewf wef we fwe fw efwefwefw e wef w fw wefwef wefw  wef wfsdfksjdf sd fj sdf ksdjfhwu f ",
+        description:"",
 
     }
 ]

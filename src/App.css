@@ -44,10 +44,9 @@
 #intro{
   height:100%;
   width:100%;
-  padding:15%;
-  display: block;
-  background-size:cover;
-  overflow-x:hidden;
+  padding:10%;
+  background-color: #f4f4f4;
+  border-right: 1px solid #ccc;
   
   
 }
@@ -149,7 +148,32 @@ li{
   border-radius: 10%;
   overflow: auto;
 }
-.left-container{
+.left-container {
+
+  position: fixed;
+  overflow: hidden;
 }
-.right-container{
+
+.right-container {
+  overflow-y: auto;
+  height: 100%;
+}
+
+/* For collapsible functionality */
+@media (max-width:800px) {
+  .left-container {
+      position: relative;
+      width: 100%;
+      height: auto;
+      border-right: none;
+      border-bottom: 1px solid #ccc;
+  }
+  .right-container {
+      margin-left: 0;
+      width: 100%;
+      height: auto;
+  }
+}
+.icons{
+  display: flex;
 }
