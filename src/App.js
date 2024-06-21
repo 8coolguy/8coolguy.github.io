@@ -11,7 +11,6 @@ import linkedin from "./linkedin.svg";
 import github from "./github.svg";
 import instagram from "./instagram.svg";
 import headshot from "./headshot.png";
-import resume from "./resume.pdf";
 import {BrowserRouter,Route,Routes} from "react-router-dom";
 
 
@@ -21,7 +20,6 @@ export default function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/resume" element={<Resume />} />
       </Routes>
     </BrowserRouter>
   );
@@ -47,7 +45,7 @@ function Home() {
                   <Nav.Link href='#experience'>Experience</Nav.Link>
                   <Nav.Link href="#projects">Projects</Nav.Link>
                   <Nav.Link href="#other" disabled>Other</Nav.Link>
-                  <Nav.Link href="/resume">Resume</Nav.Link>
+                  <Nav.Link href="/resume.pdf">Resume</Nav.Link>
                 </Nav>
                 </Container>
               </Row>
@@ -146,11 +144,4 @@ function Home() {
       </Row>
     </div>
   );
-}
-function Resume(){
-  return(
-    <div id="resume">
-      <iframe title='Resume' src={resume} frameborder="0" height="100%" width="100%"></iframe>
-    </div>
-  )
 }
