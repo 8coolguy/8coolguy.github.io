@@ -47,8 +47,6 @@
   padding:10%;
   background-color: #f4f4f4;
   border-right: 1px solid #ccc;
-  
-  
 }
 .section{
   padding:5%;
@@ -128,15 +126,6 @@ li{
   top: 0; /* Position the navbar at the top of the page */
   width: 100%; /* Full width */
 }
-#experience{
-  height:100%;
-  width:100%;
-  
-  padding:15%;
-  display: block;
-  background-size:cover;
-  
-}
 .project{
   align-items: left;
   text-align: left;
@@ -149,7 +138,6 @@ li{
   overflow: auto;
 }
 .left-container {
-
   position: fixed;
   overflow: hidden;
 }

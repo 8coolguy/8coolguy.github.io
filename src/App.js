@@ -2,12 +2,10 @@ import './App.css';
 import {projects, experiences} from './info.js';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Image from 'react-bootstrap/Image';
 import Card from 'react-bootstrap/Card';
-import image from "./backshot.jpg";
 import strava from "./strava.svg";
 import linkedin from "./linkedin.svg";
 import github from "./github.svg";
@@ -30,8 +28,6 @@ export default function App() {
 }
 
 function Home() {
-  console.log(experiences);
-  console.log(projects);
   return(
     <div className="App">      
       <Row  id="intro" >
@@ -40,7 +36,7 @@ function Home() {
             <header className="left-container">
               <Row>
                 <Col className="m-auto">
-                  <img className="headshot" src={headshot}></img>
+                  <Image className="headshot" src={headshot}></Image>
                   <h1> Arnav </h1>
                 </Col>
               </Row>
@@ -48,7 +44,7 @@ function Home() {
                 <Container fluid>
                   <Nav className="justify-content-end" style={{ width: "100%" }}>
                   <Nav.Link href="#intro">About</Nav.Link>
-                  <Nav.Link href='#experience' disabled>Experience</Nav.Link>
+                  <Nav.Link href='#experience'>Experience</Nav.Link>
                   <Nav.Link href="#projects">Projects</Nav.Link>
                   <Nav.Link href="#other" disabled>Other</Nav.Link>
                   <Nav.Link href="/resume">Resume</Nav.Link>
@@ -57,7 +53,7 @@ function Home() {
               </Row>
               <Row fluid class="containerfluid flex items-center">
                   <Col href="https://www.instagram.com/notarnav123">
-                    <img
+                    <Image
                       src = {instagram} 
                       width="30"
                       height="30"
@@ -66,7 +62,7 @@ function Home() {
                     />
                   </Col>
                   <Col href="https://www.linkedin.com/in/arnav-choudhury-scu/">
-                    <img
+                    <Image
                       src = {linkedin} 
                       width="30"
                       height="30"
@@ -75,7 +71,7 @@ function Home() {
                     />
                   </Col>
                   <Col href="https://github.com/8coolguy">
-                    <img
+                    <Image
                       src = {github} 
                       width="30"
                       height="30"
@@ -84,7 +80,7 @@ function Home() {
                     />
                   </Col>
                   <Col href="https://www.strava.com/athletes/33234384">
-                    <img
+                    <Image
                       src = {strava} 
                       width="30"
                       height="30"
@@ -106,9 +102,22 @@ function Home() {
                   </p>
                 </Card.Body>
               </Card>
+              <div id="experience">
+                {experiences.map(job => 
+                  <Card mb ={3} className="experience">
+                    <Row g={0} className = "flex" noGutters>
+                    <Card.Body>
+                      <Card.Title>{job.title}</Card.Title>
+                      <Card.Subtitle className="text-muted">{job.date.start} -- {job.date.end}</Card.Subtitle>
+                      <Card.Text>{job.description}</Card.Text>
+                    </Card.Body>
+                    </Row>
+                  </Card>
+                )}     
+              </div>
               <div id="projects">
                 {/* <h1>Projects</h1> */}
-                {projects.slice(0,6).map(project => 
+                {projects.slice(0,8).map(project => 
                   <Card mb ={3} className="project">
                     <Row g={0} className = "flex" noGutters>
                     <Col md = {4} >
@@ -121,7 +130,10 @@ function Home() {
                       <Card.Text>
                         {project.description}
                       </Card.Text>
-                      <Card.Link href ={project.links.Devpost}> Devpost </Card.Link>
+                      {project.links.Devpost ? (<Card.Link href ={project.links.Devpost}> Devpost </Card.Link>):<></>}
+                      {project.links.Github ? (<Card.Link href ={project.links.Github}> Github </Card.Link>):<></>}
+                      {project.links.Live ? (<Card.Link href ={project.links.Live}> Live </Card.Link>):<></>}
+                      
                     </Card.Body>
                     </Col>
                     </Row>

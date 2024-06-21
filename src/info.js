@@ -115,10 +115,10 @@ export let experiences = [
     {
         title: "Odoo Full Stack Intern",
         date:{
-            start: "June 2020",
-            end: "March 2024"
+            start: "June 2023",
+            end: "September 2023"
         },
-        description:"",
+        description:"Implemented 445 accounting schedule that affected platform functionality, resulting in more accurate financial reporting with unique schedules. Engaged with a sizable code repository, focusing on existing fiscal quarters to create a module that lets businesses create unique fiscal schedules. Ensured code quality and robustness by creating unit tests for modules incorporated into client solutions.",
 
     }
 ]
