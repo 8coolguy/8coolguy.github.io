@@ -1,5 +1,16 @@
 export let projects = [
     {
+        name: "Study Rush",
+        image: "https://i.imgur.com/zoLkRb5.png",
+        description:"Introducing Study Rush, the modern, fully AI-integrated flashcard application. With our AI solutions, we transform the tedious process of creating study materials into an effortless, intuitive experience. After just a few uses, you’ll spend less time rewriting your notes and more time actively practicing your material. Let’s make study smarter.",
+        date : "June 2024",
+        links: {
+            Github: "https://github.com/JamesVong/flashcard-app/",
+            Devpost: "https://devpost.com/software/study-rush",
+            Live:"https://studyrush-x962eo7k.b4a.run/",
+        }
+    },
+    {
         name: "Dots and Boxes",
         image: "https://i.imgur.com/k8KUuiy.png",
         description:"Play the Dots and Boxes games with your friends online.",
