@@ -44,7 +44,7 @@ function Home() {
                   <Nav.Link href="#intro">About</Nav.Link>
                   <Nav.Link href='#experience'>Experience</Nav.Link>
                   <Nav.Link href="#projects">Projects</Nav.Link>
-                  <Nav.Link href="blog-two-teal-35.vercel.app/" >Blog</Nav.Link>
+                  <Nav.Link href="https://blog-two-teal-35.vercel.app/" >Blog</Nav.Link>
                   <Nav.Link href="/resume.pdf">Resume</Nav.Link>
                 </Nav>
                 </Container>
