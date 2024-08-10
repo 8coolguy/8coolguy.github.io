@@ -6,12 +6,15 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Image from 'react-bootstrap/Image';
 import Card from 'react-bootstrap/Card';
-import strava from "./strava.svg";
-import linkedin from "./linkedin.svg";
-import github from "./github.svg";
-import instagram from "./instagram.svg";
 import headshot from "./headshot.png";
 import {BrowserRouter,Route,Routes} from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons'
+import {faGithub, faStrava, faLinkedin, faInstagram, faDev } from '@fortawesome/free-brands-svg-icons'
+
+
+
+
 
 export default function App() {
   return (
@@ -39,50 +42,26 @@ function Home() {
                 <Nav.Link className="link" href="/resume.pdf">Resume</Nav.Link>
               </div>
 
-
             <Row>
-              <Col href="https://www.instagram.com/notarnav123">
-                <Image
-                  src = {instagram} 
-                  width="30"
-                  height="30"
-                  className="d-inline-block align-top"
-                  alt="Instagram"
-                />
+              <Col className="link" href="https://www.instagram.com/notarnav123">
+                <FontAwesomeIcon size="2x" icon={faInstagram}/>
               </Col>
-              <Col href="https://www.linkedin.com/in/arnav-choudhury-scu/">
-                <Image
-                  src = {linkedin} 
-                  width="30"
-                  height="30"
-                  className="d-inline-block align-top"
-                  alt="Linkedin"
-                />
+              <Col className="link" href="https://www.linkedin.com/in/arnav-choudhury-scu/">
+                <FontAwesomeIcon size="2x" icon={faLinkedin}/>
               </Col>
-              <Col href="https://github.com/8coolguy">
-                <Image
-                  src = {github} 
-                  width="30"
-                  height="30"
-                  className="d-inline-block align-top"
-                  alt="Github"
-                />
+              <Col className="link" href="https://github.com/8coolguy">
+                <FontAwesomeIcon size="2x" icon={faGithub}/>
               </Col>
-              <Col href="https://www.strava.com/athletes/33234384">
-                <Image
-                  src = {strava} 
-                  width="30"
-                  height="30"
-                  className="d-inline-block align-top"
-                  alt="Strava"
-                />
+              <Col className="link" href="https://www.strava.com/athletes/33234384">
+                <FontAwesomeIcon size="2x" icon={faStrava}/>
               </Col>
             </Row>
+
             </div>
           </Col>
           <Col md ={8}>
             <Container className="right-container">
-              <h1> About </h1>
+              <h2> About </h2>
               <Card className="car">
                 <Card.Body>
                   <p>
@@ -92,7 +71,7 @@ function Home() {
               </Card>
 
               <div id="experience">
-                <h1> Experience </h1>
+                <h2> Experience </h2>
                 {experiences.map(job => 
                   <Card className="car" mb ={3}>
                     <Row g={0} noGutters>
@@ -108,7 +87,7 @@ function Home() {
 
 
               <div id="projects">
-                <h1>Projects</h1>
+                <h2>Projects</h2>
                 {projects.slice(0,7).map(project => 
                   <Card className="car" mb ={3}> 
                     <Row g={0}>
@@ -124,9 +103,9 @@ function Home() {
                             {project.description}
                           </Card.Text>
 
-                          {project.links.Devpost ? (<Card.Link href ={project.links.Devpost}> Devpost </Card.Link>):<></>}
-                          {project.links.Github ? (<Card.Link href ={project.links.Github}> Github </Card.Link>):<></>}
-                          {project.links.Live ? (<Card.Link href ={project.links.Live}> Live </Card.Link>):<></>}
+                          {project.links.Devpost ? (<span className="link" href ={project.links.Devpost}> <FontAwesomeIcon size="lg" icon={faDev}/> </span>):<></>}
+                          {project.links.Github ? (<span className="link" href ={project.links.Github}> <FontAwesomeIcon size="lg" icon={faGithub}/> </span>):<></>}
+                          {project.links.Live ? (<span className="link" href ={project.links.Live}> <FontAwesomeIcon size="lg" icon={faArrowUpRightFromSquare} /> </span>):<></>}
 
                         </Card.Body>
                       </Col>

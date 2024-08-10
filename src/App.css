@@ -11,11 +11,6 @@
   border-right: 1px solid #ccc;
   color:white;
 }
-.section{
-  padding:5%;
-  height:100%;
-  width:100%;
-}
 
 #resume {
   padding: 0;
@@ -28,12 +23,17 @@
 }
 .headshot{
   border-radius: 50%;
+  border-shadow:
+  0 0 10px white,
+  0 0 15px white,
+  0 0 30px white;
   height: 300px;
   width:300px;
   border:3px solid white;
   padding: 1px;
   margin:1px;
 }
+
 
 .project{
   align-items: left;
@@ -44,9 +44,6 @@
 .left-container {
   position: fixed;
   overflow: hidden;
-}
-
-.right-container {
 }
 
 .link{
@@ -77,6 +74,23 @@
 
 .car{
   background-color: #2e2e2e;
-
   text-align: left;
+  border: none;
+}
+
+h1{
+  letter-spacing: .1em;
+  text-shadow: 0 0 5px white,
+  0 0 10px white,
+  0 0 15px white,
+  0 0 30px white,
+  0 0 60px white;
+  padding: 40px;
+}
+h2{
+  text-shadow:
+  0 0 10px white,
+  0 0 15px white,
+  0 0 30px white;
+  padding: 20px;
 }
