@@ -1,46 +1,20 @@
 .App {
   text-align: center;
   font-family: 'Barlow', sans-serif;
-  
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-#intro{
+.background{
   height:100%;
   width:100%;
   padding:10%;
-  background-color: #f4f4f4;
+  background-color: #2e2e2e;
   border-right: 1px solid #ccc;
+  color:white;
 }
 .section{
   padding:5%;
   height:100%;
   width:100%;
-}
-ul{
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  text-align: left;
-  
-}
-li{
-  display: list-item;
 }
 
 #resume {
@@ -51,10 +25,6 @@ li{
   height:100%;
   width:100%;
   position:absolute;
-  top:0%;
-  left:0px;
-  right:0px;
-  bottom:0px
 }
 .headshot{
   border-radius: 50%;
@@ -64,37 +34,30 @@ li{
   padding: 1px;
   margin:1px;
 }
-#about{
-  border-radius: 10%;
-  background-color: white;
-  color:black;
-}
-.navbar{
-  overflow: hidden;
-  background-color:white;
-  position: fixed; /* Set the navbar to fixed position */
-  top: 0; /* Position the navbar at the top of the page */
-  width: 100%; /* Full width */
-}
+
 .project{
   align-items: left;
   text-align: left;
   padding:10px;
 }
-.action{
-  width:100%;
-  height: 100%;
-  border-radius: 10%;
-  overflow: auto;
-}
+
 .left-container {
   position: fixed;
   overflow: hidden;
 }
 
 .right-container {
-  overflow-y: auto;
-  height: 100%;
+}
+
+.link{
+  padding: 10px;
+}
+.link:hover{
+  color:yellow;
+}
+
+.link:active{
+  color:green;
 }
 
 /* For collapsible functionality */
@@ -111,6 +74,9 @@ li{
       height: auto;
   }
 }
-.icons{
-  display: flex;
+
+.car{
+  background-color: #2e2e2e;
+
+  text-align: left;
 }
