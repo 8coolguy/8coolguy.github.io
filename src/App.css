@@ -7,9 +7,9 @@
   height:100%;
   width:100%;
   padding:10%;
-  background-color: #2e2e2e;
-  border-right: 1px solid #ccc;
+  background-color: black;
   color:white;
+  animation: flicker-load 1s ease-in;
 }
 
 #resume {
@@ -21,19 +21,15 @@
   width:100%;
   position:absolute;
 }
+
 .headshot{
   border-radius: 50%;
-  border-shadow:
-  0 0 10px white,
-  0 0 15px white,
-  0 0 30px white;
   height: 300px;
   width:300px;
   border:3px solid white;
   padding: 1px;
   margin:1px;
 }
-
 
 .project{
   align-items: left;
@@ -43,7 +39,6 @@
 
 .left-container {
   position: fixed;
-  overflow: hidden;
 }
 
 .link{
@@ -58,7 +53,7 @@
 }
 
 /* For collapsible functionality */
-@media (max-width:800px) {
+@media (max-width:1200px) {
   .left-container {
       position: relative;
       width: 100%;
@@ -73,7 +68,7 @@
 }
 
 .car{
-  background-color: #2e2e2e;
+  background-color: black;
   text-align: left;
   border: none;
 }
@@ -85,6 +80,7 @@ h1{
   0 0 15px white,
   0 0 30px white,
   0 0 60px white;
+  animation: flicker-load 1s ease-in;
   padding: 40px;
 }
 h2{
@@ -93,4 +89,19 @@ h2{
   0 0 15px white,
   0 0 30px white;
   padding: 20px;
+}
+
+@keyframes flicker-load{
+  0%{
+    text-shadow:None;
+    color:black;
+  }
+ 
+  100%{
+    color:white;
+    text-shadow:
+    0 0 10px white,
+    0 0 15px white,
+    0 0 30px white;
+  }
 }

@@ -30,10 +30,11 @@ function Home() {
   return(
     <div className="App">      
       <Row  className="background" >
-          <Col md = {4}>
-            <div className="left-container">
+          <Col   md = {5}>
+          <div className="left-container">
               <Image fluid className="headshot" src={headshot}></Image>
               <h1> Arnav Choudhury</h1>
+              
               <div className="links">
                 <Nav.Link className="link" href="#intro">About</Nav.Link>
                 <Nav.Link className="link" href='#experience'>Experience</Nav.Link>
@@ -42,24 +43,24 @@ function Home() {
                 <Nav.Link className="link" href="/resume.pdf">Resume</Nav.Link>
               </div>
 
-            <Row>
-              <Col className="link" href="https://www.instagram.com/notarnav123">
-                <FontAwesomeIcon size="2x" icon={faInstagram}/>
-              </Col>
-              <Col className="link" href="https://www.linkedin.com/in/arnav-choudhury-scu/">
-                <FontAwesomeIcon size="2x" icon={faLinkedin}/>
-              </Col>
-              <Col className="link" href="https://github.com/8coolguy">
-                <FontAwesomeIcon size="2x" icon={faGithub}/>
-              </Col>
-              <Col className="link" href="https://www.strava.com/athletes/33234384">
-                <FontAwesomeIcon size="2x" icon={faStrava}/>
-              </Col>
-            </Row>
+              <Row>
+                <Col className="link" href="https://www.instagram.com/notarnav123">
+                  <FontAwesomeIcon size="2x" icon={faInstagram}/>
+                </Col>
+                <Col className="link" href="https://www.linkedin.com/in/arnav-choudhury-scu/">
+                  <FontAwesomeIcon size="2x" icon={faLinkedin}/>
+                </Col>
+                <Col className="link" href="https://github.com/8coolguy">
+                  <FontAwesomeIcon size="2x" icon={faGithub}/>
+                </Col>
+                <Col className="link" href="https://www.strava.com/athletes/33234384">
+                  <FontAwesomeIcon size="2x" icon={faStrava}/>
+                </Col>
+              </Row>
 
             </div>
           </Col>
-          <Col md ={8}>
+          <Col md ={7}>
             <Container className="right-container">
               <h2> About </h2>
               <Card className="car">
@@ -84,7 +85,6 @@ function Home() {
                   </Card>
                 )}     
               </div>
-
 
               <div id="projects">
                 <h2>Projects</h2>
