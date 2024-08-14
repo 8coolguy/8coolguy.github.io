@@ -60,9 +60,9 @@ export let projects = [
         description:"Website that helps you track and visualize your carbon footprint by tracking six categories of usage. Built with React and Firebase.",
         date : "July 2022",
         links: {
-            Github: "google.com",
-            Devpost: "google.com",
-            Live:"jsdfljsflkj",
+            Github: "https://github.com/8coolguy/carbon-footprint-web",
+            Devpost: "",
+            Live:"https://carbon-footprint-web.vercel.app/",
         }
     },
     {
@@ -87,24 +87,24 @@ export let projects = [
             Live:"",
         }
     },
-    {
-        name: "Paper Prisons Crime Classifiers Model",
-        image: "https://i.imgur.com/yG7f32h.png",
-        description:"Built a language processor that would be able to classify whether a criminal charge can be expunged or not. Able to classify 50% of the given datasets as expungeable or non-expungeable crime.",
-        date : "October 2021",
-        links: {
-            Github: "https://github.com/8coolguy/cali-fire-analysis",
-            Devpost: "",
-            Live:"",
-        }
-    },
+    // {
+    //     name: "Paper Prisons Crime Classifiers Model",
+    //     image: "https://i.imgur.com/yG7f32h.png",
+    //     description:"Built a language processor that would be able to classify whether a criminal charge can be expunged or not. Able to classify 50% of the given datasets as expungeable or non-expungeable crime.",
+    //     date : "October 2021",
+    //     links: {
+    //         Github: "https://github.com/8coolguy/cali-fire-analysis",
+    //         Devpost: "",
+    //         Live:"",
+    //     }
+    // },
     {
         name: "Rabbit Ecosystem Simulation",
         image: "https://i.imgur.com/7WkeEGY.png",
         description:"Programmed a simulation of a rabbit ecosystem where I tracked how it reacted to external variables like predators, water, land features. Developed a Q learning reinforcement model for each rabbit to make decisions based on their surroundings. Utilized the concepts of polymorphism and inheritance to effectively create simulated animals.",
         date : "August 2021",
         links: {
-            Github: "https://github.com/8coolguy/cali-fire-analysis",
+            Github: "https://github.com/8coolguy/eco-system-sim",
             Devpost: "",
             Live:"",
         }
@@ -115,9 +115,9 @@ export let projects = [
         description:"Created a simulation using Unity that can proceduraly generate a solar system with unique planets and stars. Implemented different methods of coherent noise to planets to generate unique terrain on planets.",
         date : "June 2021",
         links: {
-            Github: "https://github.com/8coolguy/cali-fire-analysis",
+            Github: "https://github.com/8coolguy/pcg-solar-system",
             Devpost: "",
-            Live:"",
+            Live:"https://8coolguy.itch.io/procedural-solar-system-generation",
         }
     },
 ]

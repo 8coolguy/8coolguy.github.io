@@ -88,7 +88,7 @@ function Home() {
 
               <div id="projects">
                 <h2>Projects</h2>
-                {projects.slice(0,7).map(project => 
+                {projects.slice(0,12).map(project => 
                   <Card className="car" mb ={3}> 
                     <Row g={0}>
                       <Col md = {4} >
@@ -103,9 +103,9 @@ function Home() {
                             {project.description}
                           </Card.Text>
 
-                          {project.links.Devpost ? (<span className="link" href ={project.links.Devpost}> <FontAwesomeIcon size="lg" icon={faDev}/> </span>):<></>}
-                          {project.links.Github ? (<span className="link" href ={project.links.Github}> <FontAwesomeIcon size="lg" icon={faGithub}/> </span>):<></>}
-                          {project.links.Live ? (<span className="link" href ={project.links.Live}> <FontAwesomeIcon size="lg" icon={faArrowUpRightFromSquare} /> </span>):<></>}
+                          {project.links.Devpost ? (<a className="link" href ={project.links.Devpost}> <FontAwesomeIcon size="lg" icon={faDev}/> </a>):<></>}
+                          {project.links.Github ? (<a className="link" href ={project.links.Github}> <FontAwesomeIcon size="lg" icon={faGithub}/> </a>):<></>}
+                          {project.links.Live ? (<a className="link" href ={project.links.Live}> <FontAwesomeIcon size="lg" icon={faArrowUpRightFromSquare} /> </a>):<></>}
 
                         </Card.Body>
                       </Col>
