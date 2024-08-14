@@ -44,17 +44,17 @@ function Home() {
               </div>
 
               <Row>
-                <Col className="link" href="https://www.instagram.com/notarnav123">
-                  <FontAwesomeIcon size="2x" icon={faInstagram}/>
+                <Col  >
+                  <a className="link" href ="https://www.instagram.com/notarnav123"> <FontAwesomeIcon size="2x" icon={faInstagram}/></a>
                 </Col>
-                <Col className="link" href="https://www.linkedin.com/in/arnav-choudhury-scu/">
-                  <FontAwesomeIcon size="2x" icon={faLinkedin}/>
+                <Col >
+                  <a className="link" href="https://www.linkedin.com/in/arnav-choudhury-scu/" ><FontAwesomeIcon size="2x" icon={faLinkedin}/></a>
                 </Col>
-                <Col className="link" href="https://github.com/8coolguy">
-                  <FontAwesomeIcon size="2x" icon={faGithub}/>
+                <Col >
+                  <a className="link" href="https://github.com/8coolguy" ><FontAwesomeIcon size="2x" icon={faGithub}/></a>
                 </Col>
-                <Col className="link" href="https://www.strava.com/athletes/33234384">
-                  <FontAwesomeIcon size="2x" icon={faStrava}/>
+                <Col >
+                  <a className="link" href="https://www.strava.com/athletes/33234384" ><FontAwesomeIcon size="2x" icon={faStrava}/></a>
                 </Col>
               </Row>
 
