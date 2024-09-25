@@ -39,7 +39,7 @@ function Home() {
                 <Nav.Link className="link" href="#intro">About</Nav.Link>
                 <Nav.Link className="link" href='#experience'>Experience</Nav.Link>
                 <Nav.Link className="link" href="#projects">Projects</Nav.Link>
-                <Nav.Link className="link" href="https://blog-two-teal-35.vercel.app/" >Blog</Nav.Link>
+                <Nav.Link className="link" href="https://8coolguy.bearblog.dev/" >Blog</Nav.Link>
                 <Nav.Link className="link" href="/resume.pdf">Resume</Nav.Link>
               </div>
 
