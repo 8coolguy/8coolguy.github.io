@@ -29,12 +29,12 @@ function Home() {
   
   return(
     <div className="">
-    <div className="">
       <div className="-z-1 fixed">
         <canvas ref ={ref} className="glslCanvas" id="canvas" data-fragment-url="shader.frag" width={width} height={height}></canvas>
       </div>
-        <div>
-          <div className="z-50">
+      <div className="bg-gray-500/50 backdrop-blur-[20px]">
+        <div className="">
+          <div className="">
               <img fluid className="headshot" src={headshot}></img>
               <h1> Arnav Choudhury</h1>
               
@@ -118,7 +118,7 @@ function Home() {
               </div>
             </div>
           </div>
+          </div>
       </div>
-    </div>
   );
 }
