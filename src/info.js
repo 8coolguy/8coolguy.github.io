@@ -1,7 +1,7 @@
 export let projects = [
     {
         name: "Study Rush",
-        image: "https://imgur.com/2qRdLfj.png",
+        image: "https://i.imgur.com/2qRdLfj.png",
         description:"Introducing Study Rush, the modern, fully AI-integrated flashcard application. With our AI solutions, we transform the tedious process of creating study materials into an effortless, intuitive experience. Spend less time rewriting your notes and more time actively practicing your material.",
         date : "June 2024",
         links: {
@@ -56,7 +56,7 @@ export let projects = [
     },
     {
         name: "Carbon Footprint Tracker",
-        image: "https://i.imgur.com/czxFKmU.jpg",
+        image: "https://i.imgur.com/czxFKmU.jpeg",
         description:"Website that helps you track and visualize your carbon footprint by tracking six categories of usage. Built with React and Firebase.",
         date : "July 2022",
         links: {
@@ -67,7 +67,7 @@ export let projects = [
     },
     {
         name: "Blog Graph",
-        image: "https://imgur.com/VFgIFUX.png",
+        image: "https://i.imgur.com/VFgIFUX.png",
         description:"Website that helps you blog with a graph visualization. Built with React, Mongo and AWS.",
         date : "June 2022",
         links: {

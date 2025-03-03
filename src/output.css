@@ -175,6 +175,9 @@
   }
 }
 @layer utilities {
+  .invisible {
+    visibility: hidden;
+  }
   .fixed {
     position: fixed;
   }
@@ -195,6 +198,15 @@
   }
   .grid {
     display: grid;
+  }
+  .h-\[96px\] {
+    height: 96px;
+  }
+  .h-\[499px\] {
+    height: 499px;
+  }
+  .h-\[px\] {
+    height: px;
   }
   .h-auto {
     height: auto;
@@ -333,6 +345,12 @@
   .bg-\[url\(\'\$\{project\.image\}\'\)\] {
     background-image: url('${project.image}');
   }
+  .bg-\[url\(\'\'\)\] {
+    background-image: url('');
+  }
+  .bg-\[url\(\'https\:\/\/flowbite\.s3\.amazonaws\.com\/docs\/jumbotron\/conference\.jpg\'\)\] {
+    background-image: url('https://flowbite.s3.amazonaws.com/docs/jumbotron/conference.jpg');
+  }
   .bg-\[url\(\)\] {
     background-image: url();
   }
@@ -360,11 +378,62 @@
   .bg-\[url\(bg-\[url\(\/img\/mountains\.jpg\)\]\)\] {
     background-image: url(bg-[url(/img/mountains.jpg)]);
   }
+  .bg-\[url\(https\:\/\/i\.imgur\.com\/2qRdLfj\)\] {
+    background-image: url(https://i.imgur.com/2qRdLfj);
+  }
+  .bg-\[url\(https\:\/\/i\.imgur\.com\/2qRdLfj\.png\)\] {
+    background-image: url(https://i.imgur.com/2qRdLfj.png);
+  }
+  .bg-\[url\(https\:\/\/i\.imgur\.com\/6vtGrmj\.gif\)\] {
+    background-image: url(https://i.imgur.com/6vtGrmj.gif);
+  }
+  .bg-\[url\(https\:\/\/i\.imgur\.com\/7WkeEGY\.png\)\] {
+    background-image: url(https://i.imgur.com/7WkeEGY.png);
+  }
+  .bg-\[url\(https\:\/\/i\.imgur\.com\/8kNSE7W\.png\)\] {
+    background-image: url(https://i.imgur.com/8kNSE7W.png);
+  }
+  .bg-\[url\(https\:\/\/i\.imgur\.com\/CqNO8kk\.png\)\] {
+    background-image: url(https://i.imgur.com/CqNO8kk.png);
+  }
+  .bg-\[url\(https\:\/\/i\.imgur\.com\/TYkSmjg\.png\)\] {
+    background-image: url(https://i.imgur.com/TYkSmjg.png);
+  }
+  .bg-\[url\(https\:\/\/i\.imgur\.com\/VFgIFUX\.png\)\] {
+    background-image: url(https://i.imgur.com/VFgIFUX.png);
+  }
+  .bg-\[url\(https\:\/\/i\.imgur\.com\/czxFKmU\.jpeg\)\] {
+    background-image: url(https://i.imgur.com/czxFKmU.jpeg);
+  }
+  .bg-\[url\(https\:\/\/i\.imgur\.com\/wjhMVRO\.png\)\] {
+    background-image: url(https://i.imgur.com/wjhMVRO.png);
+  }
+  .bg-\[url\(https\:\/\/imgur\.com\/2qRdLfj\)\] {
+    background-image: url(https://imgur.com/2qRdLfj);
+  }
   .bg-\[url\(logo512\.png\)\] {
     background-image: url(logo512.png);
   }
+  .bg-\[url\(\{project\.image\}\)\] {
+    background-image: url({project.image});
+  }
   .bg-\[url\(\{\}\)\] {
     background-image: url({});
+  }
+  .bg-auto {
+    background-size: auto;
+  }
+  .bg-contain {
+    background-size: contain;
+  }
+  .bg-cover {
+    background-size: cover;
+  }
+  .bg-center {
+    background-position: center;
+  }
+  .bg-no-repeat {
+    background-repeat: no-repeat;
   }
   .object-cover {
     object-fit: cover;

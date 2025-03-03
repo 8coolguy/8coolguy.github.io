@@ -98,9 +98,9 @@ function Experience(){
 function Projects(){
   return (
     <div id="projects" className= "lg:columns-3 md:columns-2 sm:columns-1 gap-0">
-      {projects.slice(0,14).map(project => 
-        <div key={project.name} className={`bg bg-[url('${project.image}')] w-full h-auto object-cover`}>
-          {/* <img className ="" fluid src={project.image} /> */}
+      {projects.slice(0,12).map(project => 
+        <div key={project.name} className={`bg-cover bg-no-repeat bg-[url(${project.image})] w-full h-full`}>
+          <img className ="invisible" src={project.image} />
           <div className="project-details">
             <div>
               <div>{project.name}</div>
