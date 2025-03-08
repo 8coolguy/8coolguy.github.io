@@ -26,7 +26,7 @@
   },
   "scripts": {
     "predeploy": "vite build",
-    "deploy": "gh-pages -d build",
+    "deploy": "gh-pages -d dist",
     "start": "vite --host",
     "build": "vite build",
     "test": "vite preview"
