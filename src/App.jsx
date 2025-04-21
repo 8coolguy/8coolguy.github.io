@@ -1,9 +1,9 @@
+import './output.css';
 import {useEffect, useRef} from 'react';
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons'
+import { faArrowUpRightFromSquare, faRss} from '@fortawesome/free-solid-svg-icons'
 import {faGithub, faStrava, faLinkedin, faInstagram, faDev } from '@fortawesome/free-brands-svg-icons'
-import './output.css';
 import {projects, experiences, about} from './info.js';
 
 export default function App() {
@@ -16,18 +16,14 @@ export default function App() {
   );
 }
 
-function Background(){
-  let height = window.innerHeight;
-  let width = window.innerWidth;
+function Headshot(){
   let canvas = document.getElementById('canvas');
-  const ref = useRef(null);
-
   useEffect(() => {
     //update the window variables
   }, [])
   return (
-    <div className="-z-1 fixed">
-      <canvas ref={ref} className="glslCanvas" id="canvas" data-fragment-url="shader.frag" width={width} height={height}></canvas>
+    <div className="w-[200px] h-[200px]">
+      <canvas className="glslCanvas" id="canvas" data-fragment-url="shader.frag" height={200} width={200}></canvas>
     </div>
   );
 }
@@ -36,14 +32,10 @@ function Navigation(){
   return (
     <div className="">
         <div className="">
-          <div className="link" href="#intro">About</div>
-          <div className="link" href='#experience'>Experience</div>
-          <div className="link" href="#projects">Projects</div>
-          <div className="link" href="https://8coolguy.bearblog.dev/" >Blog</div>
-          <div className="link" href="/resume.pdf">Resume</div>
+          {/* <div className="link" href="/resume.pdf">Resume</div> */}
         </div>
 
-        <div>
+        <div className="flex flex-row justify-center items-center">
           <div>
             <a className="link" href ="https://www.instagram.com/notarnav123"> <FontAwesomeIcon size="2x" icon={faInstagram}/></a>
           </div>
@@ -56,6 +48,9 @@ function Navigation(){
           <div>
             <a className="link" href="https://www.strava.com/athletes/33234384" ><FontAwesomeIcon size="2x" icon={faStrava}/></a>
           </div>
+          <div>
+            <a className="link" href="https://8coolguy.bearblog.dev/" ><FontAwesomeIcon size="2x" icon={faRss}/></a>
+          </div>
         </div>
     </div>
   );
@@ -64,9 +59,10 @@ function Navigation(){
 function AboutMe(){
   return (
     <div className="flex flex-1 flex-col justify-around gap-0">
-      <h1 className="text-bold lg:text-9xl md:text-2xl sm:text-md text-center"> {true ? "Arnav Choudhury" : "8coolguy"}</h1>
-      <div className="">
-        <div>
+      <h1 className="text-bold text-7xl text-center"> {false ? "Arnav Choudhury" : "8coolguy"}</h1>
+      <div>
+        <Navigation/>
+        <div className="">
           <p>
             {about}
           </p>
@@ -97,14 +93,14 @@ function Experience(){
 
 function Projects(){
   return (
-    <div id="projects" className= "lg:columns-4 md:columns-2 sm:columns-1 gap-0">
-      {projects.slice(0,12).map(project => 
-        <div key={project.name} className={`bg-cover bg-no-repeat bg-[url(${project.image})] w-full h-full`}>
-          <img className ="invisible" src={project.image} />
-          <div className="project-details">
+    <div className= "gap-4">
+      {projects.map(project => 
+        <div key={project.name} className="group border px-4 py-3 -mx-4 rounded-xl transition-colors">
+          {/* <img src={project.image} /> */}
+          <div className="">
             <div>
-              <div>{project.name}</div>
-              <div className="text-muted">{project.date}</div>
+              <div className="font-bold">{project.name}</div>
+              <div className="text-sm">{project.date}</div>
               <div>
                 {project.description}
               </div>
@@ -121,11 +117,12 @@ function Projects(){
 
 function Content(){
   return (
-    <div className="px-96 sm:px-64 py-16">
-      <div className="bg-gray-500/50 backdrop-blur-[20px] rounded-xl">
+    <div className="max-w-[700px]">
+      <div className="rounded-xl">
         <AboutMe/>
         {/* <Navigation/> */}
         {/* <Experience/> */}
+        <h1 className="text-bold text-2xl text-center"> Projects </h1>
         <Projects/>
       </div>
     </div>
@@ -133,10 +130,9 @@ function Content(){
 }
 
 function Home() {
-  
   return(
-  <div className="">
-    <Background/>
+  <div className="flex flex-col justify-center items-center p-4">
+    <Headshot/>
     <Content/>
   </div>
   );

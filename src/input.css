@@ -91,11 +91,6 @@ h2{
   padding: 20px;
 }
 
-.project-details{
-
-  
-}
-
 @keyframes flicker-load{
   0%{
     text-shadow:None;

@@ -2,7 +2,7 @@ export let projects = [
     {
         name: "Study Rush",
         image: "https://i.imgur.com/2qRdLfj.png",
-        description:"Introducing Study Rush, the modern, fully AI-integrated flashcard application. With our AI solutions, we transform the tedious process of creating study materials into an effortless, intuitive experience. Spend less time rewriting your notes and more time actively practicing your material.",
+        description:"Introducing Study Rush, the modern, fully AI-integrated flashcard application. Spend less time rewriting your notes and more time actively practicing your material.",
         date : "June 2024",
         links: {
             Github: "https://github.com/JamesVong/flashcard-app/",
@@ -133,4 +133,4 @@ export let experiences = [
 
     }
 ]
-export let about = "                  I am currently an  Computer Science and Engineering Grad. and I spend time building personal projects to improve my skills Right now I am focusing on Backend Development and Fullstack development, but I also have interests in Game Development and Machine Learning. Contact me at achoudhury2@scu.edu.";
+export let about = "I am currently an Computer Science and Engineering Grad. and I spend time building personal projects to improve my skills Right now I am focusing on Backend Development and Fullstack development, but I also have interests in Game Development and Machine Learning. Contact me at achoudhury2@scu.edu.";
