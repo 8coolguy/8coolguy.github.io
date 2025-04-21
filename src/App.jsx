@@ -59,7 +59,7 @@ function Navigation(){
 function AboutMe(){
   return (
     <div className="flex flex-1 flex-col justify-around gap-0">
-      <h1 className="text-bold text-7xl text-center"> {false ? "Arnav Choudhury" : "8coolguy"}</h1>
+      <h1 className="text-bold text-7xl text-center"> {true ? "Arnav Choudhury" : "8coolguy"}</h1>
       <div>
         <Navigation/>
         <div className="">

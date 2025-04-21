@@ -133,4 +133,4 @@ export let experiences = [
 
     }
 ]
-export let about = "I am currently an Computer Science and Engineering Grad. and I spend time building personal projects to improve my skills Right now I am focusing on Backend Development and Fullstack development, but I also have interests in Game Development and Machine Learning. Contact me at achoudhury2@scu.edu.";
+export let about = "I am currently an aspiring engineering building things for fun. I spend time building personal projects to improve my skills. Right now, I am focusing on backend and fullstack development, but I also have interests in game development, embedded systems, and machine learning. Soon, this website will have the capability to run code that you send. The shader at the top of the page will be able to take user submitted hlsl code. Stay tuned. Contact me at arnavc02@gmail.com";
