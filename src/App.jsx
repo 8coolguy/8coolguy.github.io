@@ -19,15 +19,9 @@ export default function App() {
 
 function Headshot(){
   let df = `#ifdef GL_ES
-precision mediump float;
-#endif
-
-uniform vec2 u_resolution;
-uniform float u_time;
-
-void main(){
-  gl_FragColor = vec4(vec3(0.0), 1.0);
-}`
+  precision mediump float; 
+  #endif
+  uniform vec2 u_resolution;uniform float u_time;void main(){gl_FragColor = vec4(vec3(0.0), 1.0);}`
   let sc = `#ifdef GL_ES
 precision mediump float;
 #endif
@@ -72,7 +66,8 @@ void main(){
     if(canvas.current && !sandbox){
       const instance = new GlslCanvas(canvas.current);
       setSandbox(instance);
-      setShader(sc);//fetch shader here
+      setShader(df);//fetch shader here
+      console.log(JSON.stringify(df));
     }
   }, [canvas, sandbox])
   useEffect(() => {
