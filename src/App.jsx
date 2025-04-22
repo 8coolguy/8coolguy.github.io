@@ -1,10 +1,11 @@
 import './output.css';
-import {useEffect, useRef} from 'react';
+import {useEffect, useState, useRef} from 'react';
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowUpRightFromSquare, faRss} from '@fortawesome/free-solid-svg-icons'
 import {faGithub, faStrava, faLinkedin, faInstagram, faDev } from '@fortawesome/free-brands-svg-icons'
 import {projects, experiences, about} from './info.js';
+import GlslCanvas from 'glslCanvas';
 
 export default function App() {
   return (
@@ -17,13 +18,71 @@ export default function App() {
 }
 
 function Headshot(){
-  let canvas = document.getElementById('canvas');
+  let df = `#ifdef GL_ES
+precision mediump float;
+#endif
+
+uniform vec2 u_resolution;
+uniform float u_time;
+
+void main(){
+  gl_FragColor = vec4(vec3(0.0), 1.0);
+}`
+  let sc = `#ifdef GL_ES
+precision mediump float;
+#endif
+#define PI 3.14159265359
+
+uniform vec2 u_resolution;
+uniform float u_time;
+//gl_FragCoord
+//gl_FragColor
+
+
+vec3 palette( float t ) {
+    vec3 a = vec3(0.5, 0.5, 0.5);
+    vec3 b = vec3(0.5, 0.5, 0.5);
+    vec3 c = vec3(2.0, 1.0, 0.0);
+    vec3 d = vec3(0.5,0.2,0.25);
+
+    return a + b*cos( 6.28*(c*t+d) );
+}
+
+void main(){
+    vec2 uv = (gl_FragCoord.xy * 2.0 - u_resolution.xy) / u_resolution.y;
+    vec2 uv0 = uv;
+    uv = fract(uv * 2.0) - .5;
+    vec3 final = vec3(0.0);
+    
+    
+    float d = length(uv);
+    vec3 col = palette(length(uv0) + .2*u_time);
+    
+    d = cos(d*8. + u_time)/8.;
+    d = abs(d);
+    d = .05/d;
+    
+    final += col * d;
+    gl_FragColor = vec4(final, 1.0);
+}`;
+  const [sandbox, setSandbox] = useState(null);
+  const [shader, setShader] = useState(df);
+  const canvas = useRef(null);
   useEffect(() => {
-    //update the window variables
-  }, [])
+    if(canvas.current && !sandbox){
+      const instance = new GlslCanvas(canvas.current);
+      setSandbox(instance);
+      setShader(sc);//fetch shader here
+    }
+  }, [canvas, sandbox])
+  useEffect(() => {
+    if(shader && sandbox){
+      sandbox.load(shader);
+    }
+  }, [shader, sandbox])
   return (
     <div className="w-[200px] h-[200px]">
-      <canvas className="glslCanvas" id="canvas" data-fragment-url="shader.frag" height={200} width={200}></canvas>
+      <canvas ref={canvas} id="canvas" height={200} width={200}></canvas>
     </div>
   );
 }
