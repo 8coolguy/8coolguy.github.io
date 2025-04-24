@@ -1,17 +1,43 @@
+#version 300 es
 #ifdef GL_ES
 precision mediump float;
 #endif
 uniform vec2 u_resolution;
 uniform float u_time;
-void main(){
-    for(float i,z,d,j; i++<5e1; gl_FragColor+=(sin(z/3.+vec4(7,2,3,0))+1.1)/d){
-        vec3 p=z*normalize(gl_FragCoord.rgb*2.-u_resolution.xyy);
-        p.z+=5.+cos(u_time);
-        p.xz*=mat2(cos(u_time+p.y*.5+vec4(0,33,11,0)))/max(p.y*.1+1.,.1);
-        for(j=2.0;j<15.0; j/=0.6){
-            p+=cos((p.yzx-vec3(u_time,0,0)/.1)*j+u_time)/j;
-        }
-        z+=d=.01+abs(length(p.xz)+p.y*.3-.5)/7.;
-    gl_FragColor=tan(gl_FragColor/1e3);
-    }
+out vec4 FragColor;    //Iterator and attenuation (distance-squared)
+void main()
+{
+    float i = .2, a;
+    //Resolutiogn for scaling and centering
+    vec2 r = u_resolution.xy,
+         //Centered ratio-corrected coordinates
+         p = ( gl_FragCoord.xy+gl_FragCoord.xy - r ) / r.y / .7,
+         //Diagonal vector for skewing
+         d = vec2(-1,1),
+         //Blackhole center
+         b = p - i*d,
+         //Rotate and apply perspective
+         c = p * mat2(1, 1, d/(.1 + i/dot(b,b))),
+         //Rotate into spiraling coordinates
+         v = c * mat2(cos(.5*log(a=dot(c,c)) + u_time*i + vec4(0,33,11,0)))/i,
+         //Waves cumulative total for coloring
+         w;
+    
+    //Loop through waves
+    for(; i++<9.; w += 1.+sin(v) )
+        //Distort coordinates
+        v += .7* sin(v.yx*i+u_time) / i + .5;
+    //Acretion disk radius
+    i = length( sin(v/.3)*.4 + c*(3.+d) );
+    //Red/blue gradient
+    FragColor = 1. - exp( -exp( c.x * vec4(.6,-.4,-1.,0.) )
+                   //Wave coloring
+                   /  w.xyyx
+                   //Acretion disk brightness
+                   / ( 2. + i*i/4. - i )
+                   //Center darkness
+                   / ( .5 + 1. / a )
+                   //Rim highlight
+                   / ( .03 + abs( length(p)-.7 ) )
+             );
 }
