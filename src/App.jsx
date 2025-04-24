@@ -72,12 +72,12 @@ void main(){
   }, [canvas, sandbox])
   useEffect(() => {
     if(shader && sandbox){
-      sandbox.load(shader);
+      //sandbox.load(shader);
     }
   }, [shader, sandbox])
   return (
     <div className="w-[200px] h-[200px]">
-      <canvas ref={canvas} id="canvas" height={200} width={200}></canvas>
+      <canvas ref={canvas} id="canvas" data-fragment-url="shader.frag" height={200} width={200}></canvas>
     </div>
   );
 }
