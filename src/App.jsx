@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowUpRightFromSquare, faRss} from '@fortawesome/free-solid-svg-icons'
 import {faGithub, faStrava, faLinkedin, faInstagram, faDev } from '@fortawesome/free-brands-svg-icons'
 import {projects, experiences, about} from './info.js';
-import GlslCanvas from 'glslCanvas';
+import { Canvas } from 'glsl-canvas-js';
 
 export default function App() {
   return (
@@ -18,11 +18,14 @@ export default function App() {
 }
 
 function Headshot(){
-  let df = `#ifdef GL_ES
+  let df = `#version 300 es
+  #ifdef GL_ES
   precision mediump float; 
   #endif
   uniform vec2 u_resolution;uniform float u_time;void main(){gl_FragColor = vec4(vec3(0.0), 1.0);}`
-  let sc = `#ifdef GL_ES
+  let sc = `
+#version 300 es
+#ifdef GL_ES
 precision mediump float;
 #endif
 #define PI 3.14159265359
@@ -62,22 +65,34 @@ void main(){
   const [sandbox, setSandbox] = useState(null);
   const [shader, setShader] = useState(df);
   const canvas = useRef(null);
+  const options ={
+    "backgroundColor": 'rgba(0.0, 0.0, 0.0, 0.0)',
+    "alpha": true,
+  "antialias": true,
+  "depth": true,
+  "failIfMajorPerformanceCaveat": false,
+  "powerPreference": "default",
+  "premultipliedAlpha": true,
+  "preserveDrawingBuffer": false,
+  "stencil": false,
+  "desynchronized": false
+  }
   useEffect(() => {
     if(canvas.current && !sandbox){
-      const instance = new GlslCanvas(canvas.current);
+      window.devicePixelRatio = 1;
+      const instance = new Canvas(canvas.current, options);
       setSandbox(instance);
-      setShader(df);//fetch shader here
-      console.log(JSON.stringify(df));
+      setShader(sc);
     }
   }, [canvas, sandbox])
   useEffect(() => {
     if(shader && sandbox){
-      //sandbox.load(shader);
+      //sandbox.load(shadI//er);
     }
   }, [shader, sandbox])
   return (
-    <div className="w-[200px] h-[200px]">
-      <canvas ref={canvas} id="canvas" data-fragment-url="shader.frag" height={200} width={200}></canvas>
+    <div className="w-[200px] h-[200px] bg bg-black">
+      <canvas ref={canvas} data-fragment-url="shader2.frag" id="canvas" height="200" width="200"></canvas>
     </div>
   );
 }
