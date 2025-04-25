@@ -21,6 +21,18 @@ export default function App() {
 function Shader({width, height, code, author}){
   const [sandbox, setSandbox] = useState(null);
   const canvas = useRef(null);
+  const options ={
+    "backgroundColor": 'rgba(0.0, 0.0, 0.0, 0.0)',
+    "alpha": true,
+    "antialias": true,
+    "depth": true,
+    "failIfMajorPerformanceCaveat": false,
+    "powerPreference": "default",
+    "premultipliedAlpha": true,
+    "preserveDrawingBuffer": false,
+    "stencil": false,
+    "desynchronized": false
+  }
   useEffect(() => {
     if(canvas.current && !sandbox){
       window.devicePixelRatio = 1;
@@ -28,102 +40,66 @@ function Shader({width, height, code, author}){
       instance.load(code)
       setSandbox(instance);
     }
-  }, [shader, canvas])
+  }, [canvas])
   
   return (
-    <div className="">
+    <div>
       <canvas ref={canvas} data-fragment-url="shader2.frag" id="canvas" height={height} width={width}></canvas>
+      <p class="text-right">{author}</p>
     </div>
   )
 }
 
 function Headshot(){
-  let df = `#version 300 es
+  let df = `
   #ifdef GL_ES
   precision mediump float; 
   #endif
-  uniform vec2 u_resolution;uniform float u_time;void main(){gl_FragColor = vec4(vec3(0.0), 1.0);}`
+  uniform vec2 u_resolution;
+  uniform float u_time;
+  void main(){gl_FragColor = vec4(vec3(0.0), 1.0);}`
   let sc = `
-#version 300 es
-#ifdef GL_ES
-precision mediump float;
-#endif
-#define PI 3.14159265359
+  #ifdef GL_ES
+  precision mediump float;
+  #endif
+  #define PI 3.14159265359
+  uniform vec2 u_resolution;
+  uniform float u_time;
 
-uniform vec2 u_resolution;
-uniform float u_time;
-//gl_FragCoord
-//gl_FragColor
+  vec3 palette( float t ) {
+      vec3 a = vec3(0.5, 0.5, 0.5);
+      vec3 b = vec3(0.5, 0.5, 0.5);
+      vec3 c = vec3(2.0, 1.0, 0.0);
+      vec3 d = vec3(0.5,0.2,0.25);
 
-
-vec3 palette( float t ) {
-    vec3 a = vec3(0.5, 0.5, 0.5);
-    vec3 b = vec3(0.5, 0.5, 0.5);
-    vec3 c = vec3(2.0, 1.0, 0.0);
-    vec3 d = vec3(0.5,0.2,0.25);
-
-    return a + b*cos( 6.28*(c*t+d) );
-}
-
-void main(){
-    vec2 uv = (gl_FragCoord.xy * 2.0 - u_resolution.xy) / u_resolution.y;
-    vec2 uv0 = uv;
-    uv = fract(uv * 2.0) - .5;
-    vec3 final = vec3(0.0);
-    
-    
-    float d = length(uv);
-    vec3 col = palette(length(uv0) + .2*u_time);
-    
-    d = cos(d*8. + u_time)/8.;
-    d = abs(d);
-    d = .05/d;
-    
-    final += col * d;
-    gl_FragColor = vec4(final, 1.0);
-}`;
-  const [sandbox, setSandbox] = useState(null);
-  const [shader, setShader] = useState(df);
-  const canvas = useRef(null);
-  const options ={
-    "backgroundColor": 'rgba(0.0, 0.0, 0.0, 0.0)',
-    "alpha": true,
-  "antialias": true,
-  "depth": true,
-  "failIfMajorPerformanceCaveat": false,
-  "powerPreference": "default",
-  "premultipliedAlpha": true,
-  "preserveDrawingBuffer": false,
-  "stencil": false,
-  "desynchronized": false
+      return a + b*cos( 6.28*(c*t+d) );
   }
-  useEffect(() => {
-    if(canvas.current && !sandbox){
-      window.devicePixelRatio = 1;
-      const instance = new Canvas(canvas.current, options);
-      setSandbox(instance);
-      setShader(sc);
-    }
-  }, [canvas, sandbox])
-  useEffect(() => {
-    if(shader && sandbox){
-      //sandbox.load(shadI//er);
-    }
-  }, [shader, sandbox])
+
+  void main(){
+      vec2 uv = (gl_FragCoord.xy * 2.0 - u_resolution.xy) / u_resolution.y;
+      vec2 uv0 = uv;
+      uv = fract(uv * 2.0) - .5;
+      vec3 final = vec3(0.0);
+      
+      float d = length(uv);
+      vec3 col = palette(length(uv0) + .2*u_time);
+      
+      d = cos(d*8. + u_time)/8.;
+      d = abs(d);
+      d = .05/d;
+      
+      final += col * d;
+      gl_FragColor = vec4(final, 1.0);
+  }`;
+  const [shader, setShader] = useState(sc);
   return (
-    <div className="w-[200px] h-[200px] bg bg-black">
-      <canvas ref={canvas} data-fragment-url="shader2.frag" id="canvas" height="200" width="200"></canvas>
-    </div>
+    <Shader height = {300} width = {300} code = {shader} author = "arnav" />
   );
 }
 
 function Navigation(){
   return (
     <div className="">
-        <div className="">
-          {/* <div className="link" href="/resume.pdf">Resume</div> */}
-        </div>
-
         <div className="flex flex-row justify-center items-center">
           <div>
             <a className="link" href ="https://www.instagram.com/notarnav123"> <FontAwesomeIcon size="2x" icon={faInstagram}/></a>
