@@ -18,29 +18,50 @@ export default function App() {
     </BrowserRouter>
   );
 }
+const df = `
+  #ifdef GL_ES
+  precision mediump float; 
+  #endif
+  uniform vec2 u_resolution;
+  uniform float u_time;
+  void main(){gl_FragColor = vec4(vec3(0.0), 1.0);}`
 function Shader({width, height, code, author}){
   const [sandbox, setSandbox] = useState(null);
   const canvas = useRef(null);
   const options ={
     "backgroundColor": 'rgba(0.0, 0.0, 0.0, 0.0)',
     "alpha": true,
+    //onError:(error)=>{console.log(error)},
     "antialias": true,
     "depth": true,
-    "failIfMajorPerformanceCaveat": false,
+    "failIfMajorPerformanceCaveat": true,
     "powerPreference": "default",
     "premultipliedAlpha": true,
     "preserveDrawingBuffer": false,
     "stencil": false,
     "desynchronized": false
   }
+  function handleError(e){
+    console.log("djflsk", e);
+  }
   useEffect(() => {
     if(canvas.current && !sandbox){
       window.devicePixelRatio = 1;
       const instance = new Canvas(canvas.current, options);
       instance.load(code)
+      instance.on("error", handleError);
       setSandbox(instance);
     }
   }, [canvas])
+  useEffect(() => {
+    if(sandbox){
+      try {
+        sandbox.load(code)
+      } catch (error) {
+       console.log("jflskdjfl") ;
+      }
+    }
+  }, [code])
   
   return (
     <div>
@@ -51,13 +72,6 @@ function Shader({width, height, code, author}){
 }
 
 function Headshot(){
-  let df = `
-  #ifdef GL_ES
-  precision mediump float; 
-  #endif
-  uniform vec2 u_resolution;
-  uniform float u_time;
-  void main(){gl_FragColor = vec4(vec3(0.0), 1.0);}`
   let sc = `
   #ifdef GL_ES
   precision mediump float;
@@ -202,8 +216,22 @@ function Home() {
   </div>
   );
 }
-function Thrower(){
 
+function Thrower(){
+  const [code, setCode] = useState(df);
+  function handleChange(event){
+    setCode(event.target.value);
+  }
+  function handleError(e){
+    console.log("djfls",e)
+  }
+  return (
+    <div className="flex flex-1 flex-row">
+      <textarea rows={75} cols={33} value={code} onChange={handleChange}>
+      </textarea>
+      <Shader height = {800} width = {400} code = {code} author = "arnav" onError={handleError} />
+    </div>
+  )
 }
 
 function Gallery() {
