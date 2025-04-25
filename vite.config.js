@@ -13,8 +13,6 @@ export default defineConfig({
 		rollupOptions:{
 			input:{
 				main: resolve(__dirname, "index.html"),
-        		throw: resolve(__dirname, 'throwShader/index.html'),
-        		gallery: resolve(__dirname, 'gallery/index.html'),
 			}
 		}
 	}

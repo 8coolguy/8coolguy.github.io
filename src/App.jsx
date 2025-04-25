@@ -16,9 +16,15 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/gallery" element ={<Gallery />} />
         <Route path="/throwshader" element={<Thrower/>} />
+        <Route path="/resume" element={<Resume/>} />
       </Routes>
     </BrowserRouter>
   );
+}
+function Resume(){
+  return (
+    <iframe title='Resume' src="resume.pdf" height={window.innerHeight} width={window.innerWidth}></iframe>
+  )
 }
 const df = `
   #ifdef GL_ES
