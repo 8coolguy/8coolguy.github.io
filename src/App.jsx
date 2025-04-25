@@ -1,5 +1,7 @@
 import './output.css';
 import {useEffect, useState, useRef} from 'react';
+import {createRoot} from 'react-dom/client';
+import ReactDOM from 'react-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowUpRightFromSquare, faRss} from '@fortawesome/free-solid-svg-icons'
 import {faGithub, faStrava, faLinkedin, faInstagram, faDev } from '@fortawesome/free-brands-svg-icons'
@@ -25,13 +27,12 @@ const df = `
   uniform vec2 u_resolution;
   uniform float u_time;
   void main(){gl_FragColor = vec4(vec3(0.0), 1.0);}`
-function Shader({width, height, code, author}){
+function Shader({width, height, code, author, onError}){
   const [sandbox, setSandbox] = useState(null);
   const canvas = useRef(null);
   const options ={
     "backgroundColor": 'rgba(0.0, 0.0, 0.0, 0.0)',
     "alpha": true,
-    //onError:(error)=>{console.log(error)},
     "antialias": true,
     "depth": true,
     "failIfMajorPerformanceCaveat": true,
@@ -41,25 +42,18 @@ function Shader({width, height, code, author}){
     "stencil": false,
     "desynchronized": false
   }
-  function handleError(e){
-    console.log("djflsk", e);
-  }
   useEffect(() => {
     if(canvas.current && !sandbox){
       window.devicePixelRatio = 1;
       const instance = new Canvas(canvas.current, options);
       instance.load(code)
-      instance.on("error", handleError);
+      instance.on("error", onError);
       setSandbox(instance);
     }
   }, [canvas])
   useEffect(() => {
     if(sandbox){
-      try {
-        sandbox.load(code)
-      } catch (error) {
-       console.log("jflskdjfl") ;
-      }
+      sandbox.load(code)
     }
   }, [code])
   
@@ -217,19 +211,43 @@ function Home() {
   );
 }
 
+
+function Notification({message, visible, onClick}){
+  return (
+    <div className={`${!visible?"hidden":""} bg-red-300 px-4 py-3 rounded-lg shadow-md`} onClick={onClick}>
+      <p className="text-xl text-bold">Error </p>
+      <p>{message}</p>
+    </div>
+  )
+}
+
 function Thrower(){
   const [code, setCode] = useState(df);
+  const [errorMessage, setErrorMessage] = useState("");
+  const [visible, setVisible] = useState(true)
+  const width = window.innerWidth/2;
+  const height = window.innerHeight;
+  
   function handleChange(event){
     setCode(event.target.value);
   }
   function handleError(e){
-    console.log("djfls",e)
+    setErrorMessage(e.error);
+    setVisible(true);
+  }
+  function handleRemove(event){
+    event.preventDefault();
+    setVisible(false);
+    console.log("here")
   }
   return (
     <div className="flex flex-1 flex-row">
-      <textarea rows={75} cols={33} value={code} onChange={handleChange}>
+      <textarea rows={height/20} cols={width} value={code} onChange={handleChange}>
       </textarea>
-      <Shader height = {800} width = {400} code = {code} author = "arnav" onError={handleError} />
+      <Shader height = {height} width = {width} code = {code} author = "" onError={handleError}/>
+      <div id ="notifications" className="fixed">
+        <Notification className={``} visible={visible} message={errorMessage} onClick={handleRemove}/>,
+      </div>
     </div>
   )
 }
