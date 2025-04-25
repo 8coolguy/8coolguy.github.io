@@ -1,20 +1,40 @@
 import './output.css';
 import {useEffect, useState, useRef} from 'react';
-import {BrowserRouter, Route, Routes} from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowUpRightFromSquare, faRss} from '@fortawesome/free-solid-svg-icons'
 import {faGithub, faStrava, faLinkedin, faInstagram, faDev } from '@fortawesome/free-brands-svg-icons'
 import {projects, experiences, about} from './info.js';
 import { Canvas } from 'glsl-canvas-js';
+import { BrowserRouter, Routes, Route} from 'react-router';
 
 export default function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/gallery" element ={<Gallery />} />
+        <Route path="/throwshader" element={<Thrower/>} />
       </Routes>
     </BrowserRouter>
   );
+}
+function Shader({width, height, code, author}){
+  const [sandbox, setSandbox] = useState(null);
+  const canvas = useRef(null);
+  useEffect(() => {
+    if(canvas.current && !sandbox){
+      window.devicePixelRatio = 1;
+      const instance = new Canvas(canvas.current, options);
+      instance.load(code)
+      setSandbox(instance);
+    }
+  }, [shader, canvas])
+  
+  return (
+    <div className="">
+      <canvas ref={canvas} data-fragment-url="shader2.frag" id="canvas" height={height} width={width}></canvas>
+    </div>
+  )
 }
 
 function Headshot(){
@@ -205,4 +225,13 @@ function Home() {
     <Content/>
   </div>
   );
+}
+function Thrower(){
+
+}
+
+function Gallery() {
+  return (
+    <h1>Hello World</h1>
+  )
 }
