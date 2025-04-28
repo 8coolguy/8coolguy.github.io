@@ -7,7 +7,7 @@ import { faArrowUpRightFromSquare, faRss} from '@fortawesome/free-solid-svg-icon
 import {faGithub, faStrava, faLinkedin, faInstagram, faDev } from '@fortawesome/free-brands-svg-icons'
 import {projects, experiences, about} from './info.js';
 import { Canvas } from 'glsl-canvas-js';
-import { BrowserRouter, Routes, Route} from 'react-router';
+import { BrowserRouter, Routes, Route, useNavigate} from 'react-router';
 
 export default function App() {
   return (
@@ -23,17 +23,16 @@ export default function App() {
 }
 function Resume(){
   return (
-    <iframe title='Resume' src="resume.pdf" height={window.innerHeight} width={window.innerWidth}></iframe>
+    <iframe title='Resume' src="resume.pdf" height={window.innerHeight} width="100%"></iframe>
   )
 }
-const df = `
-  #ifdef GL_ES
-  precision mediump float; 
-  #endif
-  uniform vec2 u_resolution;
-  uniform float u_time;
-  void main(){gl_FragColor = vec4(vec3(0.0), 1.0);}`
-function Shader({width, height, code, author, onError}){
+const df = `#ifdef GL_ES
+precision mediump float; 
+#endif
+uniform vec2 u_resolution;
+uniform float u_time;
+void main(){gl_FragColor = vec4(vec3(0.0), 1.0);}`
+function Shader({width, height, code, author, onError, onCompile}){
   const [sandbox, setSandbox] = useState(null);
   const canvas = useRef(null);
   const options ={
@@ -60,6 +59,7 @@ function Shader({width, height, code, author, onError}){
   useEffect(() => {
     if(sandbox){
       sandbox.load(code)
+      onCompile();
     }
   }, [code])
   
@@ -138,7 +138,7 @@ function Navigation(){
 function AboutMe(){
   return (
     <div className="flex flex-1 flex-col justify-around gap-0">
-      <h1 className="text-bold text-7xl text-center"> {true ? "Arnav Choudhury" : "8coolguy"}</h1>
+      <h1 className="text-bold text-7xl text-center"> {false? "Arnav Choudhury" : "8coolguy"}</h1>
       <div>
         <Navigation/>
         <div className="">
@@ -229,6 +229,7 @@ function Notification({message, visible, onClick}){
 
 function Thrower(){
   const [code, setCode] = useState(df);
+  const [author, setAuthor ] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [visible, setVisible] = useState(true)
   const width = window.innerWidth/2;
@@ -237,6 +238,9 @@ function Thrower(){
   function handleChange(event){
     setCode(event.target.value);
   }
+  function handleAuthorChange(event){
+    setAuthor(event.target.value);
+  }
   function handleError(e){
     setErrorMessage(e.error);
     setVisible(true);
@@ -244,15 +248,40 @@ function Thrower(){
   function handleRemove(event){
     event.preventDefault();
     setVisible(false);
-    console.log("here")
+  }
+  function handleSubmit(event){
+    event.preventDefault();
+    const codeString = JSON.stringify(code);
+    if (codeString.length == 0 || visible || author.length == 0) return;
+    fetch("https://dxn4pwl2vg.execute-api.us-west-1.amazonaws.com/prod", {
+      method:"POST",
+      body: JSON.stringify({
+        action:"throw",
+        code:codeString,
+        author:author
+      })
+    })
+      .then((resolve) => resolve.json())
+      .then(resolve => {
+        if(resolve.statusCode == 400) throw new Error("Api Error");
+        window.location.href = "/";
+      })
+      .catch(err => {
+        setErrorMessage(err.message);
+        setVisible(true);
+      })
   }
   return (
     <div className="flex flex-1 flex-row">
-      <textarea rows={height/20} cols={width} value={code} onChange={handleChange}>
-      </textarea>
-      <Shader height = {height} width = {width} code = {code} author = "" onError={handleError}/>
-      <div id ="notifications" className="fixed">
-        <Notification className={``} visible={visible} message={errorMessage} onClick={handleRemove}/>,
+      <form className={`p-8`}>
+        <button onClick={handleSubmit} type="submit" className="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"> Submit </button>
+        <label for="author">Author: </label>
+        <input type="text" id="author" className="border" onChange={handleAuthorChange}></input>
+        <textarea id="code" className={`border resize`} value={code} rows={height/27} cols={width/9} ></textarea>
+      </form>
+      <Shader height = {height} width = {width} code = {code} author = "" onError={handleError} onCompile={() => setVisible(false)}/>
+      <div className="right-0 fixed">
+        <Notification className={``} visible={visible} message={errorMessage} onClick={handleRemove}/>
       </div>
     </div>
   )
