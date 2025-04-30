@@ -26,11 +26,9 @@ async function getId(){
 }
 
 export const handler = async (event) => {
-  // TODO implement
-  console.log('event', event);
   if(event.action == "throw"){
+    if(event.author.length == 0 || event.code.length == 0) return {response:400, body: JSON.stringify("No data(author/code)")}
     const nextId = await getId();
-
     const command = new PutCommand({
       TableName:DATA_TABLE,
       Key:{id: nextId},
