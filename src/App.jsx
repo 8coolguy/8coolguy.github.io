@@ -106,8 +106,26 @@ function Headshot(){
       gl_FragColor = vec4(final, 1.0);
   }`;
   const [shader, setShader] = useState(sc);
+  const [author, setAuthor] = useState("");
+  useEffect(() => {
+    fetch("https://dxn4pwl2vg.execute-api.us-west-1.amazonaws.com/prod", {
+      method:"POST",
+      body: JSON.stringify({
+        action:"catch",
+      })
+    })
+      .then((res)=>res.json())
+      .then((res)=>{
+        const data = JSON.parse(res.body);
+        setShader(JSON.parse(data.code));
+        setAuthor(data.author);
+        console.log(JSON.parse(data.code), data.author);
+      })
+      .catch(err=>console.log(err))
+  }, [])
+  
   return (
-    <Shader height = {300} width = {300} code = {shader} author = "arnav" />
+    <Shader height = {300} width = {300} code = {shader} author = {author} onError={()=>{}} onCompile={()=>{}}/>
   );
 }
 
@@ -277,7 +295,7 @@ function Thrower(){
         <button onClick={handleSubmit} type="submit" className="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"> Submit </button>
         <label for="author">Author: </label>
         <input type="text" id="author" className="border" onChange={handleAuthorChange}></input>
-        <textarea id="code" className={`border resize`} value={code} rows={height/27} cols={width/9} ></textarea>
+        <textarea id="code" className={`border resize`} value={code} rows={height/27} cols={width/9} onChange={handleChange}></textarea>
       </form>
       <Shader height = {height} width = {width} code = {code} author = "" onError={handleError} onCompile={() => setVisible(false)}/>
       <div className="right-0 fixed">
