@@ -1,5 +1,5 @@
 import './output.css';
-import {useEffect, useState, useRef} from 'react';
+import {useEffect, useState, useRef, useCallback} from 'react';
 import {createRoot} from 'react-dom/client';
 import ReactDOM from 'react-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -9,6 +9,13 @@ import {projects, experiences, about} from './info.js';
 import { Canvas } from 'glsl-canvas-js';
 import { BrowserRouter, Routes, Route, useNavigate} from 'react-router';
 
+function debounce(func, delay){
+  let timeoutid;
+  return (...args) => {
+    clearTimeout(timeoutid);
+    timeoutid = setTimeout(() => func(...args), delay);
+  }
+}
 export default function App() {
   return (
     <BrowserRouter>
@@ -33,7 +40,6 @@ uniform vec2 u_resolution;
 uniform float u_time;
 void main(){gl_FragColor = vec4(vec3(0.0), 1.0);}`
 function Shader({width, height, code, author, onError, onCompile}){
-  const [sandbox, setSandbox] = useState(null);
   const canvas = useRef(null);
   const options ={
     "backgroundColor": 'rgba(0.0, 0.0, 0.0, 0.0)',
@@ -47,65 +53,44 @@ function Shader({width, height, code, author, onError, onCompile}){
     "stencil": false,
     "desynchronized": false
   }
+  const sandbox = useRef(null);
   useEffect(() => {
-    if(canvas.current && !sandbox){
+    if(canvas.current && !sandbox.current){
       window.devicePixelRatio = 1;
-      const instance = new Canvas(canvas.current, options);
-      instance.load(code)
+      const instance = new Canvas(canvas.current, options)
+      instance.load(code);
       instance.on("error", onError);
-      setSandbox(instance);
+      sandbox.current = instance;
     }
   }, [canvas])
   useEffect(() => {
-    if(sandbox){
-      sandbox.load(code)
+    handleChange(code);
+  }, [code])
+  function compile(newCode){
+    const instance = sandbox.current;
+    if(instance){
+      console.log("change", instance);
+      instance.load(newCode);
       onCompile();
     }
-  }, [code])
+  }
+  const handleChange = useCallback(
+    debounce((code) => { 
+      compile(code);
+    }, 700),
+    []
+  )
   
   return (
     <div>
-      <canvas ref={canvas} data-fragment-url="shader2.frag" id="canvas" height={height} width={width}></canvas>
-      <p class="text-right">{author}</p>
+      <canvas ref={canvas} id="canvas" height={height} width={width}></canvas>
+      <p className="text-right">{author}</p>
     </div>
   )
 }
 
 function Headshot(){
-  let sc = `
-  #ifdef GL_ES
-  precision mediump float;
-  #endif
-  #define PI 3.14159265359
-  uniform vec2 u_resolution;
-  uniform float u_time;
-
-  vec3 palette( float t ) {
-      vec3 a = vec3(0.5, 0.5, 0.5);
-      vec3 b = vec3(0.5, 0.5, 0.5);
-      vec3 c = vec3(2.0, 1.0, 0.0);
-      vec3 d = vec3(0.5,0.2,0.25);
-
-      return a + b*cos( 6.28*(c*t+d) );
-  }
-
-  void main(){
-      vec2 uv = (gl_FragCoord.xy * 2.0 - u_resolution.xy) / u_resolution.y;
-      vec2 uv0 = uv;
-      uv = fract(uv * 2.0) - .5;
-      vec3 final = vec3(0.0);
-      
-      float d = length(uv);
-      vec3 col = palette(length(uv0) + .2*u_time);
-      
-      d = cos(d*8. + u_time)/8.;
-      d = abs(d);
-      d = .05/d;
-      
-      final += col * d;
-      gl_FragColor = vec4(final, 1.0);
-  }`;
-  const [shader, setShader] = useState(sc);
+  const [shader, setShader] = useState(df);
   const [author, setAuthor] = useState("");
   useEffect(() => {
     fetch("https://dxn4pwl2vg.execute-api.us-west-1.amazonaws.com/prod", {
@@ -226,7 +211,7 @@ function Content(){
   );
 }
 
-function Home() {
+function Home(){
   return(
   <div className="flex flex-col justify-center items-center p-4">
     <Headshot/>
@@ -234,7 +219,6 @@ function Home() {
   </div>
   );
 }
-
 
 function Notification({message, visible, onClick}){
   return (
@@ -293,9 +277,9 @@ function Thrower(){
     <div className="flex flex-1 flex-row">
       <form className={`p-8`}>
         <button onClick={handleSubmit} type="submit" className="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"> Submit </button>
-        <label for="author">Author: </label>
-        <input type="text" id="author" className="border" onChange={handleAuthorChange}></input>
-        <textarea id="code" className={`border resize`} value={code} rows={height/27} cols={width/9} onChange={handleChange}></textarea>
+        <label htmlFor="author"> Author: </label>
+        <input type="text" id="author" className="resize border rounded" onChange={handleAuthorChange}></input>
+        <textarea id="code" className="border resize rounded font-mono" value={code} rows={height/27} cols={width/9} onChange={handleChange}></textarea>
       </form>
       <Shader height = {height} width = {width} code = {code} author = "" onError={handleError} onCompile={() => setVisible(false)}/>
       <div className="right-0 fixed">
