@@ -59,7 +59,6 @@ function Shader({width, height, code, author, onError, onCompile}){
   const isGlsl2 = (newCode) =>{
     if(newCode.length == 0) return false;
     const version_dec = newCode.split("\n")[0];
-    console.log(version_dec,"#version 300 es");
     if(version_dec == "#version 300 es") return true;
     return false;
   }
@@ -77,9 +76,7 @@ function Shader({width, height, code, author, onError, onCompile}){
   }, [code])
   function compile(newCode){
     const instance = sandbox.current;
-    console.log(instance);
     if(instance){
-      console.log("isGlsl2", isGlsl2(newCode), newCode);
       if (isGlsl2(newCode)) instance.load(newCode,vert);
       else instance.load(newCode);
       sandbox.current = instance;
@@ -118,7 +115,7 @@ function Headshot(){
         setAuthor(data.author);
         console.log(JSON.parse(data.code), data.author);
       })
-      .catch(err=>console.log(err))
+      .catch(err=>console.error(err))
   }, [])
   
   return (
