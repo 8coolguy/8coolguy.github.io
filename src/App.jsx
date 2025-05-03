@@ -113,7 +113,6 @@ function Headshot(){
         const data = JSON.parse(res.body);
         setShader(JSON.parse(data.code));
         setAuthor(data.author);
-        console.log(JSON.parse(data.code), data.author);
       })
       .catch(err=>console.error(err))
   }, [])
