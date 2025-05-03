@@ -1,4 +1,4 @@
-import { DynamoDBClient } from "@aws-sdk/client-dynamodb";
+import { DynamoDBClient, BatchGetItemCommand } from "@aws-sdk/client-dynamodb";
 import {
   UpdateCommand,
   PutCommand,
@@ -60,7 +60,7 @@ export const handler = async (event) => {
       Key:{id: size}
     })
     const latest_shader = await ddb.send(command2);
-    if(latest_shader && latest_shader.Item.date_created - date_created < 300){
+    if(latest_shader && latest_shader.Item.date_created - date_created < 30){
       const response = {
         statusCode: 200,
         body: JSON.stringify(latest_shader.Item),
@@ -77,10 +77,31 @@ export const handler = async (event) => {
       body: JSON.stringify(shader.Item),
     };
     return response;
+  }else if(event.action == "batch"){
+    //get current counter
+    const command1 = new GetCommand({
+      TableName:COUNTER_TABLE,
+      Key: {"counter_id": "shaders"},
+    })
+    const counter = await ddb.send(command1);
+    if(event.count == -1) event.count = counter.Item.current_value;
+    //create a list of keys from 1 to min (event.count, counter.current_value)
+    let keys = [];
+    for(let i = 1; i <= Math.min(event.count, counter.Item.current_value); i++){
+      const command2 = new GetCommand({
+        TableName:DATA_TABLE,
+        Key:{id: i}
+      });
+      const shader = await ddb.send(command2);
+      if(shader.Item) keys.push(shader.Item);
+
+    }
+    return {response:200, body: JSON.stringify(keys)}
   }
   const response = {
     statusCode: 400,
-    body: JSON.stringify("you need to have a action key"),
+    body: JSON.stringify('you need to have a action key'),
+    event: JSON.stringify(event),
   }
   return response;
 };
