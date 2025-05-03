@@ -15,6 +15,7 @@ export default defineConfig({
 				main: resolve(__dirname, "index.html"),
 				resume: resolve(__dirname, "resume.html"),
 				throwShader: resolve(__dirname, "throwShader.html"),
+				gallery: resolve(__dirname, "gallery.html"),
 			}
 		}
 	}

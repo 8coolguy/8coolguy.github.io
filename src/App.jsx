@@ -298,7 +298,41 @@ function Thrower(){
 }
 
 function Gallery() {
+  const [shaders, setShaders] = useState([]);
+  useEffect(() => {
+    fetch("https://dxn4pwl2vg.execute-api.us-west-1.amazonaws.com/prod", {
+      method:"POST",
+      body: JSON.stringify({
+        action:"batch",
+        count:-1
+      })
+    })
+      .then((resolve) => resolve.json())
+      .then(resolve => {
+        if(resolve.statusCode == 400) throw new Error("Api Error"); 
+        const data = JSON.parse(resolve.body);
+        setShaders(data);
+      })
+      .catch(err => {
+        console.error("error:", err);
+      })
+  }, [])
+  
   return (
-    <h1>Hello World</h1>
+    <div className="flex flex-col justify-center items-center p-4">
+      <h1 className="text-bold text-7xl text-center"> Gallery </h1>
+      <div className=" grid lg:grid-cols-2 md:grid-cols-1 gap-8">
+      {shaders.map((element)=>{
+        if(element.code.length > 1){
+          const code = JSON.parse(element.code);
+          return (
+            <Shader height = {300} width = {300} code = {code} author = {element.author} onError={()=>{}} onCompile={()=>{}}/>
+          )
+        }else{
+          return (<></>)
+        }
+      })}
+      </div>
+    </div>
   )
 }
