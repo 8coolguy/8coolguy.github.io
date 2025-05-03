@@ -33,6 +33,7 @@ function Resume(){
     <iframe title='Resume' src="resume.pdf" height={window.innerHeight} width="100%"></iframe>
   )
 }
+const vert = '#version 300 es\n#ifdef GL_ES\nprecision mediump float;\n#endif\n\nin vec2 a_position;\nin vec2 a_texcoord;\n\nout vec2 v_texcoord;\n\nvoid main() {\n gl_Position = vec4(a_position, 0.0, 1.0);\n v_texcoord = a_texcoord;\n}\n';
 const df = `#ifdef GL_ES
 precision mediump float; 
 #endif
@@ -41,6 +42,7 @@ uniform float u_time;
 void main(){gl_FragColor = vec4(vec3(0.0), 1.0);}`
 function Shader({width, height, code, author, onError, onCompile}){
   const canvas = useRef(null);
+  window.devicePixelRatio = 1;
   const options ={
     "backgroundColor": 'rgba(0.0, 0.0, 0.0, 0.0)',
     "alpha": true,
@@ -54,11 +56,18 @@ function Shader({width, height, code, author, onError, onCompile}){
     "desynchronized": false
   }
   const sandbox = useRef(null);
+  const isGlsl2 = (newCode) =>{
+    if(newCode.length == 0) return false;
+    const version_dec = newCode.split("\n")[0];
+    console.log(version_dec,"#version 300 es");
+    if(version_dec == "#version 300 es") return true;
+    return false;
+  }
   useEffect(() => {
     if(canvas.current && !sandbox.current){
-      window.devicePixelRatio = 1;
       const instance = new Canvas(canvas.current, options)
-      instance.load(code);
+      if (isGlsl2(code)) instance.load(code,vert);
+      else instance.load(code);
       instance.on("error", onError);
       sandbox.current = instance;
     }
@@ -68,9 +77,12 @@ function Shader({width, height, code, author, onError, onCompile}){
   }, [code])
   function compile(newCode){
     const instance = sandbox.current;
+    console.log(instance);
     if(instance){
-      console.log("change", instance);
-      instance.load(newCode);
+      console.log("isGlsl2", isGlsl2(newCode), newCode);
+      if (isGlsl2(newCode)) instance.load(newCode,vert);
+      else instance.load(newCode);
+      sandbox.current = instance;
       onCompile();
     }
   }
