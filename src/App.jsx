@@ -65,7 +65,7 @@ function Shader({width, height, code, author, onError, onCompile}){
     return false;
   }
 
-  const isBoundingBox = (element, scroll) =>{
+  const isBoundingBox = (element) =>{
     const rect = element.getBoundingClientRect();
     return (
       rect.top >= 0 &&
@@ -73,6 +73,13 @@ function Shader({width, height, code, author, onError, onCompile}){
       rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
       rect.right <= (window.innerWidth || document.documentElement.clientWidth)
     )
+  }
+  const isViewable = (instance) => {
+    if (isBoundingBox(box.current)){
+      instance.play();
+    }else{
+      instance.pause();
+    }
   }
   useEffect(() => {
     if(canvas.current && !sandbox.current){
@@ -97,6 +104,7 @@ function Shader({width, height, code, author, onError, onCompile}){
       if (isGlsl2(newCode)) instance.load(newCode,vert);
       else instance.load(newCode);
       sandbox.current = instance;
+      if(box.current) isViewable(instance);
       onCompile();
     }
   }
@@ -109,14 +117,8 @@ function Shader({width, height, code, author, onError, onCompile}){
   const handleScroll = useCallback(
     debounce((newScrollY) => { 
       const instance = sandbox.current;
-      if(instance){
-        if (isBoundingBox(box.current, newScrollY)){
-          instance.play();
-        }else{
-          instance.pause();
-        }
-      }
-    }, 300),
+      if(instance) isViewable(instance);
+    }, 700),
     []
   )
   
@@ -351,16 +353,12 @@ function Gallery() {
   return (
     <div className="flex flex-col justify-center items-center p-4">
       <h1 className="text-bold text-7xl text-center"> Gallery </h1>
-      <div className=" grid lg:grid-cols-2 md:grid-cols-1 gap-8">
-      {shaders.map((element)=>{
-        if(element.code.length > 1){
-          const code = JSON.parse(element.code);
-          return (
-            <Shader height = {300} width = {300} code = {code} author = {element.author} onError={()=>{}} onCompile={()=>{}}/>
-          )
-        }else{
-          return (<></>)
-        }
+      <div className=" grid md:grid-cols-2 grid-cols-1 gap-8">
+      {shaders.filter((element)=>{return element.code.length > 0}).map((element)=>{
+        const code = JSON.parse(element.code);
+        return (
+          <Shader key ={element.id} height = {300} width = {300} code = {code} author = {element.author} onError={()=>{}} onCompile={()=>{}}/>
+        )
       })}
       </div>
     </div>
