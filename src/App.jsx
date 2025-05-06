@@ -28,10 +28,15 @@ export default function App() {
     </BrowserRouter>
   );
 }
-function Resume(){
-  return (
-    <iframe title='Resume' src="resume.pdf" height={window.innerHeight} width="100%"></iframe>
-  )
+
+function Home(){
+  return(
+  <div className="h-auto font-Inter flex flex-col bg-[#fefefe] bg-[url(diagonales-decalees.png)] font-Inter justify-center items-center p-4">
+    <Headshot/>
+    <Content/>
+    <Footer/>
+  </div>
+  );
 }
 const vert = '#version 300 es\n#ifdef GL_ES\nprecision mediump float;\n#endif\n\nin vec2 a_position;\nin vec2 a_texcoord;\n\nout vec2 v_texcoord;\n\nvoid main() {\n gl_Position = vec4(a_position, 0.0, 1.0);\n v_texcoord = a_texcoord;\n}\n';
 const df = `#ifdef GL_ES
@@ -251,15 +256,6 @@ function Content(){
   );
 }
 
-function Home(){
-  return(
-  <div className="h-auto flex flex-col justify-center items-center p-4">
-    <Headshot/>
-    <Content/>
-    <Footer/>
-  </div>
-  );
-}
 
 function Notification({message, visible, onClick}){
   return (
@@ -316,7 +312,6 @@ function Thrower(){
   }
   const handleResize = useCallback(
     debounce((event) => { 
-      console.log(window);
       setWidth(window.outerWidth/2);
       setHeight(window.outerHeight);
     }, 200),
@@ -379,6 +374,12 @@ function Gallery() {
     </div>
   )
 }
+
+function Resume(){
+  return (
+    <iframe title='Resume' src="resume.pdf" height={window.innerHeight} width="100%"></iframe>
+  )
+}
 function Footer(){
   return (
     <footer className="bottom-0 left-0 z-20 w-full p-4 md:flex md:items-center md:justify-between md:p-6">
@@ -390,6 +391,9 @@ function Footer(){
             </li>
             <li>
                 <a href="/gallery" className="hover:underline me-4 md:me-6"> Gallery </a>
+            </li>
+            <li>
+                <a href="/resume" className="hover:underline">Resume</a>
             </li>
             <li>
                 <a href="mailto:arnavc02@gmail.com" className="hover:underline">Contact</a>

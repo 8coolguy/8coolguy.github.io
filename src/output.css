@@ -1,4 +1,5 @@
 /*! tailwindcss v4.0.9 | MIT License | https://tailwindcss.com */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap");
 @layer theme, base, components, utilities;
 @layer theme {
   :root, :host {
@@ -11,7 +12,6 @@
     --color-green-600: oklch(0.627 0.194 149.214);
     --color-green-700: oklch(0.527 0.154 150.069);
     --color-green-800: oklch(0.448 0.119 151.328);
-    --color-gray-400: oklch(0.707 0.022 261.325);
     --color-gray-500: oklch(0.551 0.027 264.364);
     --color-white: #fff;
     --spacing: 0.25rem;
@@ -41,6 +41,7 @@
     --default-mono-font-variation-settings: var(
       --font-mono--font-variation-settings
     );
+    --font-Inter: "Inter", sans-serif;
   }
 }
 @layer base {
@@ -239,12 +240,6 @@
   .max-w-\[300px\] {
     max-width: 300px;
   }
-  .max-w-\[360px\] {
-    max-width: 360px;
-  }
-  .max-w-\[700px\] {
-    max-width: 700px;
-  }
   .flex-1 {
     flex: 1;
   }
@@ -294,11 +289,17 @@
     border-style: var(--tw-border-style);
     border-width: 1px;
   }
+  .bg-\[\#fefefe\] {
+    background-color: #fefefe;
+  }
   .bg-green-700 {
     background-color: var(--color-green-700);
   }
   .bg-red-300 {
     background-color: var(--color-red-300);
+  }
+  .bg-\[url\(diagonales-decalees\.png\)\] {
+    background-image: url(diagonales-decalees.png);
   }
   .p-4 {
     padding: calc(var(--spacing) * 4);
@@ -323,6 +324,9 @@
   }
   .text-right {
     text-align: right;
+  }
+  .font-Inter {
+    font-family: var(--font-Inter);
   }
   .font-mono {
     font-family: var(--font-mono);
@@ -405,36 +409,6 @@
       margin-top: calc(var(--spacing) * 0);
     }
   }
-  .sm\:max-w-\[300\] {
-    @media (width >= 40rem) {
-      max-width: 300;
-    }
-  }
-  .sm\:max-w-\[300px\] {
-    @media (width >= 40rem) {
-      max-width: 300px;
-    }
-  }
-  .sm\:max-w-\[330\] {
-    @media (width >= 40rem) {
-      max-width: 330;
-    }
-  }
-  .sm\:max-w-\[350\] {
-    @media (width >= 40rem) {
-      max-width: 350;
-    }
-  }
-  .sm\:max-w-\[360\] {
-    @media (width >= 40rem) {
-      max-width: 360;
-    }
-  }
-  .sm\:max-w-\[700px\] {
-    @media (width >= 40rem) {
-      max-width: 700px;
-    }
-  }
   .sm\:text-center {
     @media (width >= 40rem) {
       text-align: center;
@@ -478,11 +452,6 @@
   .dark\:bg-green-600 {
     @media (prefers-color-scheme: dark) {
       background-color: var(--color-green-600);
-    }
-  }
-  .dark\:text-gray-400 {
-    @media (prefers-color-scheme: dark) {
-      color: var(--color-gray-400);
     }
   }
   .dark\:hover\:bg-green-700 {
