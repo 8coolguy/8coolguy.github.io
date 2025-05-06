@@ -1,11 +1,26 @@
 export let projects = [
     {
+        name:"Tab Sync",
+        image:"",
+        description:"Chrome Extension that syncs tabs on different devices. Shares clipboard across chrome instances on different devices.",
+        date:"Working on it.",
+        links:{
+        }
+    },
+    {
         name:"Cuda Neural Networks Library",
         image:"",
         description:"",
-        date:"",
+        date:"December 2024",
         links:{
-
+        }
+    },
+    {
+        name:"Oculta: Encryption and Authentication",
+        image:"",
+        description:"A C++ libaray that implments popular encryption libraries like AES, and RSA. It also contains other useful functions for generating large prime numbers. Also contains SHA-1 hashing function for authentication services.",
+        date:"September 2024",
+        links:{
         }
     },
     {

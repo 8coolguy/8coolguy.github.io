@@ -113,14 +113,14 @@ function Shader({width, height, code, author, onError, onCompile}){
       compile(code);
     }, 700),
     []
-  )
+  );
   const handleScroll = useCallback(
     debounce((newScrollY) => { 
       const instance = sandbox.current;
       if(instance) isViewable(instance);
     }, 700),
     []
-  )
+  );
   
   return (
     <div ref={box}>
@@ -222,7 +222,7 @@ function Projects(){
           <div className="">
             <div>
               <div className="font-bold">{project.name}</div>
-              <div className="text-sm">{project.date}</div>
+              <div className="text-sm text-gray-500">{project.date}</div>
               <div>
                 {project.description}
               </div>
@@ -239,7 +239,7 @@ function Projects(){
 
 function Content(){
   return (
-    <div className="max-w-[700px]">
+    <div className="md:max-w-[700px] max-w-[300px]">
       <div className="rounded-xl">
         <AboutMe/>
         {/* <Navigation/> */}
@@ -253,7 +253,7 @@ function Content(){
 
 function Home(){
   return(
-  <div className="flex flex-col justify-center items-center p-4">
+  <div className="h-auto flex flex-col justify-center items-center p-4">
     <Headshot/>
     <Content/>
     <Footer/>
@@ -314,6 +314,20 @@ function Thrower(){
         setVisible(true);
       })
   }
+  const handleResize = useCallback(
+    debounce((event) => { 
+      console.log(window);
+      setWidth(window.outerWidth/2);
+      setHeight(window.outerHeight);
+    }, 200),
+    []
+  );
+
+  useEffect(() => {
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [])
+  
   return (
     <div className="flex flex-1 flex-row">
       <form className={`p-8`}>
@@ -367,18 +381,18 @@ function Gallery() {
 }
 function Footer(){
   return (
-    <footer class="bottom-0 left-0 z-20 w-full p-4 md:flex md:items-center md:justify-between md:p-6">
-        <span class="text-sm text-gray-500 sm:text-center"> 2025 <a href="" class="hover:underline">8coolguy</a>. All Rights Reserved.
+    <footer className="bottom-0 left-0 z-20 w-full p-4 md:flex md:items-center md:justify-between md:p-6">
+        <span className="text-sm text-gray-500 sm:text-center"> 2025 <a href="" className="hover:underline">8coolguy</a>. All Rights Reserved.
         </span>
-        <ul class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0">
+        <ul className="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 sm:mt-0">
             <li>
-                <a href="/throwShader" class="hover:underline me-4 md:me-6">Throw Shader</a>
+                <a href="/throwShader" className="hover:underline me-4 md:me-6">Throw Shader</a>
             </li>
             <li>
-                <a href="/gallery" class="hover:underline me-4 md:me-6"> Gallery </a>
+                <a href="/gallery" className="hover:underline me-4 md:me-6"> Gallery </a>
             </li>
             <li>
-                <a href="mailto:arnavc02@gmail.com" class="hover:underline">Contact</a>
+                <a href="mailto:arnavc02@gmail.com" className="hover:underline">Contact</a>
             </li>
         </ul>
     </footer>
