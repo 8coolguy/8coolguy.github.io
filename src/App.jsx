@@ -256,6 +256,7 @@ function Home(){
   <div className="flex flex-col justify-center items-center p-4">
     <Headshot/>
     <Content/>
+    <Footer/>
   </div>
   );
 }
@@ -274,8 +275,8 @@ function Thrower(){
   const [author, setAuthor ] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [visible, setVisible] = useState(true)
-  const width = window.innerWidth/2;
-  const height = window.innerHeight;
+  const [width, setWidth] = useState(window.innerWidth/2);
+  const [height, setHeight] = useState(window.innerHeight);
   
   function handleChange(event){
     setCode(event.target.value);
@@ -362,5 +363,24 @@ function Gallery() {
       })}
       </div>
     </div>
+  )
+}
+function Footer(){
+  return (
+    <footer class="bottom-0 left-0 z-20 w-full p-4 md:flex md:items-center md:justify-between md:p-6">
+        <span class="text-sm text-gray-500 sm:text-center"> 2025 <a href="" class="hover:underline">8coolguy</a>. All Rights Reserved.
+        </span>
+        <ul class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0">
+            <li>
+                <a href="/throwShader" class="hover:underline me-4 md:me-6">Throw Shader</a>
+            </li>
+            <li>
+                <a href="/gallery" class="hover:underline me-4 md:me-6"> Gallery </a>
+            </li>
+            <li>
+                <a href="mailto:arnavc02@gmail.com" class="hover:underline">Contact</a>
+            </li>
+        </ul>
+    </footer>
   )
 }

@@ -1,5 +1,14 @@
 export let projects = [
     {
+        name:"Cuda Neural Networks Library",
+        image:"",
+        description:"",
+        date:"",
+        links:{
+
+        }
+    },
+    {
         name: "Study Rush",
         image: "https://i.imgur.com/2qRdLfj.png",
         description:"Introducing Study Rush, the modern, fully AI-integrated flashcard application. Spend less time rewriting your notes and more time actively practicing your material.",
