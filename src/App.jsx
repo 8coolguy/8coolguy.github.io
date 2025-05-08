@@ -31,10 +31,12 @@ export default function App() {
 
 function Home(){
   return(
-  <div className="h-auto font-Inter flex flex-col bg-[#fefefe] bg-[url(diagonales-decalees.png)] font-Inter justify-center items-center p-4">
-    <Headshot/>
-    <Content/>
-    <Footer/>
+  <div className="bg-[#fefefe] bg-[url(diagonales-decalees.png)]">
+    <div className="h-auto font-Inter flex flex-col  font-Inter justify-center items-center p-4">
+      <Headshot/>
+      <Content/>
+      <Footer/>
+    </div>
   </div>
   );
 }
@@ -186,7 +188,7 @@ function Navigation(){
 function AboutMe(){
   return (
     <div className="flex flex-1 flex-col justify-around gap-0">
-      <h1 className="text-bold text-7xl text-center"> {false? "Arnav Choudhury" : "8coolguy"}</h1>
+      <h1 className="text-bold md:text-7xl xs:text-4xl text-center"> {false? "Arnav Choudhury" : "8coolguy"}</h1>
       <div>
         <Navigation/>
         <div className="">
@@ -393,10 +395,10 @@ function Footer(){
                 <a href="/gallery" className="hover:underline me-4 md:me-6"> Gallery </a>
             </li>
             <li>
-                <a href="/resume" className="hover:underline">Resume</a>
+                <a href="/resume" className="hover:underline me-4 md:me-6">Resume</a>
             </li>
             <li>
-                <a href="mailto:arnavc02@gmail.com" className="hover:underline">Contact</a>
+                <a href="mailto:arnavc02@gmail.com" className="hover:underline me-4 md:me-6">Contact</a>
             </li>
         </ul>
     </footer>
