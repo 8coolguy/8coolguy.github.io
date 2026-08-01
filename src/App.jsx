@@ -8,6 +8,7 @@ import {faGithub, faStrava, faLinkedin, faInstagram, faDev } from '@fortawesome/
 import {projects, experiences, about} from './info.js';
 import { Canvas } from 'glsl-canvas-js';
 import { BrowserRouter, Routes, Route, useNavigate} from 'react-router';
+import { marked } from 'marked';
 
 function debounce(func, delay){
   let timeoutid;
@@ -15,6 +16,61 @@ function debounce(func, delay){
     clearTimeout(timeoutid);
     timeoutid = setTimeout(() => func(...args), delay);
   }
+}
+function parseFrontMatter(raw){
+  const match = raw.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?/);
+  const fm = match ? match[1] : "";
+  const body = match ? raw.slice(match[0].length) : raw;
+  const get = (key) => {
+    const r = fm.match(new RegExp("^[ \\t]*" + key + "[ \\t]*:[ \\t]*(.*)$", "m"));
+    return r ? r[1].trim() : "";
+  };
+  const title = get("title").replace(/^["']|["']$/g, "").trim();
+  const yearRaw = get("year").replace(/^["']|["']$/g, "").trim();
+  const year = /^\d{4}$/.test(yearRaw) ? yearRaw : "";
+  let tags = [];
+  const inline = get("tags");
+  if (inline && inline !== "[]") {
+    tags = inline.replace(/^\[|\]$/g, "").split(",").map(t => t.trim()).filter(Boolean);
+  } else if (/^[ \t]*tags[ \t]*:[ \t]*$/m.test(fm)) {
+    const lines = fm.split("\n");
+    let start = -1;
+    for (let i = 0; i < lines.length; i++) {
+      if (/^[ \t]*tags[ \t]*:[ \t]*$/.test(lines[i])) { start = i + 1; break; }
+    }
+    if (start > -1) {
+      for (let j = start; j < lines.length; j++) {
+        const m = lines[j].match(/^\s*[-*]\s*(.+)\s*$/);
+        if (m) tags.push(m[1].trim());
+        else if (lines[j].trim() !== "" && /^\S/.test(lines[j])) break;
+      }
+    }
+  }
+  return { title: title || null, year, tags, body };
+}
+const BLOG_CACHE_KEY = "blog-cache";
+const BLOG_CACHE_AT_KEY = "blog-cache-at";
+const BLOG_CACHE_TTL = 15 * 60 * 1000;
+function listBlogPosts(){
+  const cached = localStorage.getItem(BLOG_CACHE_KEY);
+  const at = Number(localStorage.getItem(BLOG_CACHE_AT_KEY) || 0);
+  if (cached && Date.now() - at < BLOG_CACHE_TTL) {
+    return Promise.resolve(JSON.parse(cached));
+  }
+  return fetch("https://api.github.com/repos/8coolguy/8coolguy.github.io/contents/blogs").then(res => {
+    if (!res.ok) {
+      if (cached) return JSON.parse(cached);
+      throw new Error("GitHub API responded " + res.status);
+    }
+    return res.json();
+  }).then(files => {
+    const names = (Array.isArray(files) ? files : [])
+      .filter(f => f && f.type === "file" && f.name.toLowerCase().endsWith(".md"))
+      .map(f => f.name);
+    localStorage.setItem(BLOG_CACHE_KEY, JSON.stringify(names));
+    localStorage.setItem(BLOG_CACHE_AT_KEY, String(Date.now()));
+    return names;
+  });
 }
 export default function App() {
   return (
@@ -24,6 +80,7 @@ export default function App() {
         <Route path="/gallery" element ={<Gallery />} />
         <Route path="/throwshader" element={<Thrower/>} />
         <Route path="/resume" element={<Resume/>} />
+        <Route path="/blog" element={<Blog />} />
       </Routes>
     </BrowserRouter>
   );
@@ -382,6 +439,79 @@ function Resume(){
     <iframe title='Resume' src="resume.pdf" height={window.innerHeight} width="100%"></iframe>
   )
 }
+function Blog(){
+  const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [failed, setFailed] = useState(false);
+  useEffect(() => {
+    let cancelled = false;
+    listBlogPosts().then(names => {
+      let chain = Promise.resolve();
+      const loaded = [];
+      names.forEach(name => {
+        chain = chain.then(() => fetch("blogs/" + encodeURIComponent(name) + "?v=" + Date.now()).then(res => {
+          if (!res.ok) throw new Error("HTTP " + res.status);
+          return res.text();
+        }).then(raw => {
+          loaded.push({ name, ...parseFrontMatter(raw) });
+        }).catch(err => {
+          console.error("Failed to load", name, err);
+        }));
+      });
+      return chain.then(() => loaded);
+    }).then(loaded => {
+      if (cancelled) return;
+      setPosts(loaded);
+      setLoading(false);
+    }).catch(err => {
+      if (cancelled) return;
+      setFailed(true);
+      setLoading(false);
+      console.error(err);
+    });
+    return () => { cancelled = true; };
+  }, [])
+  const groups = {};
+  posts.forEach(post => {
+    const year = post.year || "Misc";
+    (groups[year] = groups[year] || []).push(post);
+  });
+  const years = Object.keys(groups).sort((a, b) => String(b).localeCompare(String(a)));
+  return (
+    <div className="bg-[#fefefe] bg-[url(diagonales-decalees.png)]">
+      <div className="h-auto font-Inter flex flex-col justify-center items-center p-4">
+        <div className="md:max-w-[700px] max-w-[300px]">
+          <div className="rounded-xl">
+            <div className="flex flex-1 flex-col justify-around gap-0">
+              <h1 className="text-bold md:text-7xl xs:text-4xl text-center">8coolguy</h1>
+            </div>
+            <h1 className="text-bold text-2xl text-center"> Blog </h1>
+            {loading ? <p className="text-center text-gray-500">Loading posts…</p>
+              : failed ? <p className="text-center text-gray-500">Could not load blog posts.</p>
+              : !posts.length ? <p className="text-center text-gray-500">No posts yet.</p>
+              : years.map(year => (
+                <div key={year}>
+                  <h2 className="text-bold text-xl mt-8 mb-2">{year}</h2>
+                  <div className="flex flex-col gap-4">
+                    {groups[year].map(post => (
+                      <details key={post.name} className="group border px-4 py-3 -mx-4 rounded-xl transition-colors">
+                        <summary className="cursor-pointer">
+                          <div className="font-bold">{post.title || post.name.replace(/\.md$/i, "")}</div>
+                          {post.tags.length ? <div className="text-sm text-gray-500">{post.tags.join(" · ")}</div> : null}
+                        </summary>
+                        <div className="mt-4 pt-3 border-t" dangerouslySetInnerHTML={{ __html: marked.parse(post.body || "") }} />
+                      </details>
+                    ))}
+                  </div>
+                </div>
+              ))}
+          </div>
+        </div>
+        <Footer/>
+      </div>
+    </div>
+  );
+}
 function Footer(){
   return (
     <footer className="bottom-0 left-0 z-20 w-full p-4 md:flex md:items-center md:justify-between md:p-6">
@@ -396,6 +526,9 @@ function Footer(){
             </li>
             <li>
                 <a href="/resume" className="hover:underline me-4 md:me-6">Resume</a>
+            </li>
+            <li>
+                <a href="/blog" className="hover:underline me-4 md:me-6">Blog</a>
             </li>
             <li>
                 <a href="mailto:arnavc02@gmail.com" className="hover:underline me-4 md:me-6">Contact</a>
