@@ -420,15 +420,22 @@ function Gallery() {
   }, [])
   
   return (
-    <div className="flex flex-col justify-center items-center p-4">
-      <h1 className="text-bold text-7xl text-center"> Gallery </h1>
-      <div className=" grid md:grid-cols-2 grid-cols-1 gap-8">
-      {shaders.filter((element)=>{return element.code.length > 0}).map((element)=>{
-        const code = JSON.parse(element.code);
-        return (
-          <Shader key ={element.id} height = {300} width = {300} code = {code} author = {element.author} onError={()=>{}} onCompile={()=>{}}/>
-        )
-      })}
+    <div className="bg-[#fefefe] bg-[url(diagonales-decalees.png)]">
+      <div className="h-auto font-Inter flex flex-col justify-center items-center p-4">
+        <div className="md:max-w-[700px] max-w-[300px]">
+          <div className="rounded-xl">
+            <h1 className="text-4xl md:text-7xl text-center"> Gallery </h1>
+            <div className="grid md:grid-cols-2 grid-cols-1 gap-8">
+            {shaders.filter((element)=>{return element.code.length > 0}).map((element)=>{
+              const code = JSON.parse(element.code);
+              return (
+                <Shader key ={element.id} height = {300} width = {300} code = {code} author = {element.author} onError={()=>{}} onCompile={()=>{}}/>
+              )
+            })}
+            </div>
+          </div>
+        </div>
+        <Footer/>
       </div>
     </div>
   )
