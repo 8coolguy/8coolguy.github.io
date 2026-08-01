@@ -236,7 +236,7 @@ function Navigation(){
             <a className="link" href="https://www.strava.com/athletes/33234384" ><FontAwesomeIcon size="2x" icon={faStrava}/></a>
           </div>
           <div>
-            <a className="link" href="https://8coolguy.bearblog.dev/" ><FontAwesomeIcon size="2x" icon={faRss}/></a>
+            <a className="link" href="/blog" ><FontAwesomeIcon size="2x" icon={faRss}/></a>
           </div>
         </div>
     </div>
@@ -336,6 +336,13 @@ function Thrower(){
   function handleChange(event){
     setCode(event.target.value);
   }
+  function handleKeyDown(event){
+    if (event.key !== "Tab") return;
+    event.preventDefault();
+    const el = event.target;
+    el.setRangeText("\t", el.selectionStart, el.selectionEnd, "end");
+    setCode(el.value);
+  }
   function handleAuthorChange(event){
     setAuthor(event.target.value);
   }
@@ -396,7 +403,7 @@ function Thrower(){
               <label htmlFor="author" className="text-sm text-gray-500">Author</label>
               <input type="text" id="author" value={author} onChange={handleAuthorChange} className="w-full border rounded px-3 py-2 mb-4"></input>
               <label htmlFor="code" className="text-sm text-gray-500">Shader code</label>
-              <textarea id="code" className="w-full border rounded px-3 py-2 font-mono text-sm mb-4 resize-y" value={code} rows={rows} onChange={handleChange}></textarea>
+              <textarea id="code" className="w-full border rounded px-3 py-2 font-mono text-sm mb-4 resize-y" value={code} rows={rows} onChange={handleChange} onKeyDown={handleKeyDown}></textarea>
               <button onClick={handleSubmit} type="submit" className="w-full text-white bg-black hover:bg-gray-800 font-medium rounded-lg px-5 py-2.5 mb-4"> Submit </button>
             </form>
           </div>
