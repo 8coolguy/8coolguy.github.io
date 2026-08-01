@@ -105,7 +105,7 @@ precision mediump float;
 uniform vec2 u_resolution;
 uniform float u_time;
 void main(){gl_FragColor = vec4(vec3(0.0), 1.0);}`
-function Shader({width, height, code, author, onError, onCompile}){
+function Shader({width, height, code, author, onError, onCompile, className, wrapClassName}){
   const canvas = useRef(null);
   window.devicePixelRatio = 1;
   const options ={
@@ -188,9 +188,9 @@ function Shader({width, height, code, author, onError, onCompile}){
   );
   
   return (
-    <div ref={box}>
-      <canvas ref={canvas} id="canvas" height={height} width={width}></canvas>
-      <p className="text-right">{author}</p>
+    <div ref={box} className={wrapClassName}>
+      <canvas ref={canvas} id="canvas" height={height} width={width} className={className}></canvas>
+      {author ? <p className="text-right">{author}</p> : null}
     </div>
   )
 }
@@ -331,8 +331,7 @@ function Thrower(){
   const [author, setAuthor ] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [visible, setVisible] = useState(true)
-  const [width, setWidth] = useState(window.innerWidth/2);
-  const [height, setHeight] = useState(window.innerHeight);
+  const [rows, setRows] = useState(12);
   
   function handleChange(event){
     setCode(event.target.value);
@@ -372,26 +371,38 @@ function Thrower(){
   }
   const handleResize = useCallback(
     debounce((event) => { 
-      setWidth(window.outerWidth/2);
-      setHeight(window.outerHeight);
+      const maxRows = window.innerWidth < 768 ? 12 : 22;
+      setRows(Math.max(6, Math.min(maxRows, Math.floor((window.innerHeight - 250) / 27))));
     }, 200),
     []
   );
 
   useEffect(() => {
+    handleResize();
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, [])
   
   return (
-    <div className="flex flex-1 flex-row">
-      <form className={`p-8`}>
-        <button onClick={handleSubmit} type="submit" className="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"> Submit </button>
-        <label htmlFor="author"> Author: </label>
-        <input type="text" id="author" className="resize border rounded" onChange={handleAuthorChange}></input>
-        <textarea id="code" className="border resize rounded font-mono" value={code} rows={height/27} cols={width/9} onChange={handleChange}></textarea>
-      </form>
-      <Shader height = {height} width = {width} code = {code} author = "" onError={handleError} onCompile={() => setVisible(false)}/>
+    <div className="bg-[#fefefe] bg-[url(diagonales-decalees.png)]">
+      <div className="h-auto font-Inter flex flex-col justify-center items-center p-4">
+        <div className="md:max-w-[700px] max-w-[300px]">
+          <div className="rounded-xl">
+            <h1 className="text-4xl md:text-7xl text-center"> Throw Shader </h1>
+            <form onSubmit={handleSubmit}>
+              <div className="w-full mb-4" style={{aspectRatio: "1 / 1"}}>
+                <Shader width={700} height={700} code={code} author="" wrapClassName="w-full h-full" className="w-full h-full block" onError={handleError} onCompile={() => setVisible(false)}/>
+              </div>
+              <label htmlFor="author" className="text-sm text-gray-500">Author</label>
+              <input type="text" id="author" value={author} onChange={handleAuthorChange} className="w-full border rounded px-3 py-2 mb-4"></input>
+              <label htmlFor="code" className="text-sm text-gray-500">Shader code</label>
+              <textarea id="code" className="w-full border rounded px-3 py-2 font-mono text-sm mb-4 resize-y" value={code} rows={rows} onChange={handleChange}></textarea>
+              <button onClick={handleSubmit} type="submit" className="w-full text-white bg-black hover:bg-gray-800 font-medium rounded-lg px-5 py-2.5 mb-4"> Submit </button>
+            </form>
+          </div>
+        </div>
+        <Footer/>
+      </div>
       <div className="right-0 fixed">
         <Notification className={``} visible={visible} message={errorMessage} onClick={handleRemove}/>
       </div>
