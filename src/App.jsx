@@ -51,21 +51,22 @@ function parseFrontMatter(raw){
 const BLOG_CACHE_KEY = "blog-cache";
 const BLOG_CACHE_AT_KEY = "blog-cache-at";
 const BLOG_CACHE_TTL = 15 * 60 * 1000;
+const isBlogFile = (name) => typeof name === "string" && name.toLowerCase().endsWith(".md") && !name.startsWith("_") && !name.startsWith(".");
 function listBlogPosts(){
   const cached = localStorage.getItem(BLOG_CACHE_KEY);
   const at = Number(localStorage.getItem(BLOG_CACHE_AT_KEY) || 0);
   if (cached && Date.now() - at < BLOG_CACHE_TTL) {
-    return Promise.resolve(JSON.parse(cached));
+    return Promise.resolve(JSON.parse(cached).filter(isBlogFile));
   }
   return fetch("https://api.github.com/repos/8coolguy/8coolguy.github.io/contents/blogs").then(res => {
     if (!res.ok) {
-      if (cached) return JSON.parse(cached);
+      if (cached) return JSON.parse(cached).filter(isBlogFile);
       throw new Error("GitHub API responded " + res.status);
     }
     return res.json();
   }).then(files => {
     const names = (Array.isArray(files) ? files : [])
-      .filter(f => f && f.type === "file" && f.name.toLowerCase().endsWith(".md"))
+      .filter(f => f && f.type === "file" && isBlogFile(f.name))
       .map(f => f.name);
     localStorage.setItem(BLOG_CACHE_KEY, JSON.stringify(names));
     localStorage.setItem(BLOG_CACHE_AT_KEY, String(Date.now()));
