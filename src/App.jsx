@@ -105,7 +105,7 @@ precision mediump float;
 uniform vec2 u_resolution;
 uniform float u_time;
 void main(){gl_FragColor = vec4(vec3(0.0), 1.0);}`
-function Shader({width, height, code, author, onError, onCompile, className, wrapClassName}){
+function Shader({width, height, code, author, onError, onCompile, className, wrapClassName, pauseOnHidden}){
   const canvas = useRef(null);
   window.devicePixelRatio = 1;
   const options ={
@@ -140,7 +140,7 @@ function Shader({width, height, code, author, onError, onCompile, className, wra
     )
   }
   const isViewable = (instance) => {
-    if (isBoundingBox(box.current)){
+    if (pauseOnHidden === false || isBoundingBox(box.current)){
       instance.play();
     }else{
       instance.pause();
@@ -330,7 +330,7 @@ function Thrower(){
   const [code, setCode] = useState(df);
   const [author, setAuthor ] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
-  const [visible, setVisible] = useState(true)
+  const [visible, setVisible] = useState(false)
   const [rows, setRows] = useState(12);
   
   function handleChange(event){
@@ -398,7 +398,7 @@ function Thrower(){
             <h1 className="text-4xl md:text-7xl text-center"> Throw Shader </h1>
             <form onSubmit={handleSubmit}>
               <div className="w-full mb-4" style={{aspectRatio: "1 / 1"}}>
-                <Shader width={700} height={700} code={code} author="" wrapClassName="w-full h-full" className="w-full h-full block" onError={handleError} onCompile={() => setVisible(false)}/>
+                <Shader width={700} height={700} code={code} author="" wrapClassName="w-full h-full" className="w-full h-full block" pauseOnHidden={false} onError={handleError} onCompile={() => setVisible(false)}/>
               </div>
               <label htmlFor="author" className="text-sm text-gray-500">Author</label>
               <input type="text" id="author" value={author} onChange={handleAuthorChange} className="w-full border rounded px-3 py-2 mb-4"></input>
