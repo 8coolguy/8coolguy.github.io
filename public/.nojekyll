@@ -1,0 +1,1 @@
+This file tells GitHub Pages to skip Jekyll processing so raw .md files in blogs/ are served directly.
