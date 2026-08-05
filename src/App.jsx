@@ -8,7 +8,6 @@ import {faGithub, faStrava, faLinkedin, faInstagram, faDev } from '@fortawesome/
 import {projects, experiences, about} from './info.js';
 import { Canvas } from 'glsl-canvas-js';
 import { BrowserRouter, Routes, Route, useNavigate} from 'react-router';
-import { marked } from 'marked';
 
 function debounce(func, delay){
   let timeoutid;
@@ -46,7 +45,8 @@ function parseFrontMatter(raw){
       }
     }
   }
-  return { title: title || null, year, tags, body };
+  const link = get("link").replace(/^["']|["']$/g, "").trim();
+  return { title: title || null, year, tags, link: link || null, body };
 }
 const BLOG_CACHE_KEY = "blog-cache";
 const BLOG_CACHE_AT_KEY = "blog-cache-at";
@@ -519,15 +519,26 @@ function Blog(){
                 <div key={year}>
                   <h2 className="text-bold text-xl mt-8 mb-2">{year}</h2>
                   <div className="flex flex-col gap-4">
-                    {groups[year].map(post => (
-                      <details key={post.name} className="group border px-4 py-3 -mx-4 rounded-xl transition-colors">
-                        <summary className="cursor-pointer">
+                    {groups[year].map(post => {
+                      const inner = (
+                        <>
                           <div className="font-bold">{post.title || post.name.replace(/\.md$/i, "")}</div>
                           {post.tags.length ? <div className="text-sm text-gray-500">{post.tags.join(" · ")}</div> : null}
-                        </summary>
-                        <div className="mt-4 pt-3 border-t" dangerouslySetInnerHTML={{ __html: marked.parse(post.body || "") }} />
-                      </details>
-                    ))}
+                        </>
+                      );
+                      if (post.link) {
+                        return (
+                          <a key={post.name} href={post.link} target="_blank" rel="noopener noreferrer" className="group border px-4 py-3 -mx-4 rounded-xl transition-colors">
+                            {inner}
+                          </a>
+                        );
+                      }
+                      return (
+                        <div key={post.name} className="group border px-4 py-3 -mx-4 rounded-xl transition-colors">
+                          {inner}
+                        </div>
+                      );
+                    })}
                   </div>
                 </div>
               ))}
