@@ -466,7 +466,50 @@ function Resume(){
     <iframe title='Resume' src="resume.pdf" height={window.innerHeight} width="100%"></iframe>
   )
 }
+function BlogPostView({ slug }){
+  const [post, setPost] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [failed, setFailed] = useState(false);
+  useEffect(() => {
+    let cancelled = false;
+    fetch("blogs/" + encodeURIComponent(slug) + ".md?v=" + Date.now())
+      .then(res => { if (!res.ok) throw new Error("HTTP " + res.status); return res.text(); })
+      .then(raw => { if (!cancelled) { setPost(parseFrontMatter(raw)); setLoading(false); } })
+      .catch(err => { if (!cancelled) { setFailed(true); setLoading(false); console.error(err); } });
+    return () => { cancelled = true; };
+  }, [slug])
+  return (
+    <div className="bg-[#fefefe] bg-[url(diagonales-decalees.png)]">
+      <div className="h-auto font-Inter flex flex-col justify-center items-center p-4">
+        <div className="md:max-w-[700px] max-w-[300px]">
+          <div className="rounded-xl">
+            <h1 className="text-bold text-2xl text-center">
+              <a href="/blog" className="hover:underline">Blog</a>
+            </h1>
+            {loading ? <p className="text-center text-gray-500">Loading…</p>
+              : failed ? <p className="text-center text-gray-500">Could not load post.</p>
+              : post ? (
+                <>
+                  {post.title ? <h2 className="text-bold text-4xl md:text-5xl text-center mt-4 mb-2">{post.title}</h2> : null}
+                  {post.tags.length ? <p className="text-center text-sm text-gray-500 mb-4">{post.tags.join(" · ")}</p> : null}
+                  <div dangerouslySetInnerHTML={{ __html: marked.parse(post.body || "") }} />
+                  {post.link ? (
+                    <div className="mt-4 text-center">
+                      <a href={post.link} target="_blank" rel="noopener noreferrer" className="hover:underline text-sm text-gray-500">Read on →</a>
+                    </div>
+                  ) : null}
+                </>
+              ) : null}
+          </div>
+        </div>
+        <Footer/>
+      </div>
+    </div>
+  );
+}
 function Blog(){
+  const slug = new URLSearchParams(window.location.search).get("post");
+  if (slug) return <BlogPostView slug={slug} />;
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [failed, setFailed] = useState(false);
@@ -527,11 +570,9 @@ function Blog(){
                           {post.tags.length ? <div className="text-sm text-gray-500">{post.tags.join(" · ")}</div> : null}
                         </summary>
                         <div className="mt-4 pt-3 border-t" dangerouslySetInnerHTML={{ __html: marked.parse(post.body || "") }} />
-                        {post.link ? (
-                          <div className="mt-2 text-sm text-gray-500">
-                            <a href={post.link} target="_blank" rel="noopener noreferrer" className="hover:underline">Read on →</a>
-                          </div>
-                        ) : null}
+                        <div className="mt-2 text-sm text-gray-500">
+                          <a href={`/blog?post=${post.name.replace(/\.md$/i, "")}`} className="hover:underline">Read on →</a>
+                        </div>
                       </details>
                     ))}
                   </div>
