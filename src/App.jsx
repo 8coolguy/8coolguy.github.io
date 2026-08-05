@@ -483,9 +483,6 @@ function BlogPostView({ slug }){
       <div className="h-auto font-Inter flex flex-col justify-center items-center p-4">
         <div className="md:max-w-[700px] max-w-[300px]">
           <div className="rounded-xl">
-            <h1 className="text-bold text-2xl text-center">
-              <a href="/blog" className="hover:underline">Blog</a>
-            </h1>
             {loading ? <p className="text-center text-gray-500">Loading…</p>
               : failed ? <p className="text-center text-gray-500">Could not load post.</p>
               : post ? (
@@ -498,6 +495,9 @@ function BlogPostView({ slug }){
                       <a href={post.link} target="_blank" rel="noopener noreferrer" className="hover:underline text-sm text-gray-500">Read on →</a>
                     </div>
                   ) : null}
+                  <div className="mt-8 text-center">
+                    <a href="/blog" className="hover:underline text-sm text-gray-500">← Blog</a>
+                  </div>
                 </>
               ) : null}
           </div>
@@ -552,6 +552,10 @@ function Blog(){
       <div className="h-auto font-Inter flex flex-col justify-center items-center p-4">
         <div className="md:max-w-[700px] max-w-[300px]">
           <div className="rounded-xl">
+            <div className="flex flex-1 flex-col justify-around gap-0">
+              <h1 className="text-bold md:text-7xl xs:text-4xl text-center">8coolguy</h1>
+            </div>
+            <h1 className="text-bold text-2xl text-center"> Blog </h1>
             {loading ? <p className="text-center text-gray-500">Loading posts…</p>
               : failed ? <p className="text-center text-gray-500">Could not load blog posts.</p>
               : !posts.length ? <p className="text-center text-gray-500">No posts yet.</p>
