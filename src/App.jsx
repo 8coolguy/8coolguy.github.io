@@ -8,6 +8,7 @@ import {faGithub, faStrava, faLinkedin, faInstagram, faDev } from '@fortawesome/
 import {projects, experiences, about} from './info.js';
 import { Canvas } from 'glsl-canvas-js';
 import { BrowserRouter, Routes, Route, useNavigate} from 'react-router';
+import { marked } from 'marked';
 
 function debounce(func, delay){
   let timeoutid;
@@ -15,6 +16,63 @@ function debounce(func, delay){
     clearTimeout(timeoutid);
     timeoutid = setTimeout(() => func(...args), delay);
   }
+}
+function parseFrontMatter(raw){
+  const match = raw.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?/);
+  const fm = match ? match[1] : "";
+  const body = match ? raw.slice(match[0].length) : raw;
+  const get = (key) => {
+    const r = fm.match(new RegExp("^[ \\t]*" + key + "[ \\t]*:[ \\t]*(.*)$", "m"));
+    return r ? r[1].trim() : "";
+  };
+  const title = get("title").replace(/^["']|["']$/g, "").trim();
+  const yearRaw = get("year").replace(/^["']|["']$/g, "").trim();
+  const year = /^\d{4}$/.test(yearRaw) ? yearRaw : "";
+  let tags = [];
+  const inline = get("tags");
+  if (inline && inline !== "[]") {
+    tags = inline.replace(/^\[|\]$/g, "").split(",").map(t => t.trim()).filter(Boolean);
+  } else if (/^[ \t]*tags[ \t]*:[ \t]*$/m.test(fm)) {
+    const lines = fm.split("\n");
+    let start = -1;
+    for (let i = 0; i < lines.length; i++) {
+      if (/^[ \t]*tags[ \t]*:[ \t]*$/.test(lines[i])) { start = i + 1; break; }
+    }
+    if (start > -1) {
+      for (let j = start; j < lines.length; j++) {
+        const m = lines[j].match(/^\s*[-*]\s*(.+)\s*$/);
+        if (m) tags.push(m[1].trim());
+        else if (lines[j].trim() !== "" && /^\S/.test(lines[j])) break;
+      }
+    }
+  }
+  const link = get("link").replace(/^["']|["']$/g, "").trim();
+  return { title: title || null, year, tags, link: link || null, body };
+}
+const BLOG_CACHE_KEY = "blog-cache";
+const BLOG_CACHE_AT_KEY = "blog-cache-at";
+const BLOG_CACHE_TTL = 15 * 60 * 1000;
+const isBlogFile = (name) => typeof name === "string" && name.toLowerCase().endsWith(".md") && !name.startsWith("_") && !name.startsWith(".");
+function listBlogPosts(){
+  const cached = localStorage.getItem(BLOG_CACHE_KEY);
+  const at = Number(localStorage.getItem(BLOG_CACHE_AT_KEY) || 0);
+  if (cached && Date.now() - at < BLOG_CACHE_TTL) {
+    return Promise.resolve(JSON.parse(cached).filter(isBlogFile));
+  }
+  return fetch("https://api.github.com/repos/8coolguy/8coolguy.github.io/contents/blogs").then(res => {
+    if (!res.ok) {
+      if (cached) return JSON.parse(cached).filter(isBlogFile);
+      throw new Error("GitHub API responded " + res.status);
+    }
+    return res.json();
+  }).then(files => {
+    const names = (Array.isArray(files) ? files : [])
+      .filter(f => f && f.type === "file" && isBlogFile(f.name))
+      .map(f => f.name);
+    localStorage.setItem(BLOG_CACHE_KEY, JSON.stringify(names));
+    localStorage.setItem(BLOG_CACHE_AT_KEY, String(Date.now()));
+    return names;
+  });
 }
 export default function App() {
   return (
@@ -24,6 +82,7 @@ export default function App() {
         <Route path="/gallery" element ={<Gallery />} />
         <Route path="/throwshader" element={<Thrower/>} />
         <Route path="/resume" element={<Resume/>} />
+        <Route path="/blog" element={<Blog />} />
       </Routes>
     </BrowserRouter>
   );
@@ -47,7 +106,7 @@ precision mediump float;
 uniform vec2 u_resolution;
 uniform float u_time;
 void main(){gl_FragColor = vec4(vec3(0.0), 1.0);}`
-function Shader({width, height, code, author, onError, onCompile}){
+function Shader({width, height, code, author, onError, onCompile, className, wrapClassName, pauseOnHidden}){
   const canvas = useRef(null);
   window.devicePixelRatio = 1;
   const options ={
@@ -82,7 +141,7 @@ function Shader({width, height, code, author, onError, onCompile}){
     )
   }
   const isViewable = (instance) => {
-    if (isBoundingBox(box.current)){
+    if (pauseOnHidden === false || isBoundingBox(box.current)){
       instance.play();
     }else{
       instance.pause();
@@ -130,9 +189,9 @@ function Shader({width, height, code, author, onError, onCompile}){
   );
   
   return (
-    <div ref={box}>
-      <canvas ref={canvas} id="canvas" height={height} width={width}></canvas>
-      <p className="text-right">{author}</p>
+    <div ref={box} className={wrapClassName}>
+      <canvas ref={canvas} id="canvas" height={height} width={width} className={className}></canvas>
+      {author ? <p className="text-right">{author}</p> : null}
     </div>
   )
 }
@@ -178,7 +237,7 @@ function Navigation(){
             <a className="link" href="https://www.strava.com/athletes/33234384" ><FontAwesomeIcon size="2x" icon={faStrava}/></a>
           </div>
           <div>
-            <a className="link" href="https://8coolguy.bearblog.dev/" ><FontAwesomeIcon size="2x" icon={faRss}/></a>
+            <a className="link" href="/blog" ><FontAwesomeIcon size="2x" icon={faRss}/></a>
           </div>
         </div>
     </div>
@@ -272,12 +331,18 @@ function Thrower(){
   const [code, setCode] = useState(df);
   const [author, setAuthor ] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
-  const [visible, setVisible] = useState(true)
-  const [width, setWidth] = useState(window.innerWidth/2);
-  const [height, setHeight] = useState(window.innerHeight);
+  const [visible, setVisible] = useState(false)
+  const [rows, setRows] = useState(12);
   
   function handleChange(event){
     setCode(event.target.value);
+  }
+  function handleKeyDown(event){
+    if (event.key !== "Tab") return;
+    event.preventDefault();
+    const el = event.target;
+    el.setRangeText("\t", el.selectionStart, el.selectionEnd, "end");
+    setCode(el.value);
   }
   function handleAuthorChange(event){
     setAuthor(event.target.value);
@@ -314,26 +379,38 @@ function Thrower(){
   }
   const handleResize = useCallback(
     debounce((event) => { 
-      setWidth(window.outerWidth/2);
-      setHeight(window.outerHeight);
+      const maxRows = window.innerWidth < 768 ? 12 : 22;
+      setRows(Math.max(6, Math.min(maxRows, Math.floor((window.innerHeight - 250) / 27))));
     }, 200),
     []
   );
 
   useEffect(() => {
+    handleResize();
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, [])
   
   return (
-    <div className="flex flex-1 flex-row">
-      <form className={`p-8`}>
-        <button onClick={handleSubmit} type="submit" className="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"> Submit </button>
-        <label htmlFor="author"> Author: </label>
-        <input type="text" id="author" className="resize border rounded" onChange={handleAuthorChange}></input>
-        <textarea id="code" className="border resize rounded font-mono" value={code} rows={height/27} cols={width/9} onChange={handleChange}></textarea>
-      </form>
-      <Shader height = {height} width = {width} code = {code} author = "" onError={handleError} onCompile={() => setVisible(false)}/>
+    <div className="bg-[#fefefe] bg-[url(diagonales-decalees.png)]">
+      <div className="h-auto font-Inter flex flex-col justify-center items-center p-4">
+        <div className="md:max-w-[700px] max-w-[300px]">
+          <div className="rounded-xl">
+            <h1 className="text-4xl md:text-7xl text-center"> Throw Shader </h1>
+            <form onSubmit={handleSubmit}>
+              <div className="w-full mb-4" style={{aspectRatio: "1 / 1"}}>
+                <Shader width={700} height={700} code={code} author="" wrapClassName="w-full h-full" className="w-full h-full block" pauseOnHidden={false} onError={handleError} onCompile={() => setVisible(false)}/>
+              </div>
+              <label htmlFor="author" className="text-sm text-gray-500">Author</label>
+              <input type="text" id="author" value={author} onChange={handleAuthorChange} className="w-full border rounded px-3 py-2 mb-4"></input>
+              <label htmlFor="code" className="text-sm text-gray-500">Shader code</label>
+              <textarea id="code" className="w-full border rounded px-3 py-2 font-mono text-sm mb-4 resize-y" value={code} rows={rows} onChange={handleChange} onKeyDown={handleKeyDown}></textarea>
+              <button onClick={handleSubmit} type="submit" className="w-full text-white bg-black hover:bg-gray-800 font-medium rounded-lg px-5 py-2.5 mb-4"> Submit </button>
+            </form>
+          </div>
+        </div>
+        <Footer/>
+      </div>
       <div className="right-0 fixed">
         <Notification className={``} visible={visible} message={errorMessage} onClick={handleRemove}/>
       </div>
@@ -363,15 +440,22 @@ function Gallery() {
   }, [])
   
   return (
-    <div className="flex flex-col justify-center items-center p-4">
-      <h1 className="text-bold text-7xl text-center"> Gallery </h1>
-      <div className=" grid md:grid-cols-2 grid-cols-1 gap-8">
-      {shaders.filter((element)=>{return element.code.length > 0}).map((element)=>{
-        const code = JSON.parse(element.code);
-        return (
-          <Shader key ={element.id} height = {300} width = {300} code = {code} author = {element.author} onError={()=>{}} onCompile={()=>{}}/>
-        )
-      })}
+    <div className="bg-[#fefefe] bg-[url(diagonales-decalees.png)]">
+      <div className="h-auto font-Inter flex flex-col justify-center items-center p-4">
+        <div className="md:max-w-[700px] max-w-[300px]">
+          <div className="rounded-xl">
+            <h1 className="text-4xl md:text-7xl text-center"> Gallery </h1>
+            <div className="grid md:grid-cols-2 grid-cols-1 gap-8">
+            {shaders.filter((element)=>{return element.code.length > 0}).map((element)=>{
+              const code = JSON.parse(element.code);
+              return (
+                <Shader key ={element.id} height = {300} width = {300} code = {code} author = {element.author} onError={()=>{}} onCompile={()=>{}}/>
+              )
+            })}
+            </div>
+          </div>
+        </div>
+        <Footer/>
       </div>
     </div>
   )
@@ -381,6 +465,120 @@ function Resume(){
   return (
     <iframe title='Resume' src="resume.pdf" height={window.innerHeight} width="100%"></iframe>
   )
+}
+function BlogPostView({ slug }){
+  const [post, setPost] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [failed, setFailed] = useState(false);
+  useEffect(() => {
+    let cancelled = false;
+    fetch("blogs/" + encodeURIComponent(slug) + ".md?v=" + Date.now())
+      .then(res => { if (!res.ok) throw new Error("HTTP " + res.status); return res.text(); })
+      .then(raw => { if (!cancelled) { setPost(parseFrontMatter(raw)); setLoading(false); } })
+      .catch(err => { if (!cancelled) { setFailed(true); setLoading(false); console.error(err); } });
+    return () => { cancelled = true; };
+  }, [slug])
+  return (
+    <div className="bg-[#fefefe] bg-[url(diagonales-decalees.png)]">
+      <div className="h-auto font-Inter flex flex-col justify-center items-center p-4">
+        <div className="md:max-w-[700px] max-w-[300px]">
+          <div className="rounded-xl">
+            {loading ? <p className="text-center text-gray-500">Loading…</p>
+              : failed ? <p className="text-center text-gray-500">Could not load post.</p>
+              : post ? (
+                <>
+                  {post.title ? <h2 className="text-bold text-4xl md:text-5xl text-center mt-4 mb-2">{post.title}</h2> : null}
+                  {post.tags.length ? <p className="text-center text-sm text-gray-500 mb-4">{post.tags.join(" · ")}</p> : null}
+                  <div dangerouslySetInnerHTML={{ __html: marked.parse(post.body || "") }} />
+                  <div className="mt-8 text-center">
+                    <a href="/blog" className="hover:underline text-sm text-gray-500">← Blog</a>
+                  </div>
+                </>
+              ) : null}
+          </div>
+        </div>
+        <Footer/>
+      </div>
+    </div>
+  );
+}
+function Blog(){
+  const slug = new URLSearchParams(window.location.search).get("post");
+  if (slug) return <BlogPostView slug={slug} />;
+  const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [failed, setFailed] = useState(false);
+  useEffect(() => {
+    let cancelled = false;
+    listBlogPosts().then(names => {
+      let chain = Promise.resolve();
+      const loaded = [];
+      names.forEach(name => {
+        chain = chain.then(() => fetch("blogs/" + encodeURIComponent(name) + "?v=" + Date.now()).then(res => {
+          if (!res.ok) throw new Error("HTTP " + res.status);
+          return res.text();
+        }).then(raw => {
+          loaded.push({ name, ...parseFrontMatter(raw) });
+        }).catch(err => {
+          console.error("Failed to load", name, err);
+        }));
+      });
+      return chain.then(() => loaded);
+    }).then(loaded => {
+      if (cancelled) return;
+      setPosts(loaded);
+      setLoading(false);
+    }).catch(err => {
+      if (cancelled) return;
+      setFailed(true);
+      setLoading(false);
+      console.error(err);
+    });
+    return () => { cancelled = true; };
+  }, [])
+  const groups = {};
+  posts.forEach(post => {
+    const year = post.year || "Misc";
+    (groups[year] = groups[year] || []).push(post);
+  });
+  const years = Object.keys(groups).sort((a, b) => String(b).localeCompare(String(a)));
+  return (
+    <div className="bg-[#fefefe] bg-[url(diagonales-decalees.png)]">
+      <div className="h-auto font-Inter flex flex-col justify-center items-center p-4">
+        <div className="md:max-w-[700px] max-w-[300px]">
+          <div className="rounded-xl">
+            <div className="flex flex-1 flex-col justify-around gap-0">
+              <h1 className="text-bold md:text-7xl xs:text-4xl text-center">8coolguy</h1>
+            </div>
+            <h1 className="text-bold text-2xl text-center"> Blog </h1>
+            {loading ? <p className="text-center text-gray-500">Loading posts…</p>
+              : failed ? <p className="text-center text-gray-500">Could not load blog posts.</p>
+              : !posts.length ? <p className="text-center text-gray-500">No posts yet.</p>
+              : years.map(year => (
+                <div key={year}>
+                  <h2 className="text-bold text-xl mt-8 mb-2">{year}</h2>
+                  <div className="flex flex-col gap-4">
+                    {groups[year].map(post => (
+                      <details key={post.name} className="group border px-4 py-3 -mx-4 rounded-xl transition-colors">
+                        <summary className="cursor-pointer">
+                          <div className="font-bold">{post.title || post.name.replace(/\.md$/i, "")}</div>
+                          {post.tags.length ? <div className="text-sm text-gray-500">{post.tags.join(" · ")}</div> : null}
+                        </summary>
+                        <div className="mt-4 pt-3 border-t" dangerouslySetInnerHTML={{ __html: marked.parse(post.body || "") }} />
+                        <div className="mt-2 text-sm text-gray-500">
+                          <a href={`/blog?post=${post.name.replace(/\.md$/i, "")}`} className="hover:underline">Read on →</a>
+                        </div>
+                      </details>
+                    ))}
+                  </div>
+                </div>
+              ))}
+          </div>
+        </div>
+        <Footer/>
+      </div>
+    </div>
+  );
 }
 function Footer(){
   return (
@@ -396,6 +594,9 @@ function Footer(){
             </li>
             <li>
                 <a href="/resume" className="hover:underline me-4 md:me-6">Resume</a>
+            </li>
+            <li>
+                <a href="/blog" className="hover:underline me-4 md:me-6">Blog</a>
             </li>
             <li>
                 <a href="mailto:arnavc02@gmail.com" className="hover:underline me-4 md:me-6">Contact</a>

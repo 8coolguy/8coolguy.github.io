@@ -17,6 +17,7 @@ export default defineConfig({
 				resume: resolve(__dirname, "resume.html"),
 				throwShader: resolve(__dirname, "throwShader.html"),
 				gallery: resolve(__dirname, "gallery.html"),
+				blog: resolve(__dirname, "blog.html"),
 			}
 		}
 	}
