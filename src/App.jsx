@@ -247,7 +247,7 @@ function Navigation(){
 function AboutMe(){
   return (
     <div className="flex flex-1 flex-col justify-around gap-0">
-      <h1 className="text-bold md:text-7xl xs:text-4xl text-center"> {false? "Arnav Choudhury" : "8coolguy"}</h1>
+      <h1 className="text-bold text-4xl md:text-7xl text-center"> {false? "Arnav Choudhury" : "8coolguy"}</h1>
       <div>
         <Navigation/>
         <div className="">
@@ -305,12 +305,12 @@ function Projects(){
 
 function Content(){
   return (
-    <div className="md:max-w-[700px] max-w-[300px]">
+    <div className="w-full md:max-w-[700px]">
       <div className="rounded-xl">
         <AboutMe/>
         {/* <Navigation/> */}
         {/* <Experience/> */}
-        <h1 className="text-bold text-2xl text-center"> Projects </h1>
+        <h1 className="text-bold text-4xl md:text-7xl text-center"> Projects </h1>
         <Projects/>
       </div>
     </div>
@@ -398,9 +398,10 @@ function Thrower(){
   return (
     <div className="bg-[#fefefe] bg-[url(diagonales-decalees.png)]">
       <div className="h-auto font-Inter flex flex-col justify-center items-center p-4">
-        <div className="md:max-w-[700px] max-w-[300px]">
+        <div className="w-full md:max-w-[700px]">
           <div className="rounded-xl">
             <h1 className="text-4xl md:text-7xl text-center"> Throw Shader </h1>
+            <Navigation/>
             <form onSubmit={handleSubmit}>
               <div className="w-full mb-4" style={{aspectRatio: compactMode ? "2 / 1" : "1 / 1"}}>
                 <Shader width={700} height={700} code={code} author="" wrapClassName="w-full h-full" className="w-full h-full block" pauseOnHidden={false} onError={handleError} onCompile={() => setVisible(false)}/>
@@ -447,9 +448,10 @@ function Gallery() {
   return (
     <div className="bg-[#fefefe] bg-[url(diagonales-decalees.png)]">
       <div className="h-auto font-Inter flex flex-col justify-center items-center p-4">
-        <div className="md:max-w-[700px] max-w-[300px]">
+        <div className="w-full md:max-w-[700px]">
           <div className="rounded-xl">
             <h1 className="text-4xl md:text-7xl text-center"> Gallery </h1>
+            <Navigation/>
             <div className="grid md:grid-cols-2 grid-cols-1 gap-8">
             {shaders.filter((element)=>{return element.code.length > 0}).map((element)=>{
               const code = JSON.parse(element.code);
@@ -486,14 +488,15 @@ function BlogPostView({ slug }){
   return (
     <div className="bg-[#fefefe] bg-[url(diagonales-decalees.png)]">
       <div className="h-auto font-Inter flex flex-col justify-center items-center p-4">
-        <div className="md:max-w-[700px] max-w-[300px]">
+        <div className="w-full md:max-w-[700px]">
           <div className="rounded-xl">
             {loading ? <p className="text-center text-gray-500">Loading…</p>
               : failed ? <p className="text-center text-gray-500">Could not load post.</p>
               : post ? (
                 <>
-                  {post.title ? <h2 className="text-bold text-4xl md:text-5xl text-center mt-4 mb-2">{post.title}</h2> : null}
+                  {post.title ? <h2 className="text-bold text-4xl md:text-7xl text-center mt-4 mb-2">{post.title}</h2> : null}
                   {post.tags.length ? <p className="text-center text-sm text-gray-500 mb-4">{post.tags.join(" · ")}</p> : null}
+                  <Navigation/>
                   <div dangerouslySetInnerHTML={{ __html: marked.parse(post.body || "") }} />
                   <div className="mt-8 text-center">
                     <a href="/blog" className="hover:underline text-sm text-gray-500">← Blog</a>
@@ -564,12 +567,13 @@ function Blog(){
   return (
     <div className="bg-[#fefefe] bg-[url(diagonales-decalees.png)]">
       <div className="h-auto font-Inter flex flex-col justify-center items-center p-4">
-        <div className="md:max-w-[700px] max-w-[300px]">
+        <div className="w-full md:max-w-[700px]">
           <div className="rounded-xl">
             <div className="flex flex-1 flex-col justify-around gap-0">
-              <h1 className="text-bold md:text-7xl xs:text-4xl text-center">8coolguy</h1>
+              <h1 className="text-bold text-4xl md:text-7xl text-center">8coolguy</h1>
             </div>
-            <h1 className="text-bold text-2xl text-center"> Blog </h1>
+            <h1 className="text-bold text-4xl md:text-7xl text-center"> Blog </h1>
+            <Navigation/>
             {loading ? <p className="text-center text-gray-500">Loading posts…</p>
               : failed ? <p className="text-center text-gray-500">Could not load blog posts.</p>
               : !posts.length ? <p className="text-center text-gray-500">No posts yet.</p>
