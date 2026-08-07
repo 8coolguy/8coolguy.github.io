@@ -516,6 +516,22 @@
 summary::-webkit-details-marker {
   display: none;
 }
+.break-words img, .break-words video {
+  max-width: 100%;
+  height: auto;
+}
+.break-words pre {
+  overflow-x: auto;
+  max-width: 100%;
+}
+.break-words code {
+  word-break: break-all;
+}
+.break-words table {
+  display: block;
+  overflow-x: auto;
+  max-width: 100%;
+}
 .App {
   text-align: center;
   font-family: 'Barlow', sans-serif;

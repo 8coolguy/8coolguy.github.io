@@ -497,7 +497,7 @@ function BlogPostView({ slug }){
                   {post.title ? <h2 className="text-bold text-4xl md:text-7xl text-center mt-4 mb-2">{post.title}</h2> : null}
                   {post.tags.length ? <p className="text-center text-sm text-gray-500 mb-4">{post.tags.join(" · ")}</p> : null}
                   <Navigation/>
-                  <div dangerouslySetInnerHTML={{ __html: marked.parse(post.body || "") }} />
+                  <div className="break-words overflow-hidden prose-sm" dangerouslySetInnerHTML={{ __html: marked.parse(post.body || "") }} />
                   <div className="mt-8 text-center">
                     <a href="/blog" className="hover:underline text-sm text-gray-500">← Blog</a>
                   </div>
