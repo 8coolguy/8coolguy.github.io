@@ -579,9 +579,12 @@ function Blog(){
                   <div className="flex flex-col gap-4">
                     {groups[year].map(post => (
                       <details key={post.name} className="group border px-4 py-3 -mx-4 rounded-xl transition-colors">
-                        <summary className="cursor-pointer">
-                          <div className="font-bold">{post.title || post.name.replace(/\.md$/i, "")}</div>
-                          {post.tags.length ? <div className="text-sm text-gray-500">{post.tags.join(" · ")}</div> : null}
+                        <summary className="cursor-pointer flex items-center justify-between gap-2" style={{listStyle: "none"}}>
+                          <div>
+                            <div className="font-bold">{post.title || post.name.replace(/\.md$/i, "")}</div>
+                            {post.tags.length ? <div className="text-sm text-gray-500">{post.tags.join(" · ")}</div> : null}
+                          </div>
+                          <span className="group-open:rotate-180 transition-transform text-gray-400 select-none">▾</span>
                         </summary>
                         <p className="mt-4 pt-3 border-t text-sm text-gray-600 leading-relaxed">{excerpt(post.body)}</p>
                         <div className="mt-2 text-sm text-gray-500">
