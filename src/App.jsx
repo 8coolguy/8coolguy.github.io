@@ -564,7 +564,10 @@ function Blog(){
                           <div className="font-bold">{post.title || post.name.replace(/\.md$/i, "")}</div>
                           {post.tags.length ? <div className="text-sm text-gray-500">{post.tags.join(" · ")}</div> : null}
                         </summary>
-                        <div className="mt-4 pt-3 border-t" style={{maxHeight: "20rem", overflowY: "auto"}} dangerouslySetInnerHTML={{ __html: marked.parse(post.body || "") }} />
+                        <div className="mt-4 pt-3 border-t" style={{maxHeight: "10rem", overflowY: "auto"}}>
+                          <div dangerouslySetInnerHTML={{ __html: marked.parse(post.body || "") }} />
+                          <div style={{position: "sticky", bottom: 0, height: "2.5rem", background: "linear-gradient(transparent, rgba(254,254,254,0.98))", pointerEvents: "none"}} />
+                        </div>
                         <div className="mt-2 text-sm text-gray-500">
                           <a href={`/blog?post=${post.name.replace(/\.md$/i, "")}`} className="hover:underline">Read on →</a>
                         </div>
