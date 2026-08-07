@@ -333,6 +333,7 @@ function Thrower(){
   const [errorMessage, setErrorMessage] = useState("");
   const [visible, setVisible] = useState(false)
   const [rows, setRows] = useState(12);
+  const [compactMode, setCompactMode] = useState(false);
   
   function handleChange(event){
     setCode(event.target.value);
@@ -358,7 +359,10 @@ function Thrower(){
   function handleSubmit(event){
     event.preventDefault();
     const codeString = JSON.stringify(code);
-    if (codeString.length == 0 || visible || author.length == 0) return;
+    if (codeString.length == 0 || visible || author.length == 0) {
+      setCompactMode(m => !m);
+      return;
+    }
     fetch("https://dxn4pwl2vg.execute-api.us-west-1.amazonaws.com/prod", {
       method:"POST",
       body: JSON.stringify({
@@ -398,14 +402,15 @@ function Thrower(){
           <div className="rounded-xl">
             <h1 className="text-4xl md:text-7xl text-center"> Throw Shader </h1>
             <form onSubmit={handleSubmit}>
-              <div className="w-full mb-4" style={{aspectRatio: "1 / 1"}}>
+              <div className="w-full mb-4" style={{aspectRatio: compactMode ? "2 / 1" : "1 / 1"}}>
                 <Shader width={700} height={700} code={code} author="" wrapClassName="w-full h-full" className="w-full h-full block" pauseOnHidden={false} onError={handleError} onCompile={() => setVisible(false)}/>
               </div>
               <label htmlFor="author" className="text-sm text-gray-500">Author</label>
               <input type="text" id="author" value={author} onChange={handleAuthorChange} className="w-full border rounded px-3 py-2 mb-4"></input>
               <label htmlFor="code" className="text-sm text-gray-500">Shader code</label>
               <textarea id="code" className="w-full border rounded px-3 py-2 font-mono text-sm mb-4 resize-y" value={code} rows={rows} onChange={handleChange} onKeyDown={handleKeyDown}></textarea>
-              <button onClick={handleSubmit} type="submit" className="w-full text-white bg-black hover:bg-gray-800 font-medium rounded-lg px-5 py-2.5 mb-4"> Submit </button>
+              <button onClick={handleSubmit} type="submit" className="w-full text-white bg-black hover:bg-gray-800 font-medium rounded-lg px-5 py-2.5 mb-2"> {compactMode ? "Submit (expanded)" : "Submit"} </button>
+              <button type="button" onClick={() => setCompactMode(m => !m)} className="w-full text-sm text-gray-500 hover:text-gray-800 mb-4"> {compactMode ? "Enlarge preview" : "Shrink preview"} </button>
             </form>
           </div>
         </div>
@@ -502,6 +507,20 @@ function BlogPostView({ slug }){
     </div>
   );
 }
+function excerpt(body, n = 180){
+  const text = (body || "")
+    .replace(/<[^>]+>/g, " ")
+    .replace(/```[\s\S]*?```/g, " ")
+    .replace(/`([^`]+)`/g, "$1")
+    .replace(/!\[[^\]]*\]\([^)]*\)/g, " ")
+    .replace(/\[([^\]]+)\]\([^)]*\)/g, "$1")
+    .replace(/^#{1,6}\s+/gm, "")
+    .replace(/[*_>~-]/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+  return text.length > n ? text.slice(0, n).trimEnd() + "…" : text;
+}
+
 function Blog(){
   const slug = new URLSearchParams(window.location.search).get("post");
   if (slug) return <BlogPostView slug={slug} />;
@@ -564,10 +583,7 @@ function Blog(){
                           <div className="font-bold">{post.title || post.name.replace(/\.md$/i, "")}</div>
                           {post.tags.length ? <div className="text-sm text-gray-500">{post.tags.join(" · ")}</div> : null}
                         </summary>
-                        <div className="mt-4 pt-3 border-t" style={{maxHeight: "10rem", overflowY: "auto"}}>
-                          <div dangerouslySetInnerHTML={{ __html: marked.parse(post.body || "") }} />
-                          <div style={{position: "sticky", bottom: 0, height: "2.5rem", background: "linear-gradient(transparent, rgba(254,254,254,0.98))", pointerEvents: "none"}} />
-                        </div>
+                        <p className="mt-4 pt-3 border-t text-sm text-gray-600 leading-relaxed">{excerpt(post.body)}</p>
                         <div className="mt-2 text-sm text-gray-500">
                           <a href={`/blog?post=${post.name.replace(/\.md$/i, "")}`} className="hover:underline">Read on →</a>
                         </div>
