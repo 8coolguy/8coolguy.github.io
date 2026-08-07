@@ -426,6 +426,7 @@ function Thrower(){
 
 function Gallery() {
   const [shaders, setShaders] = useState([]);
+  const [errored, setErrored] = useState({});
   useEffect(() => {
     fetch("https://dxn4pwl2vg.execute-api.us-west-1.amazonaws.com/prod", {
       method:"POST",
@@ -453,10 +454,12 @@ function Gallery() {
             <h1 className="text-4xl md:text-7xl text-center"> Gallery </h1>
             <Navigation/>
             <div className="grid md:grid-cols-2 grid-cols-1 gap-8">
-            {shaders.filter((element)=>{return element.code.length > 0}).map((element)=>{
+            {shaders.filter((element)=>{return element.code.length > 0 && !errored[element.id]}).map((element)=>{
               const code = JSON.parse(element.code);
               return (
-                <Shader key ={element.id} height = {300} width = {300} code = {code} author = {element.author} onError={()=>{}} onCompile={()=>{}}/>
+                <div key={element.id} style={{display: errored[element.id] ? "none" : ""}}>
+                <Shader height = {300} width = {300} code = {code} author = {element.author} onError={()=>setErrored(e => ({...e, [element.id]: true}))} onCompile={()=>{}}/>
+                </div>
               )
             })}
             </div>
