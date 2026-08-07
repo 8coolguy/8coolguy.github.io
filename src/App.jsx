@@ -453,6 +453,7 @@ function Gallery() {
           <div className="rounded-xl">
             <h1 className="text-4xl md:text-7xl text-center"> Gallery </h1>
             <Navigation/>
+            <p className="text-center text-gray-500 mt-6 mb-8">Code to compute the color of every pixel. <a href="/throwshader" className="underline">Try it here.</a></p>
             <div className="grid md:grid-cols-2 grid-cols-1 gap-8">
             {shaders.filter((element)=>{return element.code.length > 0 && !errored[element.id]}).map((element)=>{
               const code = JSON.parse(element.code);
