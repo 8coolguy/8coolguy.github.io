@@ -569,9 +569,6 @@ function Blog(){
       <div className="h-auto font-Inter flex flex-col justify-center items-center p-4">
         <div className="w-full md:max-w-[700px]">
           <div className="rounded-xl">
-            <div className="flex flex-1 flex-col justify-around gap-0">
-              <h1 className="text-bold text-4xl md:text-7xl text-center">8coolguy</h1>
-            </div>
             <h1 className="text-bold text-4xl md:text-7xl text-center"> Blog </h1>
             <Navigation/>
             {loading ? <p className="text-center text-gray-500">Loading posts…</p>
