@@ -578,15 +578,15 @@ function Blog(){
                   <h2 className="text-bold text-xl mt-8 mb-2">{year}</h2>
                   <div className="flex flex-col gap-4">
                     {groups[year].map(post => (
-                      <details key={post.name} className="group border px-4 py-3 -mx-4 rounded-xl transition-colors">
+                      <details key={post.name} className="group border px-4 py-3 -mx-4 rounded-xl transition-colors overflow-hidden">
                         <summary className="cursor-pointer flex items-center justify-between gap-2" style={{listStyle: "none"}}>
-                          <div>
+                          <div className="break-words">
                             <div className="font-bold">{post.title || post.name.replace(/\.md$/i, "")}</div>
                             {post.tags.length ? <div className="text-sm text-gray-500">{post.tags.join(" · ")}</div> : null}
                           </div>
-                          <span className="group-open:rotate-180 transition-transform text-gray-400 select-none">▾</span>
+                          <span className="group-open:rotate-180 transition-transform text-gray-400 select-none shrink-0">▾</span>
                         </summary>
-                        <p className="mt-4 pt-3 border-t text-sm text-gray-600 leading-relaxed">{excerpt(post.body)}</p>
+                        <p className="mt-4 pt-3 border-t text-sm text-gray-600 leading-relaxed break-words">{excerpt(post.body)}</p>
                         <div className="mt-2 text-sm text-gray-500">
                           <a href={`/blog?post=${post.name.replace(/\.md$/i, "")}`} className="hover:underline">Read on →</a>
                         </div>
