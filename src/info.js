@@ -157,4 +157,4 @@ export let experiences = [
 
     }
 ]
-export let about = "I am currently an aspiring engineering building things for fun. I spend time building personal projects to improve my skills. Right now, I am focusing on backend and fullstack development, but I also have interests in game development, embedded systems, and machine learning. Soon, this website will have the capability to run code that you send. The shader at the top of the page will be able to take user submitted hlsl code. Stay tuned. Contact me at arnavc02@gmail.com";
+export let about = "A backend engineer learning and building as much as I can about systems, infrastructure, and performance. I also dabble in Game development and machine learning. Introvert, but would love to talk about code. Washed Athlete. Like to play Minecraft and eat cookies.";
