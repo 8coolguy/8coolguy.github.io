@@ -80,7 +80,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/gallery" element ={<Gallery />} />
-        <Route path="/throwshader" element={<Thrower/>} />
+        <Route path="/throwShader" element={<Thrower/>} />
         <Route path="/resume" element={<Resume/>} />
         <Route path="/blog" element={<Blog />} />
       </Routes>
