@@ -17,10 +17,10 @@ HOW TO PUBLISH A POST
      what the post is about. There is no filtering or sorting.
    - link: the URL where the full post lives (e.g. your bearblog post).
      This is what launches when a reader clicks the entry on the blog page.
-3. Write a short description or notes in the body (the body won't be shown on
-   the listing page, but you can keep it for reference).
-4. Commit the .md file to the blogs/ folder and push. The blog page picks
-   it up automatically (allow ~a minute for GitHub).
+3. Write the full post in Markdown below the front matter. An excerpt is shown
+   on the listing page and the full body gets its own /blog/<file-name>/ page.
+4. Commit the .md file to content/blogs/ and deploy. Next.js generates the
+   listing and article HTML during the build.
 -->
 
 # Optional heading for the post body
