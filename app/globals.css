@@ -1,4 +1,5 @@
 /*! tailwindcss v4.0.9 | MIT License | https://tailwindcss.com */
+@import "@fortawesome/fontawesome-svg-core/styles.css";
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap");
 @layer theme, base, components, utilities;
 @layer theme {
