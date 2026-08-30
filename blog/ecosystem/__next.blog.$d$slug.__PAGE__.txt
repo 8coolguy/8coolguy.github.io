@@ -1,0 +1,114 @@
+1:"$Sreact.fragment"
+2:T518,M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2za:X
+f:X
+f:C
+0:{"buildId":"eXMaHTP-YxgmdMSHkdEpE","data":[{"rsc":["$","$1","c",{"children":[["$","div",null,{"className":"bg-[#fefefe] bg-[url(diagonales-decalees.png)]","children":["$","main",null,{"className":"h-auto font-Inter flex flex-col justify-center items-center p-4","children":[["$","article",null,{"className":"w-full md:max-w-[700px]","aria-labelledby":"post-heading","children":[["$","h1",null,{"id":"post-heading","className":"text-bold text-4xl md:text-7xl text-center mt-4 mb-2","children":"Not so smart Smart Rabbits"}],["$","p",null,{"className":"text-center text-sm text-gray-500 mb-4","children":"java · rl · simulation"}],["$","nav",null,{"aria-label":"Social links","children":["$","div",null,{"className":"flex flex-row justify-center items-center","children":[["$","a","Instagram",{"className":"link","href":"https://www.instagram.com/notarnav123","aria-label":"Instagram","title":"Instagram","children":["$","svg",null,{"aria-hidden":"true","focusable":"false","data-prefix":"fab","data-icon":"instagram","className":"svg-inline--fa fa-instagram fa-2x ","role":"img","xmlns":"http://www.w3.org/2000/svg","viewBox":"0 0 448 512","style":{},"children":["$","path",null,{"fill":"currentColor","d":"M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z","style":{}}]}]}],["$","a","LinkedIn",{"className":"link","href":"https://www.linkedin.com/in/arnav-choudhury-scu/","aria-label":"LinkedIn","title":"LinkedIn","children":["$","svg",null,{"aria-hidden":"true","focusable":"false","data-prefix":"fab","data-icon":"linkedin","className":"svg-inline--fa fa-linkedin fa-2x ","role":"img","xmlns":"http://www.w3.org/2000/svg","viewBox":"0 0 448 512","style":{},"children":["$","path",null,{"fill":"currentColor","d":"M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z","style":{}}]}]}],["$","a","GitHub",{"className":"link","href":"https://github.com/8coolguy","aria-label":"GitHub","title":"GitHub","children":["$","svg",null,{"aria-hidden":"true","focusable":"false","data-prefix":"fab","data-icon":"github","className":"svg-inline--fa fa-github fa-2x ","role":"img","xmlns":"http://www.w3.org/2000/svg","viewBox":"0 0 496 512","style":{},"children":["$","path",null,{"fill":"currentColor","d":"$2","style":{}}]}]}],"$L3","$L4"]}]}],"$L5","$L6"]}],"$L7"]}]}],null,"$L8"]}],"isPartial":"$@9","staleTime":"$a","varyParams":null},{"rsc":"$Lb","isPartial":"$@c","staleTime":"$a","varyParams":null},{"rsc":"$Ld","isPartial":"$@e","staleTime":"$a","varyParams":"$f"},{"rsc":"$L10","isPartial":"$@11","staleTime":"$a","varyParams":"$f"},{"rsc":"$L12","isPartial":"$@13","staleTime":"$a","varyParams":null}],"isUpgradeableISRFallback":false,"a":"$@14","rootVaryParams":null,"needsRuntimeRequest":"$@15"}
+17:I[97367,["/_next/static/chunks/3fntmmi971322.js"],"OutletBoundary"]
+18:"$Sreact.suspense"
+1a:I[97367,["/_next/static/chunks/3fntmmi971322.js"],"ViewportBoundary"]
+1b:I[97367,["/_next/static/chunks/3fntmmi971322.js"],"MetadataBoundary"]
+1c:I[39756,["/_next/static/chunks/3fntmmi971322.js"],"default"]
+1d:I[37457,["/_next/static/chunks/3fntmmi971322.js"],"default"]
+:HL["/_next/static/chunks/0vt-y5svkeays.css","style"]
+3:["$","a","Strava",{"className":"link","href":"https://www.strava.com/athletes/33234384","aria-label":"Strava","title":"Strava","children":["$","svg",null,{"aria-hidden":"true","focusable":"false","data-prefix":"fab","data-icon":"strava","className":"svg-inline--fa fa-strava fa-2x ","role":"img","xmlns":"http://www.w3.org/2000/svg","viewBox":"0 0 384 512","style":{},"children":["$","path",null,{"fill":"currentColor","d":"M158.4 0L7 292h89.2l62.2-116.1L220.1 292h88.5zm150.2 292l-43.9 88.2-44.6-88.2h-67.6l112.2 220 111.5-220z","style":{}}]}]}]
+4:["$","a","Blog",{"className":"link","href":"/blog/","aria-label":"Blog","title":"Blog","children":["$","svg",null,{"aria-hidden":"true","focusable":"false","data-prefix":"fas","data-icon":"rss","className":"svg-inline--fa fa-rss fa-2x ","role":"img","xmlns":"http://www.w3.org/2000/svg","viewBox":"0 0 448 512","style":{},"children":["$","path",null,{"fill":"currentColor","d":"M0 64C0 46.3 14.3 32 32 32c229.8 0 416 186.2 416 416c0 17.7-14.3 32-32 32s-32-14.3-32-32C384 253.6 226.4 96 32 96C14.3 96 0 81.7 0 64zM0 416a64 64 0 1 1 128 0A64 64 0 1 1 0 416zM32 160c159.1 0 288 128.9 288 288c0 17.7-14.3 32-32 32s-32-14.3-32-32c0-123.7-100.3-224-224-224c-17.7 0-32-14.3-32-32s14.3-32 32-32z","style":{}}]}]}]
+16:T2758,<h1><em><strong>Not so smart Smart Rabbits</strong></em></h1>
+<p>Hello. This is a simulation I created using Javafx to help show how rabbits reacted in a ecosystem with varied terrain and sometimes a predeator. </p>
+<h2>Inspiration:</h2>
+<p>My inspiration for this project came from watching a <a href="https://www.youtube.com/watch?v=r_It_X7v-1E&t=152s">youtube video</a> where something similar was done in Unity3d that simulated a species and watched the effect it had on the rabbit population. Although my simulation does not used 3d assests and rendering, my simulation is more sophisticated for the genetic traits that are passed down from generation to generation.</p>
+<h2>Initial Steps</h2>
+<p>To begin the project, I first had to create a stage using javafx. For the land, I created a map tile that would generate land features. These land features were shown as color and I used a <a href="https://en.wikipedia.org/wiki/Perlin_noise">Perlin Noise Algorithm</a> to make the noise coherent, so the land features looked put together.<br><img src="https://imgur.com/tV5gy0K.png" alt="exampleTerrain"></p>
+<h2>Creating the Rabbit</h2>
+<p>I worked on the RabbitObject class where I gave it behavior and genetic traits. At first, the behavior was random and the rabbit would travel in any direction despite the danger that may lie in its wait. Some of the traits that rabbit would have is given in the code segment below. </p>
+<pre><code class="language-java">    String gender = new String();//m or f
+    //0-1 color trait will  change how attarctive it is to hunt
+    int health=7;//starting health goes here
+    int deltaHealth=0;
+    int age;//0-24  1 per turn\
+    //inherited properties form parents 
+    double color;//0-1
+    double fertility;//0-1
+    double size;// will change how  much health it can have
+    double speed; //1-3 1space 2 space 3 spaces 
+    //stats props 
+    int turnsmoved;
+    public int gen =0;
+    //parents
+    RabbitObject mom;
+    RabbitObject dad; 
+    //no hunger implemented  
+    int hydration =0;
+</code></pre>
+<p>The rabbits passed down the traits to their childen, but it not in the way that genes actually work. It passed down the average trait value between its parents and grand parents. The main traits that I kept track of was color, fertility, size, and speed.These were important becasue it forecasted wether the rabbit population would stay alive. Implementing a more sophisticated genes system would be cool to see.</p>
+<h2>A small detail</h2>
+<p>I used Jfreechart, a graphing library for java, to keep track of the population and the genetic traits for the rabbits. These graphs updated as the moves of Rabbits updated.<br><img src="https://imgur.com/Gx3wTHX.png" alt="exampleGraph">  </p>
+<h2>Rabbit-Only Simualtions</h2>
+<p>As I simulated the rabbits, I noticied that without any intervention from other animals the rabbit population would increase fastly to the maximum population. This rate of growth is called logisitic growth and it shows in my simulations. Once the physical space ran out the rabbits would reach the carrying capacity. In reality,the carrying capacity is determined by their limit of the resources in the enviorment. Another observation that I noticed is that the fertility of the rabbits stopped increasing after the rabbit population reached the carrying capacity. This probably happened because once the rabbit population stablized their was no need in having the highest possible fertility. The size seemed to keep incresing even after the population stablized. Size trait would contribute to the starting health trait, so it seems that health was always important in the harsh enviorment.<br><img src="https://imgur.com/siCEa2w.gif" alt="rabbitOnlySim"><br><img src="https://imgur.com/FGh99Go.png" alt="rabbitOnlySimstats">
+<img src="https://imgur.com/gBOgvTx.png" alt="rabbitOnlyPop"></p>
+<h2>Introduction of the Fox</h2>
+<p>After playing around with only rabbits, I decided to add a predator class, the Fox Object. The fox object inheirted from the rabbit object. Its movement was also randomly generated like the original rabbit. I made sure that the foxes had a hunger trait that made them eat the rabbits if found in the same MapTile. The fox population would not survive eat rabbits and theya had less fertility stats, so they do not survive by over-reproducing. Also the foxes would only hunt the rabbits with color lower than their own. The simualation siginificantly changed with the introduction of the rabbits. The long term result would be up in the air. There would be simualtions where the foxes quickly went extinct, or simulations where the foxes would eat all the rabbit leading them to also go extinct.  An observation that I noticied is that color of the rabbits would be fastet growing trait among the rabbits.</p>
+<pre><code class="language-java">	public void eat(MapTile tile) {
+		for(int i =0;i&lt;tile.MAX_PER_TILE;i++) {
+			RabbitObject hunted = tile.showWhere()[i];
+			if((!(hunted instanceof FoxObject)) &amp;&amp; hunted !=null) {
+				if(hunted.getColor() &lt;this.color) {
+					//infoSystem.out.println(&quot;Age: &quot;+hunted.getAge());
+					tile.here[i].isEaten();
+					this.hunger =0;
+				}
+			}
+		}
+	}
+</code></pre>
+<p>The foxes choosing what type of rabbits was the entire reason for the evolution of the rabbits. Only the most suitable rabbits would survive for the next generation.    </p>
+<h2>The Smart Rabbits</h2>
+<p>The next evolution of the simulation was to create a rabbit that can learn what the right movement was to maxmize its lifespan and reprodue the most. I used a reinforcement learning algorithm called Qlearn which is an off-policy learning algoritm that takes random actions to learn how to navigate the game state that it was in. The algoritm tries to learn a policy that will create the best moving rabbit in the simulation. I used the <a href="https://github.com/chen0040/java-reinforcement-learning">java-reinforcement-learning</a> library. I began implementing this by creating a game state. The game state was created by looking at the surrounding tiles creating a 16 bit integer that incapsulated the state as shown in the picture below.<br><img src="https://imgur.com/qeLwlNP.png" alt="exampleState"><br>When the model began would do random moves to learn what would happen. This is called the exploring phase. Once it had enough information on the state information, it would begin the exploiting phase where it would choose what it thought is the best  move. With the gamestate, I was able to update the model after rewarding the rabbits for a good move. The reward was handed out like this.</p>
+<pre><code class="language-java">	public void updateStrategy(int oldState,int newState,int action,SuperRabbitObject rabbit,DynamicPopulationTracker x) {
+		//infoSystem.out.println(&quot;OldState: &quot;+oldState+&quot; New State: &quot;+newState);
+		//the reward needs to be based only on the action id eaten pretty much,color,hydration
+		double reward=0;
+		if(rabbit.hydration ==0) {
+			reward+=50;
+		}
+		if(rabbit.deltaHealth == rabbit.greenEffect) {
+			reward+=75;
+		}else {
+			reward-=3*rabbit.deltaHealth;
+		}
+		if(rabbit.eaten) {
+			reward-=100;
+		}
+		
+		System.out.println(&quot;Reward: &quot;+reward);
+		this.agent.update(oldState, action, newState, reward);
+	}
+</code></pre>
+<h3>A Not so Smart Rabbit</h3>
+<p>The smart rabbits did  have smarter movements,but I ran into a problem here when I realized that the optimal movemnt of individual rabbits did not lead to salvation for the entire rabbit kind. As shown in the code, the rabbit would be rewarded for being in the green tile and blue tile. This means that small groups of rabbits would cluster and move back and forth until they dead from age or health. This would lead to a demise in the rabbit population. When the rabbits moved randomly, they had a chance to be instantly killed, but they were able to reproduce quickly with different rabbits. This was not the case in small isolated groups. This lead the reinforcement learned rabbits to go extinct much quicker than those of the dumber kind of rabbits. 
+<img src="https://imgur.com/cT6vrYW.gif" alt="exampleSmartRabbitOnly"><br><img src="https://imgur.com/Dn5RA1X.gif" alt="exampleSmartRabbitFox"><br>The traits of these rabbits showed the same patterns as the normal rabbits above,but these rabbits went extinct faster.   </p>
+<h2><strong>Conclusion</strong></h2>
+<p>This project made me learn alot more of java and ecosystems as a whole. On the development side, I learned how to use eclipse and maven to deploy my project. I was also able to freshen up my java skils. I also learned how to make a basic reinforcement model: Qlearn. I hope to improve on that part soon. I think what this project turned into deviated far from what I thought would happen. I was trying to create something similar to [Celular Automoton] where I would have a simple rule and watch the chaos unfold, but instead I was more hands on with affecting each part of the simulation. I might come abck to this where I create a better model that learns from the population of the rabbits and creates a strong rabbit population. I may even apply the reinforcement model to the foxes to see how it affects the rabbit population. </p>
+<h2><em>Resources:</em></h2>
+<p><a href="https://www.youtube.com/watch?v=r_It_X7v-1E&t=152s">https://www.youtube.com/watch?v=r_It_X7v-1E&amp;t=152s</a>
+<a href="https://en.wikipedia.org/wiki/Perlin_noise">https://en.wikipedia.org/wiki/Perlin_noise</a>
+<a href="https://towardsdatascience.com/simple-reinforcement-learning-q-learning-fcddc4b6fe56">https://towardsdatascience.com/simple-reinforcement-learning-q-learning-fcddc4b6fe56</a>
+<a href="https://github.com/chen0040/java-reinforcement-learning">https://github.com/chen0040/java-reinforcement-learning</a>
+<a href="https://www.khanacademy.org/science/ap-biology/ecology-ap/population-ecology-ap/a/exponential-logistic-growth">https://www.khanacademy.org/science/ap-biology/ecology-ap/population-ecology-ap/a/exponential-logistic-growth</a></p>
+5:["$","div",null,{"className":"break-words overflow-hidden prose-sm","dangerouslySetInnerHTML":{"__html":"$16"}}]
+6:["$","p",null,{"className":"mt-8 text-center","children":["$","a",null,{"href":"/blog/","className":"hover:underline text-sm text-gray-500","children":"← Blog"}]}]
+7:["$","footer",null,{"className":"bottom-0 left-0 z-20 w-full p-4 md:flex md:items-center md:justify-between md:p-6","children":[["$","span",null,{"className":"text-sm text-gray-500 sm:text-center","children":[2026," ",["$","a",null,{"href":"/","className":"hover:underline","children":"8coolguy"}],". All Rights Reserved."]}],["$","nav",null,{"aria-label":"Footer navigation","children":["$","ul",null,{"className":"flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 sm:mt-0","children":[["$","li","Throw Shader",{"children":["$","a",null,{"href":"/throwShader/","className":"hover:underline me-4 md:me-6","children":"Throw Shader"}]}],["$","li","Gallery",{"children":["$","a",null,{"href":"/gallery/","className":"hover:underline me-4 md:me-6","children":"Gallery"}]}],["$","li","Resume",{"children":["$","a",null,{"href":"/resume/","className":"hover:underline me-4 md:me-6","children":"Resume"}]}],["$","li","Blog",{"children":["$","a",null,{"href":"/blog/","className":"hover:underline me-4 md:me-6","children":"Blog"}]}],["$","li","Contact",{"children":["$","a",null,{"href":"mailto:arnavc02@gmail.com","className":"hover:underline me-4 md:me-6","children":"Contact"}]}]]}]}]]}]
+8:["$","$L17",null,{"children":["$","$18",null,{"name":"Next.MetadataOutlet","children":"$@19"}]}]
+b:["$","$1","h",{"children":[null,["$","$L1a",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","div",null,{"hidden":true,"children":["$","$L1b",null,{"children":["$","$18",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Not so smart Smart Rabbits | 8coolguy"}],["$","meta","1",{"name":"description","content":"Not so smart Smart Rabbits Hello. This is a simulation I created using Javafx to help show how rabbits reacted in a ecosystem with varied terrain and sometimes a predeator. Inspira…"}],["$","link","2",{"rel":"canonical","href":"https://arnavchoudhury.org/blog/ecosystem/"}],["$","meta","3",{"property":"og:title","content":"Not so smart Smart Rabbits"}],["$","meta","4",{"property":"og:description","content":"Not so smart Smart Rabbits Hello. This is a simulation I created using Javafx to help show how rabbits reacted in a ecosystem with varied terrain and sometimes a predeator. Inspira…"}],["$","meta","5",{"property":"og:url","content":"https://arnavchoudhury.org/blog/ecosystem/"}],["$","meta","6",{"property":"og:image","content":"https://imgur.com/siCEa2w.gif"}],["$","meta","7",{"property":"og:type","content":"article"}],["$","meta","8",{"name":"twitter:card","content":"summary_large_image"}],["$","meta","9",{"name":"twitter:title","content":"Not so smart Smart Rabbits"}],["$","meta","10",{"name":"twitter:description","content":"Not so smart Smart Rabbits Hello. This is a simulation I created using Javafx to help show how rabbits reacted in a ecosystem with varied terrain and sometimes a predeator. Inspira…"}],["$","meta","11",{"name":"twitter:image","content":"https://imgur.com/siCEa2w.gif"}]]}]}]}],null]}]
+d:["$","$1","c",{"children":[null,["$","$L1c",null,{"parallelRouterKey":"children","template":["$","$L1d",null,{}]}]]}]
+10:["$","$1","c",{"children":[null,["$","$L1c",null,{"parallelRouterKey":"children","template":["$","$L1d",null,{}]}]]}]
+12:["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0vt-y5svkeays.css","precedence":"next"}],["$","script","script-0",{"src":"/_next/static/chunks/3fntmmi971322.js","async":true}]],["$","html",null,{"lang":"en","children":["$","body",null,{"children":["$","$L1c",null,{"parallelRouterKey":"children","template":["$","$L1d",null,{}],"notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]]}]}]}]]}]
+19:null
+15:true
+a:300
+a:C
+14:0
+c:"$undefined"
+e:"$undefined"
+11:"$undefined"
+13:"$undefined"
+9:"$undefined"
