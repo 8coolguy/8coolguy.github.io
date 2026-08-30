@@ -47,6 +47,8 @@ export default function GalleryClient() {
             width={300}
             code={JSON.parse(shader.code)}
             author={shader.author}
+            wrapClassName="w-full"
+            className="w-full h-auto block"
             onError={() => setErrored((current) => ({ ...current, [shader.id]: true }))}
           />
         ))}
