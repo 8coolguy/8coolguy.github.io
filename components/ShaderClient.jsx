@@ -116,7 +116,13 @@ export default function ShaderClient({
 
   return (
     <div ref={wrapperRef} className={wrapClassName}>
-      <canvas ref={canvasRef} height={height} width={width} className={className} />
+      <canvas
+        ref={canvasRef}
+        height={height}
+        width={width}
+        className={className}
+        style={className ? undefined : { width, height }}
+      />
       {author ? <p className="text-right">{author}</p> : null}
     </div>
   );
