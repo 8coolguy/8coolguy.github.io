@@ -4,17 +4,17 @@ import { SITE_URL } from "@/lib/site";
 export const metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "8coolguy | Arnav Choudhury",
-    template: "%s | 8coolguy",
+    default: "Arnav C.",
+    template: "%s | Arnav C.",
   },
   description:
-    "Arnav Choudhury's projects in full-stack development, graphics, machine learning, embedded systems, and games.",
+    "Arnav C.'s projects in full-stack development, graphics, machine learning, embedded systems, and games.",
   alternates: { canonical: "/" },
   openGraph: {
     type: "website",
     url: SITE_URL,
-    siteName: "8coolguy",
-    title: "8coolguy | Arnav Choudhury",
+    siteName: "Arnav C.",
+    title: "Arnav C.",
     description:
       "Projects in full-stack development, graphics, machine learning, embedded systems, and games.",
   },

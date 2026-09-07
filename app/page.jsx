@@ -15,7 +15,7 @@ export default function HomePage() {
           <section className="rounded-xl" aria-labelledby="about-heading">
             <div className="flex flex-1 flex-col justify-around gap-0">
               <h1 id="about-heading" className="text-bold text-4xl md:text-7xl text-center">
-                8coolguy
+                Arnav C.
               </h1>
               <Navigation />
               <p>{about}</p>
