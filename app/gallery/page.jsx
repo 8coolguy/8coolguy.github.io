@@ -10,8 +10,8 @@ export const metadata = {
 
 export default function GalleryPage() {
   return (
-    <div className="bg-[#fefefe] bg-[url(diagonales-decalees.png)]">
-      <main className="h-auto font-Inter flex flex-col justify-center items-center p-4">
+    <div className="site-page">
+      <main className="site-main font-Inter flex flex-col items-center p-4">
         <div className="w-full md:max-w-[700px]">
           <section className="rounded-xl" aria-labelledby="gallery-heading">
             <h1 id="gallery-heading" className="text-4xl md:text-7xl text-center">Gallery</h1>

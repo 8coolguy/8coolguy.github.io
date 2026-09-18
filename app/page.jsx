@@ -7,8 +7,8 @@ import Link from "next/link";
 
 export default function HomePage() {
   return (
-    <div className="bg-[#fefefe] bg-[url(diagonales-decalees.png)]">
-      <main className="h-auto font-Inter flex flex-col justify-center items-center p-4">
+    <div className="site-page">
+      <main className="site-main font-Inter flex flex-col items-center p-4">
         <Headshot />
         <div className="home-content">
           <section className="rounded-xl" aria-labelledby="about-heading">

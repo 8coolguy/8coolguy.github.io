@@ -11,8 +11,8 @@ export const metadata = {
 
 export default function OtherWorkPage() {
   return (
-    <div className="bg-[#fefefe] bg-[url(diagonales-decalees.png)]">
-      <main className="h-auto font-Inter flex flex-col justify-center items-center p-4">
+    <div className="site-page">
+      <main className="site-main font-Inter flex flex-col items-center p-4">
         <div className="w-full md:max-w-[700px]">
           <section className="rounded-xl" aria-labelledby="other-work-heading">
             <h1 id="other-work-heading" className="text-bold text-4xl md:text-7xl text-center">

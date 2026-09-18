@@ -41,8 +41,8 @@ export default async function BlogPostPage({ params }) {
   if (!post) notFound();
 
   return (
-    <div className="bg-[#fefefe] bg-[url(diagonales-decalees.png)]">
-      <main className="h-auto font-Inter flex flex-col justify-center items-center p-4">
+    <div className="site-page">
+      <main className="site-main font-Inter flex flex-col items-center p-4">
         <article className="w-full md:max-w-[700px]" aria-labelledby="post-heading">
           <h1 id="post-heading" className="text-bold text-4xl md:text-7xl text-center mt-4 mb-2">{post.title}</h1>
           {post.tags.length ? <p className="text-center text-sm text-gray-500 mb-4">{post.tags.join(" · ")}</p> : null}

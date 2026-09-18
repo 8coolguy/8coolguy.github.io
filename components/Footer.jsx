@@ -10,7 +10,7 @@ const links = [
 
 export default function Footer() {
   return (
-    <footer className="bottom-0 left-0 z-20 w-full p-4 md:flex md:items-center md:justify-between md:p-6">
+    <footer className="site-footer bottom-0 left-0 z-20 w-full p-4 md:flex md:items-center md:justify-between md:p-6">
       <span className="text-sm text-gray-500 sm:text-center">
         {new Date().getFullYear()} <a href="/" className="hover:underline">Arnav C</a>. All Rights Reserved.
       </span>
