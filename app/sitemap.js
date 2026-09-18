@@ -4,7 +4,7 @@ import { SITE_URL } from "@/lib/site";
 export const dynamic = "force-static";
 
 export default function sitemap() {
-  const pages = ["", "/blog", "/gallery", "/throwShader", "/resume"];
+  const pages = ["", "/blog", "/gallery", "/other-work", "/throwShader", "/resume"];
   const staticPages = pages.map((path) => ({
     url: `${SITE_URL}${path}/`.replace(`${SITE_URL}//`, `${SITE_URL}/`),
     lastModified: new Date(),

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import ShaderClient, { DEFAULT_SHADER } from "@/components/ShaderClient";
 
 const shaderApi = "https://dxn4pwl2vg.execute-api.us-west-1.amazonaws.com/prod";
@@ -31,12 +32,19 @@ export default function Headshot() {
   }, []);
 
   return (
-    <ShaderClient
-      height={300}
-      width={300}
-      code={shader}
-      author={author}
-      aria-label="Featured community shader"
-    />
+    <div className="home-shader-row">
+      <img className="home-shader-pointer" src="/arrow.svg" alt="" aria-hidden="true" />
+      <Link className="home-shader-link" href="/gallery/" aria-label="Open the shader gallery">
+        <ShaderClient
+          height={300}
+          width={700}
+          code={shader}
+          author={author}
+          wrapClassName="home-shader"
+          className="home-shader-canvas"
+          aria-label="Featured community shader"
+        />
+      </Link>
+    </div>
   );
 }

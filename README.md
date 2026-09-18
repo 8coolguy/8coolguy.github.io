@@ -24,6 +24,19 @@ npm run deploy
 
 The custom domain and GitHub Pages bypass file live in `public/` so Next copies them into every export.
 
+## Other work project links
+
+Projects are defined in `lib/info.js`. The `links` object supports `Github`, `Devpost`, `Youtube`, and `Live` URLs. Empty values are omitted from the page.
+
+```js
+links: {
+  Github: "https://github.com/username/project",
+  Devpost: "https://devpost.com/software/project",
+  Youtube: "https://www.youtube.com/watch?v=video-id",
+  Live: "https://example.com/project",
+}
+```
+
 ## Blog posts
 
 Blog source files live in `content/blogs/`. Copy `_template.md`, rename it to the URL slug you want, fill in the front matter, and write the post body in Markdown. The next build creates both the blog listing and `/blog/<slug>/` article page.

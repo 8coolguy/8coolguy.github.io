@@ -571,6 +571,60 @@ summary::-webkit-details-marker {
   padding: 1px;
   margin: 1px;
 }
+.home-shader {
+  width: 100%;
+  max-width: 700px;
+}
+.home-shader-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 700px) minmax(0, 1fr);
+  align-items: center;
+  width: 100%;
+  max-width: 1440px;
+}
+.home-shader-pointer {
+  grid-column: 1;
+  justify-self: end;
+  width: min(220px, 100%);
+  height: auto;
+  margin-right: 20px;
+}
+.home-shader-link {
+  grid-column: 2;
+  display: block;
+  width: 100%;
+  max-width: 700px;
+  border: 2px solid transparent;
+  transition: border-color 150ms ease;
+}
+.home-shader-link:hover,
+.home-shader-link:focus-visible {
+  border-color: yellow;
+  outline: none;
+}
+.home-shader-canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.home-content {
+  width: 100%;
+  max-width: 960px;
+}
+.home-copy {
+  width: 100%;
+  max-width: 700px;
+  margin-inline: auto;
+}
+@media (max-width: 48rem) {
+  .home-shader-row {
+    display: block;
+  }
+
+  .home-shader-pointer {
+    display: none;
+  }
+}
 .project {
   align-items: left;
   text-align: left;
@@ -611,9 +665,19 @@ h1 {
   animation: flicker-load 1s ease-in;
   padding: 40px;
 }
+.home-title {
+  padding-block: 16px;
+}
 h2 {
   text-shadow: 0 0 10px white, 0 0 15px white, 0 0 30px white;
   padding: 20px;
+}
+.project-title {
+  padding: 0;
+  margin: 0;
+}
+.project-links {
+  justify-content: flex-end;
 }
 @keyframes flicker-load {
   0% {

@@ -3,6 +3,7 @@ const links = [
   ["Gallery", "/gallery/"],
   ["Resume", "/resume/"],
   ["Blog", "/blog/"],
+  ["Other Work", "/other-work/"],
   ["Contact", "mailto:arnavc02@gmail.com"],
   ["Business card", "https://main.bcard-5fy.pages.dev/"],
 ];

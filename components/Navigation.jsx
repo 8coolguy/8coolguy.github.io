@@ -12,7 +12,7 @@ const links = [
 
 export default function Navigation() {
   return (
-    <nav aria-label="Social links">
+    <nav aria-label="Primary navigation">
       <div className="flex flex-row justify-center items-center">
         {links.map(([label, href, icon]) => (
           <a key={label} className="link" href={href} aria-label={label} title={label}>
