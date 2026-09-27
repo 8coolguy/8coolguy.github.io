@@ -1,4 +1,5 @@
 import "@/app/globals.css";
+import PaperCanvas from "@/components/PaperCanvas";
 import { SITE_URL } from "@/lib/site";
 
 export const metadata = {
@@ -23,7 +24,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <PaperCanvas />
+        {children}
+      </body>
     </html>
   );
 }
