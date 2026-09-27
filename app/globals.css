@@ -1,6 +1,6 @@
 /*! tailwindcss v4.0.9 | MIT License | https://tailwindcss.com */
 @import "@fortawesome/fontawesome-svg-core/styles.css";
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap");
 @layer theme, base, components, utilities;
 @layer theme {
   :root, :host {
@@ -43,7 +43,6 @@
     --default-mono-font-variation-settings: var(
       --font-mono--font-variation-settings
     );
-    --font-Inter: "Inter", sans-serif;
   }
 }
 @layer base {
@@ -64,6 +63,7 @@
   }
   body {
     line-height: inherit;
+    font-family: "Space Grotesk", sans-serif;
   }
   hr {
     height: 0;
@@ -377,7 +377,7 @@
     text-align: right;
   }
   .font-Inter {
-    font-family: var(--font-Inter);
+    font-family: inherit;
   }
   .font-mono {
     font-family: var(--font-mono);
@@ -544,7 +544,7 @@ summary::-webkit-details-marker {
 }
 .App {
   text-align: center;
-  font-family: 'Barlow', sans-serif;
+  font-family: inherit;
 }
 .background {
   height: 100%;
