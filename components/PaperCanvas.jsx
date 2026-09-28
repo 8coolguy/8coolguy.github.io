@@ -1,8 +1,17 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEraser, faPen } from "@fortawesome/free-solid-svg-icons";
 
-const INK = "#33424d";
+const DEFAULT_INK = "#33424d";
+const INK_COLORS = [
+  { name: "Slate", value: "#33424d" },
+  { name: "Red", value: "#d4473f" },
+  { name: "Blue", value: "#3867c7" },
+  { name: "Green", value: "#2f8a62" },
+  { name: "Yellow", value: "#c28a22" },
+];
 const STORAGE_PREFIX = "paper-sketch:";
 const BLOCKED_ELEMENTS = [
   "a",
@@ -114,6 +123,11 @@ export default function PaperCanvas() {
   const blockedRectsRef = useRef([]);
   const frameRef = useRef(null);
   const [hasDrawing, setHasDrawing] = useState(false);
+  const [selectedColor, setSelectedColor] = useState(DEFAULT_INK);
+  const [colorMenuOpen, setColorMenuOpen] = useState(false);
+  const selectedColorRef = useRef(DEFAULT_INK);
+
+  selectedColorRef.current = selectedColor;
 
   const redraw = useCallback(() => {
     const canvas = canvasRef.current;
@@ -130,11 +144,11 @@ export default function PaperCanvas() {
     context.setTransform(ratio, 0, 0, ratio, 0, 0);
     context.lineCap = "round";
     context.lineJoin = "round";
-    context.strokeStyle = INK;
     context.lineWidth = 2.25;
     context.globalAlpha = 0.82;
 
     strokesRef.current.forEach((stroke) => {
+      context.strokeStyle = stroke.color || DEFAULT_INK;
       stroke.segments.forEach((segment) => {
         for (let index = 1; index < segment.length; index += 1) {
           drawSegment(context, segment[index - 1], segment[index]);
@@ -239,13 +253,16 @@ export default function PaperCanvas() {
 
     function handlePointerDown(event) {
       if (event.button !== 0 || event.isPrimary === false) return;
+      if (event.target instanceof Element && event.target.closest("[data-paper-controls]")) {
+        return;
+      }
 
       blockedRectsRef.current = collectBlockedRects(canvas);
       const point = getPoint(event);
       if (isBlocked(point)) return;
 
       event.preventDefault();
-      const stroke = { segments: [[point]] };
+      const stroke = { color: selectedColorRef.current, segments: [[point]] };
       strokesRef.current.push(stroke);
       activeStrokeRef.current = stroke;
       lastPointRef.current = point;
@@ -320,16 +337,60 @@ export default function PaperCanvas() {
     redraw();
   }
 
+  function selectColor(color) {
+    setSelectedColor(color);
+    setColorMenuOpen(false);
+  }
+
   return (
     <>
       <canvas className="paper-canvas" ref={canvasRef} aria-hidden="true" />
-      {hasDrawing ? (
-        <div className="paper-controls" data-paper-controls>
-          <button type="button" onClick={clearDrawing} aria-label="Clear background drawing">
-            Clear drawing
+      <div className="paper-controls" data-paper-controls>
+        <div className="paper-pen-control">
+          <button
+            type="button"
+            className="paper-tool-button"
+            onClick={() => setColorMenuOpen((open) => !open)}
+            aria-label="Choose pen color"
+            aria-expanded={colorMenuOpen}
+            aria-haspopup="true"
+            title="Choose pen color"
+          >
+            <FontAwesomeIcon
+              className="paper-tool-icon"
+              icon={faPen}
+              style={{ color: selectedColor }}
+              aria-hidden="true"
+            />
           </button>
+          {colorMenuOpen ? (
+            <div className="paper-color-menu" role="group" aria-label="Pen colors">
+              {INK_COLORS.map((color) => (
+                <button
+                  key={color.value}
+                  type="button"
+                  className="paper-color-swatch"
+                  onClick={() => selectColor(color.value)}
+                  aria-label={`${color.name} pen color`}
+                  aria-pressed={selectedColor === color.value}
+                  title={color.name}
+                  style={{ backgroundColor: color.value }}
+                />
+              ))}
+            </div>
+          ) : null}
         </div>
-      ) : null}
+        <button
+          type="button"
+          className="paper-tool-button"
+          onClick={clearDrawing}
+          aria-label="Erase all drawing"
+          title={hasDrawing ? "Erase all drawing" : "No drawing to erase"}
+          disabled={!hasDrawing}
+        >
+          <FontAwesomeIcon className="paper-tool-icon" icon={faEraser} aria-hidden="true" />
+        </button>
+      </div>
     </>
   );
 }

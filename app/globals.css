@@ -641,27 +641,70 @@ summary::-webkit-details-marker {
 }
 .paper-controls {
   position: fixed;
+  top: 1rem;
   right: 1rem;
-  bottom: 1rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.45rem;
   z-index: 30;
 }
-.paper-controls button {
-  min-height: 2.5rem;
-  padding: 0.55rem 0.85rem;
-  border: 1px solid rgb(68 78 86 / 0.3);
-  border-radius: 999px;
+.paper-pen-control {
+  position: relative;
+}
+.paper-tool-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  padding: 0.2rem;
+  border: 0;
+  border-radius: 0.35rem;
   color: #34414a;
-  font-size: 0.75rem;
   font-weight: 600;
   cursor: pointer;
-  background: rgb(249 248 242 / 0.92);
+  background: transparent;
+}
+.paper-tool-button:hover,
+.paper-tool-button:focus-visible {
+  background: rgb(52 65 74 / 0.1);
+  outline: 2px solid rgb(52 65 74 / 0.55);
+  outline-offset: 2px;
+}
+.paper-tool-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+.paper-tool-icon {
+  width: 1.15rem;
+  height: 1.15rem;
+  line-height: 1;
+}
+.paper-color-menu {
+  position: absolute;
+  top: calc(100% + 0.45rem);
+  right: 0;
+  display: flex;
+  gap: 0.35rem;
+  padding: 0.45rem;
+  border: 1px solid rgb(68 78 86 / 0.3);
+  border-radius: 0.65rem;
+  background: rgb(249 248 242 / 0.95);
   box-shadow: 0 2px 10px rgb(48 57 63 / 0.1);
   backdrop-filter: blur(4px);
 }
-.paper-controls button:hover,
-.paper-controls button:focus-visible {
-  border-color: #34414a;
-  outline: none;
+.paper-color-swatch {
+  width: 1.25rem;
+  height: 1.25rem;
+  border: 2px solid transparent;
+  border-radius: 999px;
+  cursor: pointer;
+}
+.paper-color-swatch:hover,
+.paper-color-swatch:focus-visible,
+.paper-color-swatch[aria-pressed="true"] {
+  border-color: #fff;
+  outline: 1px solid #34414a;
 }
 html {
   min-height: 100%;
