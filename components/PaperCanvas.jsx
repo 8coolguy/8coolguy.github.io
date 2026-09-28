@@ -262,6 +262,7 @@ export default function PaperCanvas() {
       if (isBlocked(point)) return;
 
       event.preventDefault();
+      contextRef.current.strokeStyle = selectedColorRef.current;
       const stroke = { color: selectedColorRef.current, segments: [[point]] };
       strokesRef.current.push(stroke);
       activeStrokeRef.current = stroke;
