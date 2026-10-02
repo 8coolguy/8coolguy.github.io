@@ -72,7 +72,7 @@ export default function ThrowShaderClient() {
       ) : null}
 
       <form onSubmit={handleSubmit}>
-        <div className="w-full mb-4" style={{ aspectRatio: compactMode ? "2 / 1" : "1 / 1" }}>
+        <div className="w-full mb-4" style={{ aspectRatio: compactMode ? "2 / 1" : "4 / 5" }}>
           <ShaderClient
             width={700}
             height={700}
