@@ -1,0 +1,95 @@
+.page {
+  width: 100%;
+  max-width: 1440px;
+}
+
+.authorField {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 24rem;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.authorField input {
+  text-align: center;
+}
+
+.submit {
+  display: block;
+  width: 100%;
+  max-width: 24rem;
+  margin-inline: auto;
+}
+
+.workspace {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 1.5rem;
+  height: clamp(24rem, calc(100dvh - 28rem), 48rem);
+  margin-bottom: 1.5rem;
+}
+
+.editor,
+.preview {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  min-width: 0;
+  min-height: 0;
+}
+
+.code {
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #9ca3af;
+  border-radius: 0.5rem;
+  background: rgb(255 255 255 / 0.7);
+  font-family: monospace;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  tab-size: 2;
+  resize: none;
+}
+
+.previewCanvas {
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  border-radius: 0.5rem;
+  background: #000;
+}
+
+.error {
+  max-height: 8rem;
+  overflow: auto;
+  overflow-wrap: anywhere;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  background: #fca5a5;
+}
+
+@media (max-width: 767px) {
+  .workspace {
+    grid-template-columns: minmax(0, 1fr);
+    height: auto;
+  }
+
+  .preview {
+    grid-row: 1;
+  }
+
+  .previewCanvas {
+    flex: none;
+    aspect-ratio: 4 / 3;
+  }
+
+  .code {
+    flex: none;
+    height: 24rem;
+    resize: vertical;
+  }
+}

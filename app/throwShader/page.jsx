@@ -1,6 +1,7 @@
 import Footer from "@/components/Footer";
 import Navigation from "@/components/Navigation";
 import ThrowShaderLoader from "@/components/ThrowShaderLoader";
+import styles from "@/components/ThrowShaderClient.module.css";
 
 export const metadata = {
   title: "Throw Shader",
@@ -12,7 +13,7 @@ export default function ThrowShaderPage() {
   return (
     <div className="site-page">
       <main className="site-main font-Inter flex flex-col items-center p-4">
-        <div className="w-full md:max-w-[700px]">
+        <div className={styles.page}>
           <section className="rounded-xl" aria-labelledby="throw-shader-heading">
             <h1 id="throw-shader-heading" className="text-4xl md:text-7xl text-center">Throw Shader</h1>
             <Navigation />
