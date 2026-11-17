@@ -4,10 +4,8 @@
   "homepage": "https://arnavchoudhury.org/",
   "private": true,
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^6.6.0",
     "@fortawesome/free-brands-svg-icons": "^6.6.0",
     "@fortawesome/free-solid-svg-icons": "^6.6.0",
-    "@fortawesome/react-fontawesome": "^0.2.2",
     "glsl-canvas-js": "^0.2.9",
     "marked": "^18.0.7",
     "next": "^16.3.3",
@@ -19,10 +17,13 @@
     "start": "next dev",
     "build": "next build",
     "preview": "npx serve out",
+    "optimize:media": "node scripts/optimize-project-media.mjs",
+    "measure:payload": "node scripts/measure-payload.mjs",
     "predeploy": "next build",
     "deploy": "gh-pages -d out --dotfiles"
   },
   "devDependencies": {
-    "gh-pages": "^6.3.0"
+    "gh-pages": "^6.3.0",
+    "sharp": "^0.35.5"
   }
 }

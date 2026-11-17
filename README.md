@@ -24,6 +24,18 @@ npm run deploy
 
 The custom domain and GitHub Pages bypass file live in `public/` so Next copies them into every export.
 
+## Reducing network payloads
+
+See [the payload guide](docs/network-payloads.md) for the techniques used here and how to measure them.
+
+```bash
+npm run optimize:media
+npm run build
+npm run measure:payload
+```
+
+Media optimization requires FFmpeg on your PATH. It downloads the original project images once into `.cache/project-media/`, generates responsive WebP images and a looping MP4 in `public/projects/`, and records file sizes in `docs/media-sizes.json`. The generated assets are committed, so normal builds do not need FFmpeg or image downloads. Delete the relevant cached source to fetch it again after replacing an image.
+
 ## Other work project links
 
 Projects are defined in `lib/info.js`. The `links` object supports `Github`, `Devpost`, `Youtube`, and `Live` URLs. Empty values are omitted from the page.

@@ -1,0 +1,173 @@
+{
+  "scope": "Homepage HTML and directly referenced modern-browser JavaScript/CSS from production exports. Compression sizes are local estimates; runtime imports, fonts, media, API requests and transport overhead are excluded.",
+  "before": {
+    "html": {
+      "raw": 42394,
+      "gzip": 8130,
+      "brotli": 6639
+    },
+    "javascript": {
+      "raw": 533243,
+      "gzip": 161882,
+      "brotli": 139288
+    },
+    "css": {
+      "raw": 29849,
+      "gzip": 7353,
+      "brotli": 6436
+    },
+    "files": [
+      {
+        "path": "/_next/static/chunks/0eo1cde-rr3bs.js",
+        "raw": 33395,
+        "gzip": 8840,
+        "brotli": 7775
+      },
+      {
+        "path": "/_next/static/chunks/3byuobrkyz9bj.js",
+        "raw": 229156,
+        "gzip": 71628,
+        "brotli": 61192
+      },
+      {
+        "path": "/_next/static/chunks/3erf0nmlfn0qv.js",
+        "raw": 160741,
+        "gzip": 44019,
+        "brotli": 37288
+      },
+      {
+        "path": "/_next/static/chunks/turbopack-2s1ybmebuq84w.js",
+        "raw": 9721,
+        "gzip": 3845,
+        "brotli": 3445
+      },
+      {
+        "path": "/_next/static/chunks/08muvrokq38b5.js",
+        "raw": 20436,
+        "gzip": 5841,
+        "brotli": 5194
+      },
+      {
+        "path": "/_next/static/chunks/1d80uqttp0t4r.js",
+        "raw": 56767,
+        "gzip": 18108,
+        "brotli": 16067
+      },
+      {
+        "path": "/_next/static/chunks/39rtdfoa_jf9a.js",
+        "raw": 3424,
+        "gzip": 1648,
+        "brotli": 1476
+      },
+      {
+        "path": "/_next/static/chunks/2xkms4h765yq4.js",
+        "raw": 14239,
+        "gzip": 5983,
+        "brotli": 5186
+      },
+      {
+        "path": "/_next/static/chunks/310vm2bl3xxpt.js",
+        "raw": 5364,
+        "gzip": 1970,
+        "brotli": 1665
+      },
+      {
+        "path": "/_next/static/chunks/1jzhd6n-om1dj.css",
+        "raw": 25627,
+        "gzip": 6147,
+        "brotli": 5459
+      },
+      {
+        "path": "/_next/static/chunks/2us4j1w6pwx8e.css",
+        "raw": 4222,
+        "gzip": 1206,
+        "brotli": 977
+      }
+    ]
+  },
+  "after": {
+    "html": {
+      "raw": 41106,
+      "gzip": 8068,
+      "brotli": 6607
+    },
+    "javascript": {
+      "raw": 479256,
+      "gzip": 145174,
+      "brotli": 124447
+    },
+    "css": {
+      "raw": 20237,
+      "gzip": 5636,
+      "brotli": 4874
+    },
+    "files": [
+      {
+        "path": "/_next/static/chunks/0eo1cde-rr3bs.js",
+        "raw": 33395,
+        "gzip": 8840,
+        "brotli": 7775
+      },
+      {
+        "path": "/_next/static/chunks/3byuobrkyz9bj.js",
+        "raw": 229156,
+        "gzip": 71628,
+        "brotli": 61192
+      },
+      {
+        "path": "/_next/static/chunks/3erf0nmlfn0qv.js",
+        "raw": 160741,
+        "gzip": 44019,
+        "brotli": 37288
+      },
+      {
+        "path": "/_next/static/chunks/turbopack-2s1ybmebuq84w.js",
+        "raw": 9721,
+        "gzip": 3845,
+        "brotli": 3445
+      },
+      {
+        "path": "/_next/static/chunks/2vet_1xka-czm.js",
+        "raw": 20420,
+        "gzip": 5834,
+        "brotli": 5184
+      },
+      {
+        "path": "/_next/static/chunks/1y-9o7-q_im35.js",
+        "raw": 1767,
+        "gzip": 985,
+        "brotli": 863
+      },
+      {
+        "path": "/_next/static/chunks/39rtdfoa_jf9a.js",
+        "raw": 3424,
+        "gzip": 1648,
+        "brotli": 1476
+      },
+      {
+        "path": "/_next/static/chunks/1gi-syj7073ol.js",
+        "raw": 15268,
+        "gzip": 6405,
+        "brotli": 5559
+      },
+      {
+        "path": "/_next/static/chunks/310vm2bl3xxpt.js",
+        "raw": 5364,
+        "gzip": 1970,
+        "brotli": 1665
+      },
+      {
+        "path": "/_next/static/chunks/29tzmi_iat7gj.css",
+        "raw": 16015,
+        "gzip": 4430,
+        "brotli": 3897
+      },
+      {
+        "path": "/_next/static/chunks/2us4j1w6pwx8e.css",
+        "raw": 4222,
+        "gzip": 1206,
+        "brotli": 977
+      }
+    ]
+  }
+}

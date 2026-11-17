@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Icon from "@/components/Icon";
 import { faEraser, faPen } from "@fortawesome/free-solid-svg-icons";
 
 const DEFAULT_INK = "#33424d";
@@ -357,7 +357,7 @@ export default function PaperCanvas() {
             aria-haspopup="true"
             title="Choose pen color"
           >
-            <FontAwesomeIcon
+            <Icon
               className="paper-tool-icon"
               icon={faPen}
               style={{ color: selectedColor }}
@@ -389,7 +389,7 @@ export default function PaperCanvas() {
           title={hasDrawing ? "Erase all drawing" : "No drawing to erase"}
           disabled={!hasDrawing}
         >
-          <FontAwesomeIcon className="paper-tool-icon" icon={faEraser} aria-hidden="true" />
+          <Icon className="paper-tool-icon" icon={faEraser} aria-hidden="true" />
         </button>
       </div>
     </>

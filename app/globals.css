@@ -1,5 +1,4 @@
 /*! tailwindcss v4.0.9 | MIT License | https://tailwindcss.com */
-@import "@fortawesome/fontawesome-svg-core/styles.css";
 @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap");
 @layer theme, base, components, utilities;
 @layer theme {
@@ -525,6 +524,20 @@
 }
 summary::-webkit-details-marker {
   display: none;
+}
+.inline-icon {
+  display: inline-block;
+  flex-shrink: 0;
+  overflow: visible;
+  fill: currentColor;
+  vertical-align: -0.125em;
+}
+.inline-icon-lg {
+  font-size: 1.25em;
+  vertical-align: -0.2em;
+}
+.inline-icon-2x {
+  font-size: 2em;
 }
 .break-words img, .break-words video {
   max-width: 100%;

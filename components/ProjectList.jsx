@@ -1,4 +1,4 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Icon from "@/components/Icon";
 import { faArrowUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
 import { faDev, faGithub, faYoutube } from "@fortawesome/free-brands-svg-icons";
 
@@ -36,7 +36,7 @@ function ProjectLinks({ project }) {
     <p className="project-links flex flex-wrap items-center shrink-0 text-sm text-gray-500">
       {links.map(([label, href, icon]) => (
         <a key={label} className="link" href={href} aria-label={`${project.name} on ${label}`} title={label}>
-          <FontAwesomeIcon size="lg" icon={icon} />
+          <Icon size="lg" icon={icon} />
         </a>
       ))}
     </p>

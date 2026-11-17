@@ -1,4 +1,4 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Icon from "@/components/Icon";
 import { faRss } from "@fortawesome/free-solid-svg-icons";
 import { faGithub, faInstagram, faLinkedin, faStrava } from "@fortawesome/free-brands-svg-icons";
 
@@ -16,7 +16,7 @@ export default function Navigation() {
       <div className="flex flex-row justify-center items-center">
         {links.map(([label, href, icon]) => (
           <a key={label} className="link" href={href} aria-label={label} title={label}>
-            <FontAwesomeIcon size="2x" icon={icon} />
+            <Icon size="2x" icon={icon} />
           </a>
         ))}
       </div>

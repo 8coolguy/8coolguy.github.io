@@ -1,0 +1,39 @@
+[
+  {
+    "name": "conquest",
+    "source": "https://i.imgur.com/6r9MTOW.png",
+    "originalBytes": 391032,
+    "files": {
+      "conquest-480.webp": 10538,
+      "conquest-960.webp": 24832
+    }
+  },
+  {
+    "name": "cycling",
+    "source": "https://i.imgur.com/TYkSmjg.png",
+    "originalBytes": 114108,
+    "files": {
+      "cycling-480.webp": 3286,
+      "cycling-960.webp": 8618
+    }
+  },
+  {
+    "name": "study-rush",
+    "source": "https://i.imgur.com/2qRdLfj.png",
+    "originalBytes": 185164,
+    "files": {
+      "study-rush-480.webp": 9300,
+      "study-rush-960.webp": 30660
+    }
+  },
+  {
+    "name": "solar-system",
+    "source": "https://i.imgur.com/6vtGrmj.gif",
+    "originalBytes": 46130044,
+    "files": {
+      "solar-system-480.webp": 924,
+      "solar-system-960.webp": 2770,
+      "solar-system.mp4": 778535
+    }
+  }
+]

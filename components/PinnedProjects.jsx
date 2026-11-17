@@ -1,7 +1,8 @@
 "use client";
 
 import { useRef, useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Icon from "@/components/Icon";
+import ProjectAnimation from "@/components/ProjectAnimation";
 import { faArrowUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
 import { faDev, faGithub } from "@fortawesome/free-brands-svg-icons";
 import styles from "./PinnedProjects.module.css";
@@ -26,6 +27,8 @@ export default function PinnedProjects({ projects }) {
       {projects.map((project, index) => {
         const isActive = activeProject === index;
         const descriptionId = `pinned-project-${index}`;
+        const wideCard = index === 0 || index === 4;
+        const imageSizes = `(max-width: 40rem) calc(100vw - 2rem), (max-width: 62rem) ${wideCard ? "58vw" : "42vw"}, ${wideCard ? "560px" : "400px"}`;
 
         return (
           <article
@@ -34,14 +37,25 @@ export default function PinnedProjects({ projects }) {
             onMouseEnter={() => setActiveProject(index)}
             onMouseLeave={() => setActiveProject(null)}
           >
-            <img
-              className={styles.image}
-              src={project.image}
-              alt=""
-              width="1200"
-              height="800"
-              loading="lazy"
-            />
+            {project.video ? (
+              <ProjectAnimation
+                className={styles.image}
+                src={project.video}
+                poster={project.image}
+              />
+            ) : project.image ? (
+              <img
+                className={styles.image}
+                src={project.image}
+                srcSet={project.imageSrcSet}
+                sizes={imageSizes}
+                alt=""
+                width="1200"
+                height="800"
+                loading="lazy"
+                decoding="async"
+              />
+            ) : null}
             <button
               className={styles.revealButton}
               type="button"
@@ -72,7 +86,7 @@ export default function PinnedProjects({ projects }) {
 
                   return (
                     <a key={type} href={href} target="_blank" rel="noreferrer">
-                      <FontAwesomeIcon icon={icon} aria-hidden="true" />
+                      <Icon icon={icon} />
                       {label}
                     </a>
                   );
