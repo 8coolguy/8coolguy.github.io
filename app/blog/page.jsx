@@ -1,4 +1,3 @@
-import Footer from "@/components/Footer";
 import Navigation from "@/components/Navigation";
 import { getAllPosts } from "@/lib/posts";
 
@@ -53,7 +52,6 @@ export default function BlogPage() {
             ))}
           </section>
         </div>
-        <Footer />
       </main>
     </div>
   );

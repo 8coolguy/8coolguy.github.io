@@ -1,5 +1,4 @@
 import { notFound } from "next/navigation";
-import Footer from "@/components/Footer";
 import Navigation from "@/components/Navigation";
 import { getPost, getPostSlugs } from "@/lib/posts";
 import styles from "./post.module.css";
@@ -74,7 +73,6 @@ export default async function BlogPostPage({ params }) {
             </div>
           </div>
         </article>
-        <Footer />
       </main>
     </div>
   );

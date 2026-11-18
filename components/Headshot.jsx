@@ -33,7 +33,6 @@ export default function Headshot() {
 
   return (
     <div className="home-shader-row">
-      <img className="home-shader-pointer" src="/arrow.svg" alt="" aria-hidden="true" />
       <Link className="home-shader-link" href="/gallery/" aria-label="Open the shader gallery">
         <ShaderClient
           height={500}

@@ -1,11 +1,9 @@
 const links = [
   ["Throw Shader", "/throwShader/"],
   ["Gallery", "/gallery/"],
-  ["Resume", "/resume/"],
   ["Blog", "/blog/"],
   ["Other Work", "/other-work/"],
   ["Contact", "mailto:arnavc02@gmail.com"],
-  ["Business card", "https://main.bcard-5fy.pages.dev/"],
 ];
 
 export default function Footer() {
@@ -20,8 +18,6 @@ export default function Footer() {
             <li key={label}>
               <a
                 href={href}
-                target={label === "Business card" ? "_blank" : undefined}
-                rel={label === "Business card" ? "noopener noreferrer" : undefined}
                 className="hover:underline me-4 md:me-6"
               >
                 {label}

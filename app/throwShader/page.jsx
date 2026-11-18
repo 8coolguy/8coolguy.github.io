@@ -1,4 +1,3 @@
-import Footer from "@/components/Footer";
 import Navigation from "@/components/Navigation";
 import ThrowShaderLoader from "@/components/ThrowShaderLoader";
 import styles from "@/components/ThrowShaderClient.module.css";
@@ -26,7 +25,6 @@ export default function ThrowShaderPage() {
             <ThrowShaderLoader />
           </section>
         </div>
-        <Footer />
       </main>
     </div>
   );

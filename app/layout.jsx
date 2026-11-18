@@ -1,5 +1,6 @@
 import "@/app/globals.css";
 import PaperCanvas from "@/components/PaperCanvas";
+import Footer from "@/components/Footer";
 import { SITE_URL } from "@/lib/site";
 
 export const metadata = {
@@ -26,7 +27,8 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body>
         <PaperCanvas />
-        {children}
+        <div className="site-content">{children}</div>
+        <Footer />
       </body>
     </html>
   );

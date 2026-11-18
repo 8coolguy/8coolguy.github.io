@@ -1,4 +1,3 @@
-import Footer from "@/components/Footer";
 import GalleryLoader from "@/components/GalleryLoader";
 import Navigation from "@/components/Navigation";
 
@@ -23,7 +22,6 @@ export default function GalleryPage() {
             <GalleryLoader />
           </section>
         </div>
-        <Footer />
       </main>
     </div>
   );

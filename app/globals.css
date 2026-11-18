@@ -269,7 +269,7 @@
     flex-shrink: 0;
   }
   .cursor-pointer {
-    cursor: pointer;
+    cursor: inherit;
   }
   .resize {
     resize: both;
@@ -589,21 +589,12 @@ summary::-webkit-details-marker {
   max-width: 700px;
 }
 .home-shader-row {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 700px) minmax(0, 1fr);
-  align-items: center;
+  display: block;
   width: 100%;
-  max-width: 1440px;
-}
-.home-shader-pointer {
-  grid-column: 1;
-  justify-self: end;
-  width: min(220px, 100%);
-  height: auto;
-  margin-right: 20px;
+  max-width: 700px;
+  margin-inline: auto;
 }
 .home-shader-link {
-  grid-column: 2;
   display: block;
   width: 100%;
   max-width: 700px;
@@ -620,30 +611,28 @@ summary::-webkit-details-marker {
   width: 100%;
   height: auto;
 }
-.home-content {
-  width: 100%;
-  max-width: 960px;
-}
-.home-copy {
-  width: 100%;
-  max-width: 700px;
-  margin-inline: auto;
-}
 .site-page {
   position: relative;
   z-index: 1;
-  min-height: 100vh;
-  min-height: 100dvh;
-  cursor: crosshair;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
   background: transparent;
 }
 .site-main {
   width: 100%;
-  min-height: 100vh;
-  min-height: 100dvh;
+  flex: 1;
+}
+.site-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
 }
 .site-footer {
-  margin-top: auto;
+  position: relative;
+  z-index: 3;
+  flex-shrink: 0;
 }
 .paper-canvas {
   position: absolute;
@@ -675,7 +664,6 @@ summary::-webkit-details-marker {
   border-radius: 0.35rem;
   color: #34414a;
   font-weight: 600;
-  cursor: pointer;
   background: transparent;
 }
 .paper-tool-button:hover,
@@ -685,7 +673,6 @@ summary::-webkit-details-marker {
   outline-offset: 2px;
 }
 .paper-tool-button:disabled {
-  cursor: not-allowed;
   opacity: 0.45;
 }
 .paper-tool-icon {
@@ -711,7 +698,6 @@ summary::-webkit-details-marker {
   height: 1.25rem;
   border: 2px solid transparent;
   border-radius: 999px;
-  cursor: pointer;
 }
 .paper-color-swatch:hover,
 .paper-color-swatch:focus-visible,
@@ -720,6 +706,7 @@ summary::-webkit-details-marker {
   outline: 1px solid #34414a;
 }
 html {
+  cursor: crosshair;
   min-height: 100%;
   background-color: #f8f7f1;
   background-image:
@@ -729,38 +716,19 @@ html {
   background-size: 20px 20px, 100% 100%;
 }
 body {
-  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100dvh;
   color: #1e252a;
   background: transparent;
 }
-a,
-button,
-input,
-textarea,
-select,
-summary,
-iframe,
-canvas:not(.paper-canvas) {
-  cursor: auto;
-}
-a,
-button,
-summary {
-  cursor: pointer;
-}
-@media (pointer: coarse) {
-  .site-page {
-    cursor: auto;
-  }
-}
-@media (max-width: 48rem) {
-  .home-shader-row {
-    display: block;
-  }
-
-  .home-shader-pointer {
-    display: none;
-  }
+/* Keep the same cursor on every page, control, and shader canvas. */
+body,
+body *,
+body *::before,
+body *::after {
+  cursor: inherit;
 }
 .project {
   align-items: left;
@@ -801,9 +769,6 @@ h1 {
   text-shadow: 0 0 5px white, 0 0 10px white, 0 0 15px white, 0 0 30px white, 0 0 60px white;
   animation: flicker-load 1s ease-in;
   padding: 40px;
-}
-.home-title {
-  padding-block: 16px;
 }
 h2 {
   text-shadow: 0 0 10px white, 0 0 15px white, 0 0 30px white;

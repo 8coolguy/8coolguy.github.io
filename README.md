@@ -13,6 +13,14 @@ npm run dev
 
 Open <http://localhost:3000>.
 
+## Homepage
+
+The homepage uses one editorial layout on the original dotted paper, with drawing tools, a live community shader, and actual project screenshots and recordings. Social icons sit beneath the name. The shared root layout renders the same footer on every page, and the crosshair cursor applies throughout the site.
+
+Project content lives in `lib/info.js`. The homepage structure and styles live in `app/page.jsx` and `app/page.module.css`.
+
+If Turbopack stalls on a local filesystem, use `npm run dev -- --webpack` or `npm run build -- --webpack`.
+
 ## Build and deploy
 
 ```bash

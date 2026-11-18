@@ -1,4 +1,3 @@
-import Footer from "@/components/Footer";
 import Navigation from "@/components/Navigation";
 import ProjectList from "@/components/ProjectList";
 import { projects } from "@/lib/info";
@@ -23,7 +22,6 @@ export default function OtherWorkPage() {
             <ProjectList projects={projects} />
           </section>
         </div>
-        <Footer />
       </main>
     </div>
   );
