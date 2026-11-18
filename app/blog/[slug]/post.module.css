@@ -1,0 +1,234 @@
+.article {
+  width: 100%;
+  max-width: 44rem;
+  min-width: 0;
+}
+
+.header,
+.body {
+  width: 100%;
+  max-width: 44rem;
+  min-width: 0;
+}
+
+.layout {
+  display: grid;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.toc {
+  min-width: 0;
+  padding-left: 1rem;
+  border-left: 1px solid #c5ccce;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.tocTitle {
+  margin-bottom: 0.75rem;
+  font-weight: 700;
+}
+
+.toc ul {
+  max-height: 14rem;
+  overflow-y: auto;
+  list-style: none;
+}
+
+.toc a {
+  display: block;
+  padding: 0.35rem 0.5rem;
+  padding-inline-start: calc(0.5rem + var(--toc-depth) * 0.75rem);
+  overflow-wrap: anywhere;
+  color: #46545d;
+  text-decoration: none;
+}
+
+.toc a:hover,
+.toc a:focus-visible {
+  color: #1e252a;
+  background: rgb(52 65 74 / 0.08);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.markdown {
+  font-size: 1rem;
+  line-height: 1.8;
+  overflow-wrap: anywhere;
+}
+
+.markdown :is(h1, h2, h3, h4, h5, h6) {
+  margin: 1.75em 0 0.65em;
+  padding: 0;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+  text-shadow: none;
+  animation: none;
+  scroll-margin-top: 2rem;
+}
+
+.markdown h1 { font-size: 2.25em; }
+.markdown h2 { font-size: 1.75em; }
+.markdown h3 { font-size: 1.4em; }
+.markdown h4 { font-size: 1.2em; }
+.markdown h5 { font-size: 1.05em; }
+.markdown h6 { font-size: 1em; }
+
+.markdown :is(p, ul, ol, blockquote, pre, table, dl, figure, details) {
+  margin-block: 1.25em;
+}
+
+.markdown > :first-child {
+  margin-top: 0;
+}
+
+.markdown > :last-child {
+  margin-bottom: 0;
+}
+
+.markdown a {
+  color: #185b80;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.markdown a:hover {
+  color: #103d57;
+}
+
+.markdown ul {
+  padding-inline-start: 1.5em;
+  list-style: disc;
+}
+
+.markdown ol {
+  padding-inline-start: 1.5em;
+  list-style: decimal;
+}
+
+.markdown li {
+  margin-block: 0.35em;
+}
+
+.markdown li > :is(ul, ol) {
+  margin-block: 0.5em;
+}
+
+.markdown li > input[type="checkbox"] {
+  margin-inline-end: 0.5em;
+}
+
+.markdown blockquote {
+  border-left: 3px solid #a8b7bc;
+  padding-inline-start: 1.25em;
+  color: #46545d;
+}
+
+.markdown blockquote > :first-child {
+  margin-top: 0;
+}
+
+.markdown blockquote > :last-child {
+  margin-bottom: 0;
+}
+
+.markdown code {
+  padding: 0.15em 0.35em;
+  border-radius: 0.25rem;
+  background: rgb(52 65 74 / 0.08);
+  font-size: 0.875em;
+}
+
+.markdown pre {
+  max-width: 100%;
+  overflow-x: auto;
+  padding: 1rem 1.25rem;
+  border: 1px solid #d3d9db;
+  border-radius: 0.5rem;
+  background: #edf0ef;
+  line-height: 1.6;
+  overflow-wrap: normal;
+  tab-size: 4;
+}
+
+.markdown pre code {
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
+}
+
+.markdown table {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  border-collapse: collapse;
+  font-size: 0.9em;
+}
+
+.markdown :is(th, td) {
+  padding: 0.65em 1em;
+  border: 1px solid #c5ccce;
+}
+
+.markdown th {
+  background: #edf0ef;
+  font-weight: 700;
+}
+
+.markdown :is(img, video, iframe) {
+  max-width: 100%;
+  margin-block: 1.5rem;
+}
+
+.markdown :is(img, video) {
+  height: auto;
+}
+
+.markdown hr {
+  margin-block: 2.5rem;
+  border-top: 1px solid #c5ccce;
+}
+
+.markdown dt {
+  font-weight: 700;
+}
+
+.markdown dd {
+  margin-inline-start: 1.5em;
+}
+
+.markdown figcaption {
+  color: #46545d;
+  font-size: 0.875em;
+}
+
+@media (min-width: 64rem) {
+  .article {
+    max-width: 64rem;
+  }
+
+  .layout {
+    grid-template-columns: minmax(0, 44rem) 15rem;
+    gap: 3rem;
+  }
+
+  .body {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .toc {
+    position: sticky;
+    top: 2rem;
+    grid-column: 2;
+    grid-row: 1;
+    align-self: start;
+  }
+
+  .toc ul {
+    max-height: calc(100dvh - 8rem);
+  }
+}
