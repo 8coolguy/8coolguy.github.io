@@ -7,7 +7,7 @@ tags:
   - semiconductors
   - history
 link: https://arnavchoudhury.org/blog/chip-war-illustrated/
-coverImage: "/blog/chip-war-illustrated/transistor.jpg"
+coverImage: "https://upload.wikimedia.org/wikipedia/commons/b/bf/Replica-of-first-transistor.jpg"
 excerpt: "Chip War: The Fight for the World’s Most Critical Technology — Chapters 1–20."
 ---
 
@@ -21,7 +21,7 @@ excerpt: "Chip War: The Fight for the World’s Most Critical Technology — Cha
 
 **Chapters 1, 2**
 
-![Replica of the first transistor](/blog/chip-war-illustrated/transistor.jpg)
+![Replica of the first transistor](https://upload.wikimedia.org/wikipedia/commons/b/bf/Replica-of-first-transistor.jpg)
 
 *1997 replica of the 1947 device.*
 
@@ -37,7 +37,7 @@ Image: Federal employee · Public domain · [Source image record](https://common
 
 **Chapter 3**
 
-![Replica of Jack Kilby’s first integrated circuit](/blog/chip-war-illustrated/kilby-replica.png)
+![Replica of Jack Kilby’s first integrated circuit](https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ea/Replica_IC.png/960px-Replica_IC.png)
 
 *Replica of Jack Kilby’s first integrated circuit · Nixdorf-Museum · Photo: 2015.*
 
@@ -53,7 +53,7 @@ Image: Florian Schäffer · [CC BY-SA 4.0](https://creativecommons.org/licenses/
 
 **Chapter 4**
 
-![Apollo display and keyboard at the Computer History Museum](/blog/chip-war-illustrated/apollo.jpg)
+![Apollo display and keyboard at the Computer History Museum](https://thumb.wikimedia.org/wikipedia/commons/thumb/6/62/Apollo_DSKY_CHM.agr.jpg/960px-Apollo_DSKY_CHM.agr.jpg)
 
 *Apollo Display and Keyboard (DSKY) · Computer History Museum · Photo: 2018.*
 
@@ -69,7 +69,7 @@ Image: Arnold Reinhold · [CC BY-SA 4.0](https://creativecommons.org/licenses/by
 
 **Chapter 5**
 
-![Silicon wafer photographed in 2011](/blog/chip-war-illustrated/silicon-wafer.jpg)
+![Silicon wafer photographed in 2011](https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f9/Wafer_20110212.jpg/960px-Wafer_20110212.jpg)
 
 *Wafer · Photo: 2011; illustrative photograph, not a 1960s wafer.*
 
@@ -85,7 +85,7 @@ Image: Sangitiana Fararano · [CC BY-SA 2.0](https://creativecommons.org/license
 
 **Chapter 6**
 
-![Fairchild Semiconductor’s original building in Palo Alto, photographed in 2006](/blog/chip-war-illustrated/fairchild-building.jpg)
+![Fairchild Semiconductor’s original building in Palo Alto, photographed in 2006](https://upload.wikimedia.org/wikipedia/commons/b/b8/Fairchild_Bldg.jpg)
 
 *844 East Charleston Road, Palo Alto · Original Fairchild building · Photo: 2006.*
 
@@ -101,7 +101,7 @@ Image: Dick Lyon · [Copyrighted free use](https://commons.wikimedia.org/wiki/Fi
 
 **Chapters 7, 8**
 
-![MIET main building in Zelenograd, photographed in 2006](/blog/chip-war-illustrated/miet-building.jpg)
+![MIET main building in Zelenograd, photographed in 2006](https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3c/Zelenograd_-_MIET.jpg/960px-Zelenograd_-_MIET.jpg)
 
 *Zelenograd · Photo: 2006.*
 
@@ -119,7 +119,7 @@ Image: Yury Petrovich Masloboev · [CC BY 3.0](https://creativecommons.org/licen
 
 **Chapter 9**
 
-![Sony TR-55 transistor radio](/blog/chip-war-illustrated/radio.jpg)
+![Sony TR-55 transistor radio](https://thumb.wikimedia.org/wikipedia/commons/thumb/5/57/Transistor_radio_TR-55_by_sony.jpg/960px-Transistor_radio_TR-55_by_sony.jpg)
 
 *TR-55 · 1955 model.*
 
@@ -135,13 +135,13 @@ Image: ブルーノ・プラス · [CC0](https://creativecommons.org/publicdomai
 
 **Chapters 10, 12**
 
-![Women assembling semiconductor devices at Semiconductor, Ltd., Hong Kong](/blog/chip-war-illustrated/transistor-girls.png)
+[View photograph: Women assembling semiconductor devices at Semiconductor, Ltd., Hong Kong (PDF, page 35)](https://archive.computerhistory.org/resources/access/text/2021/07/102709929-05-01-acc.pdf#page=35)
 
-*Semiconductor, Ltd., Hong Kong — assembly workers. Cropped from the company brochure, PDF page 35.*
+*Semiconductor, Ltd., Hong Kong — assembly workers. Company brochure, PDF page 35.*
 
 Image: Fairchild Semiconductor · archived by the Computer History Museum · [Source brochure, “Facilities, Asia; 1966–1979” (PDF, page 35)](https://archive.computerhistory.org/resources/access/text/2021/07/102709929-05-01-acc.pdf#page=35)
 
-![Integrated circuit wire bonding](/blog/chip-war-illustrated/wire-bonding.jpg)
+![Integrated circuit wire bonding](https://thumb.wikimedia.org/wikipedia/commons/thumb/1/13/Integrated_circuit_wire_bonding.jpg/960px-Integrated_circuit_wire_bonding.jpg)
 
 *Integrated circuit wire bonding · Photo: 2018; process illustration, not an archival assembly-line photograph.*
 
@@ -157,7 +157,7 @@ Image: Mister rf · [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.
 
 **Chapters 11, 14**
 
-![GBU-10 Paveway II](/blog/chip-war-illustrated/paveway.jpg)
+![GBU-10 Paveway II](https://upload.wikimedia.org/wikipedia/commons/a/aa/GBU-10_profile_view_picture.jpg)
 
 *GBU-10 Paveway II · U.S. Air Force illustration.*
 
@@ -177,7 +177,7 @@ Image: U.S. Air Force · Public domain · [Source image record](https://commons.
 
 **Chapter 13**
 
-![Opened Intel 4004 processor](/blog/chip-war-illustrated/processor.jpg)
+![Opened Intel 4004 processor](https://thumb.wikimedia.org/wikipedia/commons/thumb/3/30/Intel_4004_open.jpg/500px-Intel_4004_open.jpg)
 
 *Intel 4004 processor, open · 1971.*
 
@@ -197,7 +197,7 @@ Image: Science Museum · [CC BY 4.0](https://creativecommons.org/licenses/by/4.0
 
 **Chapters 15, 16**
 
-![Stacked capacitor cell, released in 1978](/blog/chip-war-illustrated/stacked-capacitor-cell.jpg)
+![Stacked capacitor cell, released in 1978](https://www.shmj.or.jp/images/ic/1980_a.jpg)
 
 *“Stacked Capacitor Cell Released in 1978” — source caption.*
 
@@ -213,7 +213,7 @@ Image: Semiconductor History Museum of Japan / SSIS · © SSIS · [Source image 
 
 **Chapter 17**
 
-![Nikon NSR-1010G stepper](/blog/chip-war-illustrated/nikon-stepper.jpg)
+![Nikon NSR-1010G stepper](https://www.nikon.com/business/semi/history/img/nsr-1010g.jpg)
 
 *NSR-1010G · 1980 entry in Nikon’s equipment history.*
 
@@ -229,7 +229,7 @@ Image: Nikon · © Nikon · [Source image record](https://www.nikon.com/business
 
 **Chapters 18, 19, 20**
 
-![July 31, 1986 White House memorandum on semiconductor trade](/blog/chip-war-illustrated/trade-agreement.png)
+[View the July 31, 1986 White House memorandum on semiconductor trade (PDF, page 18)](https://www.reaganlibrary.gov/public/2024-01/40-155-12007440-OA12246-011-2023.pdf#page=18)
 
 *White House memorandum · July 31, 1986 · PDF page 18.*
 

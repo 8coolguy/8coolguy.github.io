@@ -19,6 +19,9 @@ HOW TO PUBLISH A POST
      This is what launches when a reader clicks the entry on the blog page.
 3. Write the full post in Markdown below the front matter. An excerpt is shown
    on the listing page and the full body gets its own /blog/<file-name>/ page.
+   Keep blog images externally hosted: use the original source image URLs.
+   For images available only in a PDF, link to the relevant PDF page.
+   Do not commit downloaded blog images to the repository.
 4. Commit the .md file to content/blogs/ and deploy. Next.js generates the
    listing and article HTML during the build.
 -->
