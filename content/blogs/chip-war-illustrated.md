@@ -131,9 +131,15 @@ Image: ブルーノ・プラス · [CC0](https://creativecommons.org/publicdomai
 
 ---
 
-## Assembly and wire bonding
+## “Transistor Girls”: assembly and wire bonding
 
 **Chapters 10, 12**
+
+![Women assembling semiconductor devices at Semiconductor, Ltd., Hong Kong](/blog/chip-war-illustrated/transistor-girls.png)
+
+*Semiconductor, Ltd., Hong Kong — assembly workers. Cropped from the company brochure, PDF page 35.*
+
+Image: Fairchild Semiconductor · archived by the Computer History Museum · [Source brochure, “Facilities, Asia; 1966–1979” (PDF, page 35)](https://archive.computerhistory.org/resources/access/text/2021/07/102709929-05-01-acc.pdf#page=35)
 
 ![Integrated circuit wire bonding](/blog/chip-war-illustrated/wire-bonding.jpg)
 
