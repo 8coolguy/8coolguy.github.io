@@ -83,7 +83,9 @@ export default function HomePage() {
     <div className={styles.page}>
       <div className={styles.shell}>
         <header className={styles.header}>
-          <a href="/" className={styles.wordmark} aria-label="Arnav C. home">a<span>c.</span></a>
+          <a href="/" className={styles.wordmark} aria-label="Arnav C. home">
+            <img src="/icon.png" alt="" width="48" height="48" />
+          </a>
           <nav aria-label="Page navigation">
             <a href="#selected-work">Work</a>
             <a href="/blog/">Writing</a>
